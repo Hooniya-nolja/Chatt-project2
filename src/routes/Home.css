@@ -1,0 +1,116 @@
+.introduction_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.introduction_paper {
+    width: 100%;
+    height: auto;
+}
+.introduction_button {
+    font-family: Lato;
+    position: absolute;
+    left: 16px;
+    top: 248px;
+    z-index: 1;
+    width: 100px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: 5px;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);
+    background-color: #ffffff;
+    font-size: 12px;
+    color: #3c50a5;
+    font-weight: 900;
+    border: 0;
+    outline: 0;
+}
+button:focus{
+    border: none;
+    outline: none;
+}
+.topclass_container {
+    position: absolute;
+    top: calc(480 * 100vw / 375 + 32px);
+    width: calc(100% - 16px);
+}
+.topclass_top {
+    display: flex;
+    position: relative;
+}
+.topclass_title {
+    position: absolute;
+    left: 16px;
+    font-family: NotoSansKR;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333333;
+}
+.topclass_more {
+    position: absolute;
+    right: 16px;
+    font-family: Lato;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 3px;
+    color: #bdbdbd;
+}
+.topclass_content_container {
+    position: relative;
+    top: 24px;
+}
+.oneclass_container {
+    width: 152px;
+    height: 112px;
+    margin: 16px 8px 32px 16px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+}
+.oneclass_keyword_container{
+    display: flex;
+}
+.oneclass_keyword{
+    width: auto;
+    height: 24px;
+    border-radius: 4px;
+    font-family: NotoSansKR;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 8px 0 8px;
+    margin-right: 8px;
+}
+#type{
+    background-color: rgba(255, 87, 119, 0.1);
+    color: #ff5777;    
+}
+#hashtag{
+    background-color: rgba(60, 80, 165, 0.1);
+    color: #3c50a5;    
+}
+.oneclass_description{
+    margin-top: 8px;
+    font-family: NotoSansKR;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333333;
+}
+.oneclass_trainer{
+    display: flex;
+    margin-top: 8px;
+    position: absolute;
+    bottom: 16px;
+}
+.oneclass_trainer_name {
+    font-family: NotoSansKR;
+    font-size: 14px;
+    font-weight: normal;
+    color: #333333;
+    margin-left: 8px;
+    margin-top: 3px;
+}
+.blankspace {
+    position: relative;
+    height: 100px;
+    background-color:white;
+}
