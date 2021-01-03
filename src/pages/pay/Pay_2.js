@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import PAGENUMIMG_2 from '../../components/img/pageNumImg_2.png';
 
-class Page_2 extends React.Component {
+class Pay_2 extends React.Component {
     render() {
         return (
             <Container>
@@ -26,7 +26,7 @@ class Page_2 extends React.Component {
         );
     }
 }
-export default Page_2;
+export default Pay_2;
 const Container = styled.div`
     display: flex;
     width: 100%;
