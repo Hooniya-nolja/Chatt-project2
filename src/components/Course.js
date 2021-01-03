@@ -18,10 +18,10 @@ function Course() {
 }
 
 const Container = styled.div`
-  width: 330px;
+  width: calc(100% - 48px);
   height: 160px;
-  margin: 32px 32px 16px 16px;
-  object-fit: contain;
+  margin: 16px;
+  // object-fit: contain;
   border-radius: 10px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
   background-color: #ffffff;

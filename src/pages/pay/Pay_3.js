@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import PAGENUMIMG_3 from '../../components/icon/pageNumImg_3.png';
+import Course from '../../components/Course';
 
 class Pay_3 extends React.Component {
     render() {
@@ -15,6 +16,8 @@ class Pay_3 extends React.Component {
                 </div>
                 <ContainerContent>
                     <SubTitle>3. 결제하실 수업료입니다!</SubTitle>
+                    <BoldLine/>
+                    <Course />
                     <ButtonContainer>
                         <PageNumImg src={PAGENUMIMG_3}/>
                         <Link to="/pay/4">
@@ -102,4 +105,9 @@ const SubTitle = styled.div`
     color: #333333;
     text-align: left;
     height: 45px;
+`;
+const BoldLine = styled.div`
+    height: 8px;
+    margin: 0;
+    background-color: rgba(60, 80, 165, 0.1);
 `;
