@@ -17,11 +17,10 @@ class Page_1 extends React.Component {
                     <SubTitle>1. 희망 수업 시간을 선택해주세요!</SubTitle>
                     <ButtonContainer>
                         <PageNumImg src={PAGENUMIMG_1}/>
-                        <Link to="/page/2">
+                        <Link to="/pay/2">
                             <NextButton>다음</NextButton>
                         </Link>
                     </ButtonContainer>
-                    {/* <BlankSpace/> */}
                 </ContainerContent>
             </Container>
         );
