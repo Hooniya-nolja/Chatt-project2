@@ -1,30 +1,28 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import PAGENUMIMG_1 from '../../components/img/pageNumImg_1.png';
+import PAGENUMIMG_1 from '../../components/icon/pageNumImg_1.png';
 
-class Pay_1 extends React.Component {
-    render() {
-        return (
-            <Container>
-                <div>
-                    <Link to="/introduction"> {/* 후에 url 수정 */}
-                        <GoBackIcon>{'<'}</GoBackIcon>
-                    </Link>                   
-                    <Title>예약하기</Title>
-                </div>
-                <ContainerContent>
-                    <SubTitle>1. 희망 수업 시간을 선택해주세요!</SubTitle>
-                    <ButtonContainer>
-                        <PageNumImg src={PAGENUMIMG_1}/>
-                        <Link to="/pay/2">
-                            <NextButton>다음</NextButton>
-                        </Link>
-                    </ButtonContainer>
-                </ContainerContent>
-            </Container>
+function Pay_1 (){
+    return (
+        <Container>
+            <div>
+                <Link to="/introduction"> {/* 후에 url 수정 */}
+                    <GoBackIcon>{'<'}</GoBackIcon>
+                </Link>                   
+                <Title>예약하기</Title>
+            </div>
+            <ContainerContent>
+                <SubTitle>1. 희망 수업 시간을 선택해주세요!</SubTitle>
+                <ButtonContainer>
+                    <PageNumImg src={PAGENUMIMG_1}/>
+                    <Link to="/pay/2">
+                        <NextButton>다음</NextButton>
+                    </Link>
+                </ButtonContainer>
+            </ContainerContent>
+        </Container>
         );
-    }
 }
 export default Pay_1;
 const Container = styled.div`
@@ -101,4 +99,5 @@ const SubTitle = styled.div`
     font-weight: 500;
     color: #333333;
     text-align: left;
+    height: 45px;
 `;

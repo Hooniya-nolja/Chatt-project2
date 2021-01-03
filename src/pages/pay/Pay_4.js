@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import PAGENUMIMG_4 from '../../components/img/pageNumImg_4.png';
+import PAGENUMIMG_4 from '../../components/icon/pageNumImg_4.png';
 
 class Pay_4 extends React.Component {
     render() {

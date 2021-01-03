@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import PAGENUMIMG_3 from '../../components/img/pageNumImg_3.png';
+import PAGENUMIMG_3 from '../../components/icon/pageNumImg_3.png';
 
 class Pay_3 extends React.Component {
     render() {
@@ -101,4 +101,5 @@ const SubTitle = styled.div`
     font-weight: 500;
     color: #333333;
     text-align: left;
+    height: 45px;
 `;
