@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import COMPLETED_IMG from '../../components/img/예약완료.png';
 
 class Pay_5 extends React.Component {
     render() {
@@ -14,7 +15,29 @@ class Pay_5 extends React.Component {
                 </div>
                 <ContainerContent>
                     <ContentContainer>
-                        <div>예약완료</div>
+                        <CompletedImg src={COMPLETED_IMG}/>
+                        <DescriptionContainer>
+                            <Description>주문해주셔서 감사합니다.</Description>
+                            <Description>2021.01.05 까지 미입금시 자동 취소됩니다.</Description>
+                        </DescriptionContainer>
+                        <Line/>
+                        <ContentOneLine>
+                            <ContentTitle>결제금액</ContentTitle>
+                            <Content>202,800원</Content>
+                        </ContentOneLine>
+                        <ContentOneLine>
+                            <ContentTitle>계좌번호</ContentTitle>
+                            <Content>신한은행 110-123-456789</Content>
+                        </ContentOneLine>
+                        <ContentOneLine>
+                            <ContentTitle>계좌명</ContentTitle>
+                            <Content>주식회사 찾트</Content>
+                        </ContentOneLine>
+                        <ContentOneLine>
+                            <ContentTitle>입금자명</ContentTitle>
+                            <Content>조혜빈</Content>
+                        </ContentOneLine>
+                    
                     </ContentContainer>
                     <ButtonContainer>
                         <Link to="/"> {/* 후에 수정 */}
@@ -90,17 +113,53 @@ const NextButton = styled.button`
     margin: 0;
     padding: 0;
 `;
-const PageNumImg = styled.img`
-    text-align: center;
-    padding-top: 0;
-    padding-bottom: 23px;
-`;
 const ContentContainer = styled.div`
     width: calc(100% - (16px * 2));
     margin: 16px 0 0 16px;
-    padding: 0;
+    padding: 236px 0 16px 0;
     border-radius: 10px;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
     background-color: #ffffff;
     text-align: left;
+`;
+const Line = styled.div`
+    margin: 16px 16px 16px 16px;
+    background-color: rgba(63, 79, 165, 0.4);
+    height: 1px;
+`;
+const ContentTitle = styled.div`
+    font-family: NotoSansKR;
+    font-size: 16px;
+    text-align: left;
+    margin-left: 16px;
+    color: #828282;
+`;
+const Content = styled.div`
+    font-family: NotoSansKR;
+    font-size: 16px;
+    text-align: right;
+    position: absolute;
+    right: 32px;
+    color: #333333;8
+`;
+const ContentOneLine = styled.div`
+    display: flex;
+    width: calc(100% - px);
+    margin-bottom: 8px;
+`;
+const Description = styled.div`
+    font-family: NotoSansKR;
+    font-size: 14px;
+    color: #828282;
+    text-align: center;
+`;
+const CompletedImg = styled.img`
+    width: 180px;
+    position: absolute;
+    left: calc( (100% - 180px) / 2);
+    top: 40px;
+    text-align: center;
+`;
+const DescriptionContainer = styled.div`
+    margin-top: 48px;
 `;

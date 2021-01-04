@@ -173,6 +173,7 @@ const Content = styled.div`
 const ContentOneLine = styled.div`
     display: flex;
     width: calc(100% - px);
+    margin-bottom: 8px;
 `;
 const NameInputBox = styled.input`
     position: absolute;
