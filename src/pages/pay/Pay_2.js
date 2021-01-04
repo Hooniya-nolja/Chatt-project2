@@ -30,6 +30,9 @@ function Pay_2 (){
                     <GoBackIcon>{'<'}</GoBackIcon>
                 </Link>                   
                 <Title>예약하기</Title>
+                <Link to="/"> {/* 후에 수정 */}
+                        <CloseIcon>{'X'}</CloseIcon>
+                </Link>
             </div>
             <ContainerContent>
                 <SubTitle>2. 트레이너에게 알려주세요!</SubTitle>
@@ -189,4 +192,11 @@ const InputArea = styled.textarea`
         font-size: 14px;
         color: #bdbdbd;
     }
+`;
+const CloseIcon = styled(TopContent)`
+    text-decoration: none;
+    position: absolute;
+    top: 56px;
+    right: 16px;
+    width: 24px;
 `;

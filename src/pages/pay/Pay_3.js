@@ -21,6 +21,9 @@ export default function Pay_3 (){
                     <GoBackIcon>{'<'}</GoBackIcon>
                 </Link>                   
                 <Title>예약하기</Title>
+                <Link to="/"> {/* 후에 수정 */}
+                        <CloseIcon>{'X'}</CloseIcon>
+                </Link>
             </div>
             <ContainerContent>
                 <SubTitle>3. 결제하실 수업료입니다!</SubTitle>
@@ -202,4 +205,11 @@ const FinalPrice = styled.div`
     color: #3c50a5;
     position: absolute;
     right: 16px;
+`;
+const CloseIcon = styled(TopContent)`
+    text-decoration: none;
+    position: absolute;
+    top: 56px;
+    right: 16px;
+    width: 24px;
 `;

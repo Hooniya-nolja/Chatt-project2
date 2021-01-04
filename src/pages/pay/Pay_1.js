@@ -11,6 +11,9 @@ function Pay_1 (){
                     <GoBackIcon>{'<'}</GoBackIcon>
                 </Link>                   
                 <Title>예약하기</Title>
+                <Link to="/"> {/* 후에 수정 */}
+                        <CloseIcon>{'X'}</CloseIcon>
+                </Link>
             </div>
             <ContainerContent>
                 <SubTitle>1. 희망 수업 시간을 선택해주세요!</SubTitle>
@@ -100,4 +103,11 @@ const SubTitle = styled.div`
     color: #333333;
     text-align: left;
     height: 45px;
+`;
+const CloseIcon = styled(TopContent)`
+    text-decoration: none;
+    position: absolute;
+    top: 56px;
+    right: 16px;
+    width: 24px;
 `;
