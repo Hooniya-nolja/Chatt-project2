@@ -5,7 +5,7 @@ import ClassList from './routes/ClassList';
 import Home from './routes/Home';
 import Introduction from './routes/Introduction';
 import MyClass from './routes/MyClass';
-import Profile from './routes/Profile';
+import MyPage from './routes/MyPage';
 import Navigation from './components/Navigation';
 import SignIn from './components/authentication/SignIn';
 import Pay_1 from './pages/pay/Pay_1';
@@ -31,7 +31,7 @@ function App() {
           <Route path="/introduction" exact={true} component={Introduction} />
           <Route path="/classList" exact={true} component={ClassList} />
           <Route path="/myClass" exact={true} component={MyClass} />
-          <Route path="/profile" exact={true} component={Profile} />
+          <Route path="/myPage" exact={true} component={MyPage} />
           <Route path="/signIn" exact={true} component={SignIn} />
 
           <Route path="/pay/1" exact={true} component={Pay_1} />
