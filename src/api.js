@@ -1,15 +1,18 @@
 import axios from 'axios';
 import qs from 'qs';
 
+// document.cookie = "cross-site-cookie=bar; SameSite=None; Secure";
+// document.cookie = "sessionid=foo; SameSite=None; Secure";
+
 export const signInAPI = async ({ email, password }) => {
-  const signInUrl = 'http://chatt.ngrok.io/api/user/login/';
+  const signInUrl = 'https://chatt.ngrok.io/api/user/login/';
   const params = qs.stringify({
     username: email,
     password: password,
   });
   console.log('PARAM stringified : ', params);
   try {
-    const response = await axios.post(signInUrl, params);
+    const response = await axios.post(signInUrl, params, {withCredentials: true});
     return response;
   } catch (error) {
     console.log('*##***##**signInAPI Error : ', error);

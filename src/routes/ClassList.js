@@ -1,20 +1,36 @@
 import React from 'react';
 import styled from 'styled-components';
 import Calendar from 'react-calendar';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { differenceInCalendarDays } from 'date-fns';
 
 import Course from '../components/Course';
-import SignIn from '../components/authentication/SignIn';
 
 class ClassList extends React.Component {
   render() {
+    // const [value, onChange] = useState(new Date());
+    // const disabledDates = ['tomorrow', 'in3Days', 'in5Days'];
+    const disabledDates = [1, 2, 3];
+
+    function isSameDay(a, b) {
+      return differenceInCalendarDays(a, b) === 0;
+    }
+
+    function tileDisabled({ date, view }) {
+      if (view === 'month') {
+        return disabledDates.find(dDate => isSameDay(dDate, date));
+      }
+    }
+
     return (
       <Container>
         <Link className='login' to='/signIn'>
          로그인 테스트
         </Link>
         {/* <CalendarContainer>
-          <Calendar />
+          <Calendar 
+            tileDisabled={tileDisabled}
+          />
         </CalendarContainer> */}
         <CourseList>
           <Course />

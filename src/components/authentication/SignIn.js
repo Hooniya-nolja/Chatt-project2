@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { signInAPI, logOutAPI, signInCheckAPI, enrollmentAPI } from '../../api';
 import { useForm } from 'react-hook-form';
+import Cookies from 'js-cookie';
+// import { Cookies } from 'react-cookie';
 
 function SignIn() {
   const { handleSubmit, register, errors } = useForm();
@@ -10,8 +12,12 @@ function SignIn() {
     console.log('PARAM : ', email, ',    ', password);
     const inResponse = await signInAPI({ email, password });
     console.log('signInAPI Response : ', inResponse);
-    // window.location.reload();
-    // history.push('');
+    // const sessionId = Cookies.get('sessionid');
+    // const sessionId = Response.headers.Cookies;
+    const cookie = inResponse;
+    // console.log('** session ID : ', sessionId);
+    console.log('** set-cookie : ', cookie);
+    // alert(document.cookie);
   };
 
   const doLogOut = async () => {
