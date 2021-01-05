@@ -55,8 +55,11 @@ const CalendarContainer = styled.div`
 `;
 
 const CourseList = styled.div`
-  padding: 40% 0 25% 0;
+  // padding: 40% 0 25% 0;
+  padding: 0;
+  margin: 0;
   overflow: scroll;
+  width: 100vw;
 `;
 
 export default ClassList;
