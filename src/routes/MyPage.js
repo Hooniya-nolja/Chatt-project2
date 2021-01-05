@@ -26,7 +26,7 @@ function MyPage () {
                             <ProfileContent_Blue>안녕하세요</ProfileContent_Blue>
                             <ProfileContentInnerContainer>
                                 <ProfileContent_Blue>조혜빈</ProfileContent_Blue>
-                                <ProfileContent_Black_Name>님</ProfileContent_Black_Name>
+                                <ProfileContent_Black>님</ProfileContent_Black>
                             </ProfileContentInnerContainer>
                             <ProfileEmail>binibini0101@gmail.com</ProfileEmail>
                         </ProfileContentContainer>
@@ -99,10 +99,12 @@ const ProfileContentContainer = styled.div`
     position: absolute;
     left: 88px;
     top: 12px;
+    display: flex;
+    flex-direction: column;
 `;
 const ProfileContentInnerContainer = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 120px;
 `;
 const ProfileContent = styled.div`
@@ -110,13 +112,10 @@ const ProfileContent = styled.div`
     font-family: NotoSansKR;
     font-size: 18px;
     font-weight: bold;
+    display: inline;
 `;
 const ProfileContent_Black = styled(ProfileContent)`
     color: #666666;
-`;
-const ProfileContent_Black_Name = styled(ProfileContent_Black)`
-    position: absolute;
-    left: 54px;
 `;
 const ProfileContent_Blue = styled(ProfileContent)`
     color: #3f4fa5;
