@@ -24,20 +24,20 @@ class ClassList extends React.Component {
 
     return (
       <Container>
-        <Link className='login' to='/signIn'>
+        {/* <Link className='login' to='/signIn'>
          로그인 테스트
-        </Link>
-        {/* <CalendarContainer>
+        </Link> */}
+        <CalendarContainer>
           <Calendar 
             tileDisabled={tileDisabled}
           />
-        </CalendarContainer> */}
+        </CalendarContainer>
         <CourseList>
-          <Course />
-          <Course />
-          <Course />
-          <Course />
-          <Course />
+          <Link to='/course/1'><Course /></Link>
+          <Link to='/course/1'><Course /></Link>
+          <Link to='/course/1'><Course /></Link>
+          <Link to='/course/1'><Course /></Link>
+          <Link to='/course/1'><Course /></Link>
         </CourseList>
       </Container>
     );
@@ -55,10 +55,10 @@ const CalendarContainer = styled.div`
 `;
 
 const CourseList = styled.div`
-  // padding: 40% 0 25% 0;
-  padding: 0;
-  margin: 0;
-  overflow: scroll;
+  padding: 45% 0 25% 0;
+  ${'' /* padding: 0; */}
+  ${'' /* margin: 0; */}
+  ${'' /* overflow: scroll; */}
   width: 100vw;
 `;
 

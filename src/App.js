@@ -13,6 +13,7 @@ import Pay_2 from './pages/pay/Pay_2';
 import Pay_3 from './pages/pay/Pay_3';
 import Pay_4 from './pages/pay/Pay_4';
 import Pay_5 from './pages/pay/Pay_5';
+import CoursePage from './components/course_page/CoursePage';
 
 function App() {
   const notSupported = useMediaQuery({
@@ -33,6 +34,8 @@ function App() {
           <Route path="/myClass" exact={true} component={MyClass} />
           <Route path="/profile" exact={true} component={Profile} />
           <Route path="/signIn" exact={true} component={SignIn} />
+
+          <Route path="/course/1" exact={true} component={CoursePage} />
 
           <Route path="/pay/1" exact={true} component={Pay_1} />
           <Route path="/pay/2" exact={true} component={Pay_2} />
