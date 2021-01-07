@@ -23,10 +23,10 @@ function App() {
     query: "(max-width: 767px)"
   })
   return (
-    <div>
+    <div style={{width: '100%', height: '100%'}}>
       { notSupported && <h1>모바일 환경만 지원됩니다.</h1>}
       { isMobile && 
-        <div>
+        <div style={{width: '100%', height: '100%'}}>
           <Navigation />
           <Route path="/" exact={true} component={Home} />
           <Route path="/introduction" exact={true} component={Introduction} />

@@ -64,7 +64,9 @@ function MyPage() {
   );
 }
 export default MyPage;
-const Container = styled.div``;
+const Container = styled.div`
+  margin: 8px;
+`;
 const ContentContainer = styled.div`
   padding-top: 40px;
   margin: 0;
