@@ -24,14 +24,14 @@ class ClassList extends React.Component {
 
     return (
       <Container>
-        {/* <Link className='login' to='/signIn'>
+        <Link className='login' to='/signIn'>
          로그인 테스트
-        </Link> */}
-        <CalendarContainer>
+        </Link>
+        {/* <CalendarContainer>
           <Calendar 
             tileDisabled={tileDisabled}
           />
-        </CalendarContainer>
+        </CalendarContainer> */}
         <CourseList>
           <CourseLink to='/course/1'><Course /></CourseLink>
           <CourseLink to='/course/1'><Course /></CourseLink>

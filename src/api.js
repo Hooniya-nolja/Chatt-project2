@@ -10,10 +10,11 @@ export const signInAPI = async ({ email, password }) => {
     username: email,
     password: password,
   });
-  console.log('PARAM stringified : ', params);
   try {
-    const response = await axios.post(signInUrl, params, {withCredentials: true});
-    return response;
+    const token = await axios.post(signInUrl, params);  // {withCredentials: true}
+    const accessToken = 'Bearer ' + token.data.access;
+    axios.defaults.headers.common['Authorization'] = accessToken;
+    return accessToken;
   } catch (error) {
     console.log('*##***##**signInAPI Error : ', error);
   }
@@ -30,7 +31,7 @@ export const signInCheckAPI = async () => {
 };
 
 export const enrollmentAPI = async () => {
-  const enrollmentUrl = 'http://chatt.ngrok.io/api/user/enrollments/';
+  const enrollmentUrl = 'http://chatt.ngrok.io/api/enrollment/history/';
   try {
     const response = await axios.get(enrollmentUrl);
     return response;
@@ -43,6 +44,7 @@ export const logOutAPI = async () => {
   const logOutUrl = 'http://chatt.ngrok.io/api/user/logout/';
   try {
     const response = await axios.get(logOutUrl);
+    // axios.defaults.headers.common['Authorization'] = '';
     return response;
   } catch (error) {
     console.log('*##***##**logOutAPI Error : ', error);
