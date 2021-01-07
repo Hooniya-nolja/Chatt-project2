@@ -20,9 +20,9 @@ const Container = styled.div`
 
 const IsVisit = styled.div`
   display: flex;
-  margin-right: 3%;
+  margin-right: 2%;
   align-items: center;
-  padding: 0 3% 0 3%;
+  padding: 0 2% 0 2%;
 
   height: 24px;
   object-fit: contain;
@@ -41,10 +41,11 @@ const IsVisit = styled.div`
 
 const HashTag = styled.div`
   display: flex;
-  margin-right: 3%;
+  margin-right: 2%;
   align-items: center;
-  padding: 0 3% 0 3%;
+  padding: 0 2% 0 2%;
 
+  ${'' /* width: 68px; */}
   height: 24px;
   object-fit: contain;
   border-radius: 4px;

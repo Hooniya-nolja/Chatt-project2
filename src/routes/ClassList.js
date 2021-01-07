@@ -33,11 +33,11 @@ class ClassList extends React.Component {
           />
         </CalendarContainer>
         <CourseList>
-          <Link to='/course/1'><Course /></Link>
-          <Link to='/course/1'><Course /></Link>
-          <Link to='/course/1'><Course /></Link>
-          <Link to='/course/1'><Course /></Link>
-          <Link to='/course/1'><Course /></Link>
+          <CourseLink to='/course/1'><Course /></CourseLink>
+          <CourseLink to='/course/1'><Course /></CourseLink>
+          <CourseLink to='/course/1'><Course /></CourseLink>
+          <CourseLink to='/course/1'><Course /></CourseLink>
+          <CourseLink to='/course/1'><Course /></CourseLink>
         </CourseList>
       </Container>
     );
@@ -60,6 +60,10 @@ const CourseList = styled.div`
   ${'' /* margin: 0; */}
   ${'' /* overflow: scroll; */}
   width: 100vw;
+`;
+
+const CourseLink = styled(Link)`
+  text-decoration: none;
 `;
 
 export default ClassList;

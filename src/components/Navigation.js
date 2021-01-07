@@ -25,7 +25,7 @@ function Navigation() {
         <img className="button-icon" src={MYCLASS_ICON}/>
         <div className="button-text">내 강의실</div>
       </Link>
-      <Link className="button" to="/profile">
+      <Link className="button" to="/myPage">
         <img className="button-icon" src={PROFILE_ICON}/>
         <div className="button-text">프로필</div>
       </Link>
