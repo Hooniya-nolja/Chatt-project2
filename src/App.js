@@ -35,7 +35,9 @@ function App() {
           <Route path="/myPage" exact={true} component={MyPage} />
           <Route path="/signIn" exact={true} component={SignIn} />
 
-          <Route path="/course/1" exact={true} component={CoursePage} />
+          <Route path="/course/1/profile" exact={true} component={CoursePage} />
+          <Route path="/course/1/introduction" exact={true} component={CoursePage} />
+          <Route path="/course/1/plan" exact={true} component={CoursePage} />
 
           <Route path="/pay/1" exact={true} component={Pay_1} />
           <Route path="/pay/2" exact={true} component={Pay_2} />

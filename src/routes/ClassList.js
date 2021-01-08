@@ -33,11 +33,11 @@ class ClassList extends React.Component {
           />
         </CalendarContainer> */}
         <CourseList>
-          <CourseLink to='/course/1'><Course /></CourseLink>
-          <CourseLink to='/course/1'><Course /></CourseLink>
-          <CourseLink to='/course/1'><Course /></CourseLink>
-          <CourseLink to='/course/1'><Course /></CourseLink>
-          <CourseLink to='/course/1'><Course /></CourseLink>
+          <CourseLink to='/course/1/profile'><Course /></CourseLink>
+          <CourseLink to='/course/1/profile'><Course /></CourseLink>
+          <CourseLink to='/course/1/profile'><Course /></CourseLink>
+          <CourseLink to='/course/1/profile'><Course /></CourseLink>
+          <CourseLink to='/course/1/profile'><Course /></CourseLink>
         </CourseList>
       </Container>
     );
