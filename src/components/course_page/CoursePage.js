@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import COURSE_DETAIL_IMG from '../img/course_detail_img.png';
 import { Route, Link, BrowserRouter } from 'react-router-dom';
@@ -20,6 +20,10 @@ function CoursePage({ match, history }) {
     setPlanTabActive(false);
     setTabActive(true);
   }
+
+  useEffect(() => {
+    history.push('/course/1/profile');
+  }, []);
 
   return (
     <Container>
@@ -59,7 +63,11 @@ function CoursePage({ match, history }) {
         </TabButton>
       </SubPageTab>
       <Route path="/course/1/profile" exact={true} component={TeacherProfile} />
-      <Route path="/course/1/introduction" exact={true} component={CourseIntroduction} />
+      <Route
+        path="/course/1/introduction"
+        exact={true}
+        component={CourseIntroduction}
+      />
       <Route path="/course/1/plan" exact={true} component={CourserPlan} />
     </Container>
   );
