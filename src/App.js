@@ -7,6 +7,7 @@ import Introduction from './routes/Introduction';
 import MyClass from './routes/MyClass';
 import MyPage from './routes/MyPage';
 import Navigation from './components/Navigation';
+import CarouselOfHome from './components/CarouselOfHome';
 import SignIn from './components/authentication/SignIn';
 import Pay_1 from './pages/pay/Pay_1';
 import Pay_2 from './pages/pay/Pay_2';
@@ -27,6 +28,7 @@ function App() {
       { isMobile && 
         <div>
           <Navigation />
+          <Route path="/test" exact={true} component={CarouselOfHome} />
           <Route path="/" exact={true} component={Home} />
           <Route path="/introduction" exact={true} component={Introduction} />
           <Route path="/classList" exact={true} component={ClassList} />

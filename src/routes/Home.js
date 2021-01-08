@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Home.css'
+import CarouselOfHome from '../components/CarouselOfHome';
 import INTRODUCTION from '../components/img/introduction.png';
-import TRAINERIMG from '../components/img/trainer_img.png';
 const dataURL = 'http://chatt.ngrok.io/api/course/populars/';
 
 function Home() {
@@ -32,19 +32,7 @@ function Home() {
                     </Link>
                 </div>
                 <div class="topclass_content_container">
-                    <div class="oneclass_container">
-                        <div class="oneclass_keyword_container">
-                            <div class="oneclass_keyword" id="type">방문</div>
-                            <div class="oneclass_keyword" id="hashtag">#필라테스</div>
-                        </div>
-                         <div class="oneclass_description">
-                            바른자세 맑은정신을 위한 운동! 시작해보세요.
-                        </div>
-                        <div class="oneclass_trainer">
-                            <img class="oneclass_trainer_img" src={TRAINERIMG}/>
-                            <div class="oneclass_trainer_name">제니퍼 트레이너</div>
-                        </div>
-                    </div>
+                    <CarouselOfHome/>
                 </div>
                 <div className="blankspace"/>
             </div>
