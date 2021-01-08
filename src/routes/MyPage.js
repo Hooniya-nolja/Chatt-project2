@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import MYPAGEPROFILE from '../components/icon/myPageProfile.png';
+import NEXTICON from '../components/icon/nextIcon.png';
 
 function MyPage () {
     const [isLoggedIn, setIsLoggedIn] = useState(0); //추후 수정
@@ -35,20 +36,50 @@ function MyPage () {
                     <LightLine/>
                     <SettingContainer>
                         <SettingTitle>사용자 설정</SettingTitle>
-                        <SettingContent>내 계정/정보 관리</SettingContent>
-                        <SettingContent>결제 내역</SettingContent>
-                        <SettingContent>내 강의 내역</SettingContent>
-                        <SettingContent>내가 찜한 강의</SettingContent>
-                        <SettingContent>알림</SettingContent>
+                        <SettingContentContainer>
+                            <SettingContent>내 계정/정보 관리</SettingContent>
+                            <NextIcon src={NEXTICON}/>
+                        </SettingContentContainer>
+                        <SettingContentContainer>
+                            <SettingContent>결제 내역</SettingContent>
+                            <NextIcon src={NEXTICON}/>
+                        </SettingContentContainer>
+                        <SettingContentContainer>
+                            <SettingContent>내 강의 내역</SettingContent>
+                            <NextIcon src={NEXTICON}/>
+                        </SettingContentContainer>
+                        <SettingContentContainer>
+                            <SettingContent>내가 찜한 강의</SettingContent>
+                            <NextIcon src={NEXTICON}/>
+                        </SettingContentContainer>
+                        <SettingContentContainer>
+                            <SettingContent>알림</SettingContent>
+                            <NextIcon src={NEXTICON}/>
+                        </SettingContentContainer>
                     </SettingContainer>
                     <BoldLine/>
                     <SettingContainer>
                         <SettingTitle>기타 설정</SettingTitle>
-                        <SettingContent>공지 사항</SettingContent>
-                         <SettingContent>이벤트</SettingContent>
-                        <SettingContent>자주 묻는 질문</SettingContent>
-                        <SettingContent>1:1 문의</SettingContent>
-                        <SettingContent>서비스 이용 약관</SettingContent>
+                        <SettingContentContainer>
+                            <SettingContent>공지 사항</SettingContent>
+                            <NextIcon src={NEXTICON}/>
+                        </SettingContentContainer>
+                        <SettingContentContainer>
+                            <SettingContent>이벤트</SettingContent>
+                            <NextIcon src={NEXTICON}/>
+                        </SettingContentContainer>
+                        <SettingContentContainer>
+                            <SettingContent>자주 묻는 질문</SettingContent>
+                            <NextIcon src={NEXTICON}/>
+                        </SettingContentContainer>
+                        <SettingContentContainer>
+                            <SettingContent>1:1 문의</SettingContent>
+                            <NextIcon src={NEXTICON}/>
+                        </SettingContentContainer>
+                        <SettingContentContainer>
+                            <SettingContent>서비스 이용 약관</SettingContent>
+                            <NextIcon src={NEXTICON}/>
+                        </SettingContentContainer>
                     </SettingContainer>
                 </ContentContainer>
                 <BlankSpace/>
@@ -165,5 +196,13 @@ const SettingContent = styled.div`
     font-size: 14px;
     font-weight: bold;
     color: #333333;
-    margin: 20px 0 20px 0;
+    display: inline;
+`;
+const SettingContentContainer = styled.div`
+    position: relative;
+    margin: 16px 0 16px 0;
+`;
+const NextIcon = styled.img`
+    position: absolute;
+    right: 0;
 `;
