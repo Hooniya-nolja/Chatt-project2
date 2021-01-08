@@ -32,7 +32,8 @@ button:focus{
 .topclass_container {
     position: absolute;
     top: calc(480 * 100vw / 375 + 32px);
-    width: calc(100% - 16px);
+    width: 100%;
+    left: 0;
 }
 .topclass_top {
     display: flex;

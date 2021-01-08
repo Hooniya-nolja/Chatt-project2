@@ -40,13 +40,13 @@ export default class Test extends React.Component {
         return (
             <ItemsCarousel
                 numberOfCards={1}
-                gutter={165}
+                gutter={180}
                 showSlither={true}
                 firstAndLastGutter={false}
                 freeScrolling={true}
                 requestToChangeActive={this.changeActiveItem}
-                activeItemIndex={activeItemIndex}
-                activePosition={'left'}
+                activeItemIndex={activeItemIndex} //ignored
+                activePosition={'right'} //ignored
             >
             {children}
             </ItemsCarousel>
