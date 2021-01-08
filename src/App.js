@@ -7,7 +7,6 @@ import Introduction from './routes/Introduction';
 import MyClass from './routes/MyClass';
 import MyPage from './routes/MyPage';
 import Navigation from './components/Navigation';
-import CarouselOfHome from './components/CarouselOfHome';
 import SignIn from './components/authentication/SignIn';
 import Pay_1 from './pages/pay/Pay_1';
 import Pay_2 from './pages/pay/Pay_2';
@@ -17,18 +16,17 @@ import Pay_5 from './pages/pay/Pay_5';
 
 function App() {
   const notSupported = useMediaQuery({
-    query: "(min-width: 768px)"
+    query: "(min-width: 380px)"
   });
   const isMobile = useMediaQuery({
-    query: "(max-width: 767px)"
+    query: "(max-width: 380px)"
   })
   return (
     <div>
       { notSupported && <h1>모바일 환경만 지원됩니다.</h1>}
       { isMobile && 
         <div>
-          <Navigation />
-          <Route path="/test" exact={true} component={CarouselOfHome} />
+          <Navigation/>
           <Route path="/" exact={true} component={Home} />
           <Route path="/introduction" exact={true} component={Introduction} />
           <Route path="/classList" exact={true} component={ClassList} />
