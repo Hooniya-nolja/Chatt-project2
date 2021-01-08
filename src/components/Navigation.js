@@ -11,7 +11,7 @@ import MYCLASS_ICON from './icon/내강의실.png';
 import PROFILE_ICON from './icon/프로필.png';
 
 function Navigation() {
-  const [currentPath, setCurrentPath] = useState("/");
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
   function handleCurrentPathChange(path){
     setCurrentPath(path);
   }

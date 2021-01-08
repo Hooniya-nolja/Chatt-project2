@@ -26,18 +26,38 @@ function App() {
       { notSupported && <h1>모바일 환경만 지원됩니다.</h1>}
       { isMobile && 
         <div>
-          <Navigation/>
+          {/* <Navigation/> */}
+          <Route path="/" exact={true} component={Navigation} />
           <Route path="/" exact={true} component={Home} />
+
+          <Route path="/introduction" exact={true} component={Navigation} />
           <Route path="/introduction" exact={true} component={Introduction} />
+
+          <Route path="/classList" exact={true} component={Navigation} />
           <Route path="/classList" exact={true} component={ClassList} />
+
+          <Route path="/myClass" exact={true} component={Navigation} />
           <Route path="/myClass" exact={true} component={MyClass} />
+
+          <Route path="/myPage" exact={true} component={Navigation} />
           <Route path="/myPage" exact={true} component={MyPage} />
+
+          <Route path="/signIn" exact={true} component={Navigation} />
           <Route path="/signIn" exact={true} component={SignIn} />
 
+          <Route path="/pay/1" exact={true} component={Navigation} />
           <Route path="/pay/1" exact={true} component={Pay_1} />
+
+          <Route path="/pay/2" exact={true} component={Navigation} />
           <Route path="/pay/2" exact={true} component={Pay_2} />
+
+          <Route path="/pay/3" exact={true} component={Navigation} />
           <Route path="/pay/3" exact={true} component={Pay_3} />
+
+          <Route path="/pay/4" exact={true} component={Navigation} />
           <Route path="/pay/4" exact={true} component={Pay_4} />
+
+          <Route path="/pay/5" exact={true} component={Navigation} />
           <Route path="/pay/5" exact={true} component={Pay_5} />
         </div>
       }
