@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import MYPAGEPROFILE from '../components/icon/myPageProfile.png';
 import NEXTICON from '../components/icon/nextIcon.png';
+const dataURL = 'http://chatt.ngrok.io/api/user/check-authentication/';
 
 function MyPage() {
-  const [isLoggedIn, setIsLoggedIn] = useState(0); //추후 수정
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  async function getIsLoggedIn() {
+    const { data } = await axios.get(dataURL);
+    setIsLoggedIn(data.login);
+  }
+  useEffect(() => {
+    getIsLoggedIn();
+  }, []);
   function handleLogInOutButtonClick(event) {
     event.preventDefault();
     setIsLoggedIn(!isLoggedIn);
@@ -13,7 +22,7 @@ function MyPage() {
   return (
     <Container>
       <ContentContainer>
-        {isLoggedIn == 0 && (
+        {isLoggedIn == false && (
           <ProfileContainer>
             <ProfileImg src={MYPAGEPROFILE} />
             <ProfileContentContainer>
@@ -25,7 +34,7 @@ function MyPage() {
             </LogInButton>
           </ProfileContainer>
         )}
-        {isLoggedIn != 0 && (
+        {isLoggedIn == true && (
           <ProfileContainer>
             <ProfileImg src={MYPAGEPROFILE} />
             <ProfileContentContainer>
