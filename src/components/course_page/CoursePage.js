@@ -8,6 +8,7 @@ import HashTagRow from '../HashTagRow';
 import TeacherProfile from './TeacherProfile';
 import CourseIntroduction from './CourseIntroduction';
 import CourserPlan from './CoursePlan';
+import ImageSlider from './ImageSlider';
 
 function CoursePage({ history }) {
   const [profileTabActive, setProfileTabActive] = useState(true);
@@ -27,7 +28,8 @@ function CoursePage({ history }) {
 
   return (
     <Container>
-      <CourseDetailImg src={COURSE_DETAIL_IMG} alt="" />
+      <ImageSlider image={COURSE_DETAIL_IMG} />
+      {/* <CourseDetailImg src={COURSE_DETAIL_IMG} alt="" /> */}
       <Header
         beforeUrl={'/classList'}
         goBackButton={true}
@@ -111,9 +113,15 @@ const SubPageTab = styled.div`
 `;
 
 const TabButton = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: ${(props) => (props.tab ? 'solid #3c50a5' : '#bdbdbd')};
+  ${'' /* border-bottom: solid #3c50a5; */}
   width: 100%;
+  height: 100%;
   flex-grow: 1;
-  text-align: center;
+  ${'' /* text-align: center; */}
   text-decoration: none;
 
   font-family: NotoSansKR;
