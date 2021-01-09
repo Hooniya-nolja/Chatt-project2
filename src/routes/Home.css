@@ -32,7 +32,8 @@ button:focus{
 .topclass_container {
     position: absolute;
     top: calc(480 * 100vw / 375 + 32px);
-    width: calc(100% - 16px);
+    width: 100%;
+    left: 0;
 }
 .topclass_top {
     display: flex;
@@ -59,27 +60,6 @@ button:focus{
     position: relative;
     top: 24px;
 }
-.oneclass_container {
-    width: 152px;
-    height: 112px;
-    margin: 16px 8px 32px 16px;
-    border-radius: 10px;
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
-    padding: 16px;
-}
-.oneclass_keyword_container{
-    display: flex;
-}
-.oneclass_keyword{
-    width: auto;
-    height: 24px;
-    border-radius: 4px;
-    font-family: NotoSansKR;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 3px 8px 0 8px;
-    margin-right: 8px;
-}
 #type{
     background-color: rgba(255, 87, 119, 0.1);
     color: #ff5777;    
@@ -87,27 +67,6 @@ button:focus{
 #hashtag{
     background-color: rgba(60, 80, 165, 0.1);
     color: #3c50a5;    
-}
-.oneclass_description{
-    margin-top: 8px;
-    font-family: NotoSansKR;
-    font-size: 14px;
-    font-weight: bold;
-    color: #333333;
-}
-.oneclass_trainer{
-    display: flex;
-    margin-top: 8px;
-    position: absolute;
-    bottom: 16px;
-}
-.oneclass_trainer_name {
-    font-family: NotoSansKR;
-    font-size: 14px;
-    font-weight: normal;
-    color: #333333;
-    margin-left: 8px;
-    margin-top: 3px;
 }
 .blankspace {
     position: relative;
