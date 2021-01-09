@@ -5,6 +5,7 @@ import ClassList from './routes/ClassList';
 import Home from './routes/Home';
 import Introduction from './routes/Introduction';
 import MyClass from './routes/MyClass';
+import OneSchedule from './routes/OneSchedule';
 import MyPage from './routes/MyPage';
 import Navigation from './components/Navigation';
 import SignIn from './components/authentication/SignIn';
@@ -27,7 +28,6 @@ function App() {
       { notSupported && <h1>모바일 환경만 지원됩니다.</h1>}
       { isMobile && 
         <div>
-          {/* <Navigation/> */}
           <Route path="/" exact={true} component={Navigation} />
           <Route path="/" exact={true} component={Home} />
 
@@ -39,6 +39,9 @@ function App() {
 
           <Route path="/myClass" exact={true} component={Navigation} />
           <Route path="/myClass" exact={true} component={MyClass} />
+
+          <Route path="/myClass/oneSchedule" exact={true} component={Navigation} />
+          <Route path="/myClass/oneSchedule" exact={true} component={OneSchedule} />
 
           <Route path="/myPage" exact={true} component={Navigation} />
           <Route path="/myPage" exact={true} component={MyPage} />
