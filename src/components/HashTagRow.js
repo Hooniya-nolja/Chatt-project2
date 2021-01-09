@@ -2,27 +2,27 @@ import React from 'react';
 import styled from 'styled-components';
 
 function HashTagRow() {
-    const visit = '방문';
+  const visit = '방문';
 
-    return (
-        <Container>
-            <IsVisit>방문</IsVisit>
-            <HashTag>#필라테스</HashTag>
-            <HashTag>#체형교정</HashTag>
-            <HashTag>#바른자세</HashTag>
-        </Container>
-    );
+  return (
+    <Container>
+      <IsVisit>방문</IsVisit>
+      <HashTag>#필라테스</HashTag>
+      <HashTag>#체형교정</HashTag>
+      <HashTag>#바른자세</HashTag>
+    </Container>
+  );
 }
 
 const Container = styled.div`
-    display: flex;
+  display: flex;
 `;
 
 const IsVisit = styled.div`
   display: flex;
-  margin-right: 3%;
+  margin-right: 2%;
   align-items: center;
-  padding: 0 3% 0 3%;
+  padding: 0 2% 0 2%;
 
   height: 24px;
   object-fit: contain;
@@ -41,10 +41,11 @@ const IsVisit = styled.div`
 
 const HashTag = styled.div`
   display: flex;
-  margin-right: 3%;
+  margin-right: 2%;
   align-items: center;
-  padding: 0 3% 0 3%;
+  padding: 0 2% 0 2%;
 
+  ${'' /* width: 68px; */}
   height: 24px;
   object-fit: contain;
   border-radius: 4px;

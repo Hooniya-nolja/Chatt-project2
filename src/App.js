@@ -13,6 +13,7 @@ import Pay_2 from './pages/pay/Pay_2';
 import Pay_3 from './pages/pay/Pay_3';
 import Pay_4 from './pages/pay/Pay_4';
 import Pay_5 from './pages/pay/Pay_5';
+import CoursePage from './components/course_page/CoursePage';
 
 function App() {
   const notSupported = useMediaQuery({
@@ -22,7 +23,7 @@ function App() {
     query: "(max-width: 380px)"
   })
   return (
-    <div>
+    <div style={{width: '100%', height: '100%'}}>
       { notSupported && <h1>모바일 환경만 지원됩니다.</h1>}
       { isMobile && 
         <div>
@@ -44,6 +45,13 @@ function App() {
 
           <Route path="/signIn" exact={true} component={Navigation} />
           <Route path="/signIn" exact={true} component={SignIn} />
+
+          <Route path="/course/1/profile" exact={true} component={Navigation} />
+          <Route path="/course/1/profile" exact={true} component={CoursePage} />
+          <Route path="/course/1/introduction" exact={true} component={Navigation} />
+          <Route path="/course/1/introduction" exact={true} component={CoursePage} />
+          <Route path="/course/1/plan" exact={true} component={Navigation} />
+          <Route path="/course/1/plan" exact={true} component={CoursePage} />
 
           <Route path="/pay/1" exact={true} component={Navigation} />
           <Route path="/pay/1" exact={true} component={Pay_1} />

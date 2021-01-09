@@ -1,27 +1,43 @@
 import React from 'react';
 import styled from 'styled-components';
 import Calendar from 'react-calendar';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { differenceInCalendarDays } from 'date-fns';
 
 import Course from '../components/Course';
-import SignIn from '../components/authentication/SignIn';
 
 class ClassList extends React.Component {
   render() {
+    // const [value, onChange] = useState(new Date());
+    // const disabledDates = ['tomorrow', 'in3Days', 'in5Days'];
+    const disabledDates = [1, 2, 3];
+
+    function isSameDay(a, b) {
+      return differenceInCalendarDays(a, b) === 0;
+    }
+
+    function tileDisabled({ date, view }) {
+      if (view === 'month') {
+        return disabledDates.find(dDate => isSameDay(dDate, date));
+      }
+    }
+
     return (
       <Container>
         <Link className='login' to='/signIn'>
          로그인 테스트
         </Link>
         {/* <CalendarContainer>
-          <Calendar />
+          <Calendar 
+            tileDisabled={tileDisabled}
+          />
         </CalendarContainer> */}
         <CourseList>
-          <Course />
-          <Course />
-          <Course />
-          <Course />
-          <Course />
+          <CourseLink to='/course/1/profile'><Course /></CourseLink>
+          <CourseLink to='/course/1/profile'><Course /></CourseLink>
+          <CourseLink to='/course/1/profile'><Course /></CourseLink>
+          <CourseLink to='/course/1/profile'><Course /></CourseLink>
+          <CourseLink to='/course/1/profile'><Course /></CourseLink>
         </CourseList>
       </Container>
     );
@@ -39,11 +55,15 @@ const CalendarContainer = styled.div`
 `;
 
 const CourseList = styled.div`
-  // padding: 40% 0 25% 0;
-  padding: 0;
-  margin: 0;
-  overflow: scroll;
+  padding: 45% 0 25% 0;
+  ${'' /* padding: 0; */}
+  ${'' /* margin: 0; */}
+  ${'' /* overflow: scroll; */}
   width: 100vw;
+`;
+
+const CourseLink = styled(Link)`
+  text-decoration: none;
 `;
 
 export default ClassList;
