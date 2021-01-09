@@ -1,29 +1,74 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import styled from 'styled-components';
 import DOWN_OPEN_BUTTON from '../icon/down_open_button.png';
 
 function CoursePlan() {
+  const text1 =
+    '1주차에는 수강생의 건강 상태와 몸의 상태를 확인 하는 것에 초점을 둡니다.  짧은 상담 과정을 거친 후에는 앞으로 4주 동안의 수업 계획을 함꼐 수립합니다. 함께 수립한 수업 계획을 토대로 하여 1주차의 수업을 진행합니다. 본격적인 운동에 앞서 유연성을 기르기 한 동작 위주로 스트레칭을 진행합니다. 더불어 자세교정을 위한 기초 자세를 배웁니다.';
+
+  const [firstWeekClicked, setFirstWeekClicked] = useState(false);
+  const [secondWeekClicked, setSecondWeekClicked] = useState(false);
+  const [thirdWeekClicked, setThirdWeekClicked] = useState(false);
+  const [fourthWeekClicked, setFourthWeekClicked] = useState(false);
+
+  //   const [isClicked, setIsClicked] = useState([false, false, false, false]);
+
+//   function showDescription(weekNum) {
+//     if (!isClicked[weekNum - 1]) {
+//       console.log('@@@@@@@@@@@@');
+//       setIsClicked([false, false, false, false]);
+//       let tempArray = isClicked;
+//       tempArray[weekNum - 1] = true;
+//       setIsClicked(tempArray);
+//       console.log(isClicked[0]);
+//     }
+//   }
+
+  function showDescription(weekClicked, setWeekClicked) {
+    if (weekClicked) {
+        setWeekClicked(false);
+    } else {
+        setFirstWeekClicked(false);
+        setSecondWeekClicked(false);
+        setThirdWeekClicked(false);
+        setFourthWeekClicked(false);
+        setWeekClicked(true);
+    }
+  }
+
   return (
     <Container>
       <OneWeek>
-        <ListDot />
-        <WeekCount>1주차</WeekCount>
-        <OpenButton src={DOWN_OPEN_BUTTON} alt="" />
+        <WeekCount onClick={() => showDescription(firstWeekClicked, setFirstWeekClicked)}>
+          <ListDot />
+          <WeekCountText>1주차</WeekCountText>
+          <OpenButton src={DOWN_OPEN_BUTTON} alt="" />
+        </WeekCount>
+        {firstWeekClicked && <WeekDescription>{text1}</WeekDescription>}
       </OneWeek>
       <OneWeek>
-        <ListDot />
-        <WeekCount>2주차</WeekCount>
-        <OpenButton src={DOWN_OPEN_BUTTON} alt="" />
+        <WeekCount onClick={() => showDescription(secondWeekClicked, setSecondWeekClicked)}>
+          <ListDot />
+          <WeekCountText>2주차</WeekCountText>
+          <OpenButton src={DOWN_OPEN_BUTTON} alt="" />
+        </WeekCount>
+        {secondWeekClicked && <WeekDescription>{text1}</WeekDescription>}
       </OneWeek>
       <OneWeek>
-        <ListDot />
-        <WeekCount>3주차</WeekCount>
-        <OpenButton src={DOWN_OPEN_BUTTON} alt="" />
+        <WeekCount onClick={() => showDescription(thirdWeekClicked, setThirdWeekClicked)}>
+          <ListDot />
+          <WeekCountText>3주차</WeekCountText>
+          <OpenButton src={DOWN_OPEN_BUTTON} alt="" />
+        </WeekCount>
+        {thirdWeekClicked && <WeekDescription>{text1}</WeekDescription>}
       </OneWeek>
       <OneWeek>
-        <ListDot />
-        <WeekCount>4주차</WeekCount>
-        <OpenButton src={DOWN_OPEN_BUTTON} alt="" />
+        <WeekCount onClick={() => showDescription(fourthWeekClicked, setFourthWeekClicked)}>
+          <ListDot />
+          <WeekCountText>4주차</WeekCountText>
+          <OpenButton src={DOWN_OPEN_BUTTON} alt="" />
+        </WeekCount>
+        {fourthWeekClicked && <WeekDescription>{text1}</WeekDescription>}
       </OneWeek>
     </Container>
   );
@@ -39,10 +84,7 @@ const Container = styled.div`
 `;
 
 const OneWeek = styled.div`
-  display: flex;
-
   width: 90%;
-  height: 25px;
   margin: 20px 0px 0px 0px;
   padding: 16px 0px 16px 0px;
   border-radius: 10px;
@@ -58,7 +100,7 @@ const ListDot = styled.div`
   background-color: #ff5777;
 `;
 
-const WeekCount = styled.div`
+const WeekCountText = styled.div`
   height: 24px;
   padding-top: 1px;
   font-family: NotoSansKR;
@@ -74,6 +116,23 @@ const OpenButton = styled.img`
   height: 24px;
   margin: 0 0 0 70%;
   object-fit: contain;
+`;
+
+const WeekCount = styled.div`
+  display: flex;
+`;
+
+const WeekDescription = styled.div`
+  padding: 0px 15px 15px 15px;
+
+  margin: 16px 1px 0 0;
+  font-family: NotoSansKR;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1.71;
+  text-align: left;
+  color: #333333;
 `;
 
 export default CoursePlan;

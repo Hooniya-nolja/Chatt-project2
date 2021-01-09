@@ -15,7 +15,7 @@ function Home() {
     }
     useEffect(() => {
         getTopClasses();
-    }, [topClasses]);
+    }, []);
     return (
         <div class="container">
             <div class="introduction_container">

@@ -5,11 +5,15 @@ import { Link } from 'react-router-dom';
 import GO_BACK from '../components/icon/go_back.png';
 import CLOSE_ICON from '../components/icon/close.png';
 
-function Header({ beforeUrl, afterUrl, pageTitle, goBackButton, closeButton }) {
+function Header({ beforeUrl, afterUrl, pageTitle, goBackButton, closeButton, forceLink }) {
+  // function forceLink() {
+  //   linkToBack && linkToBack();
+  // }
+  
   return (
     <Container>
       { goBackButton ? (
-        <Link to={beforeUrl}>
+        <Link to={beforeUrl} onClick={() => {forceLink && forceLink()}}>
           <GoBackIcon src={GO_BACK} alt=''/>
         </Link>
       ) : null }
