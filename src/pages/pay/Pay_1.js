@@ -2,8 +2,22 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import PAGENUMIMG_1 from '../../components/icon/pageNumImg_1.png';
+import TempCalendar from '../../components/img/Calendar_Temp.png';
 
 function Pay_1 (){
+    const [selectedTime, setSelectedTime] = useState(0);
+    function handleTime1Click(){
+        setSelectedTime(1);
+    }
+    function handleTime2Click(){
+        setSelectedTime(2);
+    }
+    function handleTime3Click(){
+        setSelectedTime(3);
+    }
+    function handleSelectedTimeClick(){
+        setSelectedTime(0);
+    }
     return (
         <Container>
             <div>
@@ -17,6 +31,26 @@ function Pay_1 (){
             </div>
             <ContainerContent>
                 <SubTitle>1. 희망 수업 시간을 선택해주세요!</SubTitle>
+                <Calendar src={TempCalendar}/>
+                <TimeCandidateContainer>
+                    <TimeCandidatesOneRow>
+                        { selectedTime === 1
+                            ? <SelectedTimeCandidate onClick={handleSelectedTimeClick}>18:00</SelectedTimeCandidate>
+                            : <TimeCandidate onClick={handleTime1Click}>18:00</TimeCandidate>
+                        }
+                        <EmptySpace/>
+                        { selectedTime === 2
+                            ? <SelectedTimeCandidate onClick={handleSelectedTimeClick}>19:00</SelectedTimeCandidate>
+                            : <TimeCandidate onClick={handleTime2Click}>19:00</TimeCandidate>
+                        }
+                    </TimeCandidatesOneRow>
+                    <TimeCandidatesOneRow>
+                        { selectedTime === 3
+                            ? <SelectedTimeCandidate onClick={handleSelectedTimeClick}>20:00</SelectedTimeCandidate>
+                            : <TimeCandidate onClick={handleTime3Click}>20:00</TimeCandidate>
+                        }
+                    </TimeCandidatesOneRow>
+                </TimeCandidateContainer>
                 <ButtonContainer>
                     <PageNumImg src={PAGENUMIMG_1}/>
                     <Link to="/pay/2">
@@ -109,5 +143,34 @@ const CloseIcon = styled(TopContent)`
     position: absolute;
     top: 56px;
     right: 16px;
+    width: 24px;
+`;
+const Calendar = styled.img`
+    margin-top: 8px;
+`;
+const TimeCandidateContainer = styled.div`
+    margin: 28px 16px 0 16px;
+`;
+const TimeCandidatesOneRow = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 16px;
+`;
+const TimeCandidate = styled.button`
+    width: 160px;
+    height: 56px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+    outline: 0;
+    border: 0;
+    font-family: NotoSansKR;
+    font-size: 16px;
+`;
+const SelectedTimeCandidate = styled(TimeCandidate)`
+    box-shadow: 0 0 10px 0 #ff5777;
+    background-color: #fff2f2;
+`;
+const EmptySpace = styled.div`
     width: 24px;
 `;
