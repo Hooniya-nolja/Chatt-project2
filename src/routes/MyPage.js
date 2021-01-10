@@ -6,7 +6,7 @@ import MYPAGEPROFILE from '../components/icon/myPageProfile.png';
 import NEXTICON from '../components/icon/nextIcon.png';
 const dataURL = 'http://chatt.ngrok.io/api/user/check-authentication/';
 
-function MyPage() {
+function MyPage({ history }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   async function getIsLoggedIn() {
     const { data } = await axios.get(dataURL);
@@ -16,8 +16,9 @@ function MyPage() {
     getIsLoggedIn();
   }, []);
   function handleLogInOutButtonClick(event) {
-    event.preventDefault();
-    setIsLoggedIn(!isLoggedIn);
+    history.push('/signIn');
+    // event.preventDefault();
+    // setIsLoggedIn(!isLoggedIn);
   }
   return (
     <Container>
