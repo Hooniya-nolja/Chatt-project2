@@ -27,7 +27,7 @@ function App() {
     <div style={{width: '100%', height: '100%'}}>
       { notSupported && <h1>모바일 환경만 지원됩니다.</h1>}
       { isMobile && 
-        <div>
+        <div style={{width: '100%', height: '100%'}}>
           <Route path="/" exact={true} component={Navigation} />
           <Route path="/" exact={true} component={Home} />
 
