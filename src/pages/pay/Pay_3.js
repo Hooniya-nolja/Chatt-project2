@@ -7,12 +7,12 @@ import MINUSBUTTON from '../../components/icon/minus.png';
 import Course from '../../components/Course';
 
 export default function Pay_3 (){
-    const [classCount, setClassCount] = useState(0);
+    const [classCount, setClassCount] = useState(1);
     function handlePlusButtonClick(){
-        setClassCount(classCount+1);
+        setClassCount(10);
     }
     function handleMinusButtonClick(){
-        { classCount >0 && setClassCount(classCount-1); }
+        setClassCount(1);
     }
     return (
         <Container>
