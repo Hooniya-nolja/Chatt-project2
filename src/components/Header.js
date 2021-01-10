@@ -6,10 +6,6 @@ import GO_BACK from '../components/icon/go_back.png';
 import CLOSE_ICON from '../components/icon/close.png';
 
 function Header({ beforeUrl, afterUrl, pageTitle, goBackButton, closeButton, forceLink }) {
-  // function forceLink() {
-  //   linkToBack && linkToBack();
-  // }
-  
   return (
     <Container>
       { goBackButton ? (
@@ -30,6 +26,7 @@ function Header({ beforeUrl, afterUrl, pageTitle, goBackButton, closeButton, for
 const Container = styled.div``;
 
 const Title = styled.div`
+  text-align: center;
   font-family: NotoSansKR;
   font-size: 16px;
   font-weight: bold;

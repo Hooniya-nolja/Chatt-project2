@@ -15,6 +15,7 @@ import Pay_3 from './pages/pay/Pay_3';
 import Pay_4 from './pages/pay/Pay_4';
 import Pay_5 from './pages/pay/Pay_5';
 import CoursePage from './components/course_page/CoursePage';
+import NotFound from './routes/NotFound';
 
 function App() {
   const notSupported = useMediaQuery({
@@ -27,7 +28,7 @@ function App() {
     <div style={{width: '100%', height: '100%'}}>
       { notSupported && <h1>모바일 환경만 지원됩니다.</h1>}
       { isMobile && 
-        <div>
+        <div style={{width: '100%', height: '100%'}}>
           <Route path="/" exact={true} component={Navigation} />
           <Route path="/" exact={true} component={Home} />
 
@@ -70,6 +71,8 @@ function App() {
 
           <Route path="/pay/5" exact={true} component={Navigation} />
           <Route path="/pay/5" exact={true} component={Pay_5} />
+
+          <Route component={NotFound} />
         </div>
       }
     </div>

@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie';
 import MYPAGEPROFILE from '../components/icon/myPageProfile.png';
 import NEXTICON from '../components/icon/nextIcon.png';
+
 const dataURL = 'http://chatt.ngrok.io/api/user/check-authentication/';
 
-function MyPage() {
+function MyPage({ history }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   async function getIsLoggedIn() {
     const { data } = await axios.get(dataURL);
@@ -15,9 +17,17 @@ function MyPage() {
   useEffect(() => {
     getIsLoggedIn();
   }, []);
-  function handleLogInOutButtonClick(event) {
-    event.preventDefault();
-    setIsLoggedIn(!isLoggedIn);
+
+  function handleLogInOutButtonClick(isLogin) {
+    if (isLogin) {
+      axios.defaults.headers.common['Authorization'] = '';
+      Cookies.remove('access-token');
+      window.location.reload();
+    } else {
+      history.push('/signIn');
+    }
+    // event.preventDefault();
+    // setIsLoggedIn(!isLoggedIn);
   }
   return (
     <Container>
@@ -29,7 +39,7 @@ function MyPage() {
               <ProfileContent_Black>로그인하고</ProfileContent_Black>
               <ProfileContent_Black>시작해보세요!</ProfileContent_Black>
             </ProfileContentContainer>
-            <LogInButton onClick={handleLogInOutButtonClick}>
+            <LogInButton onClick={() => handleLogInOutButtonClick(false)}>
               로그인
             </LogInButton>
           </ProfileContainer>
@@ -45,7 +55,7 @@ function MyPage() {
               </ProfileContentInnerContainer>
               <ProfileEmail>binibini0101@gmail.com</ProfileEmail>
             </ProfileContentContainer>
-            <LogOutButton onClick={handleLogInOutButtonClick}>
+            <LogOutButton onClick={() => handleLogInOutButtonClick(true)}>
               로그아웃
             </LogOutButton>
           </ProfileContainer>
