@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import TRAINER_IMG from './img/trainer_img.png';
+import TEACHER_SAMPLE from './img/trainer_img.png';
 
-function TeacherRow() {
+function TeacherRow(teacher) {
   return (
     <Container>
-      <TrainerImgBox>
-        <img src={TRAINER_IMG} alt=''/>
-      </TrainerImgBox>
-      제니퍼 트레이너
+      <TeacherImgBox>
+        <TeacherImage src={teacher.image ? teacher.image : TEACHER_SAMPLE} alt=''/>
+      </TeacherImgBox>
+      {teacher.name}
     </Container>
   );
 }
@@ -23,8 +23,11 @@ const Container = styled.div`
   color: #333333;
 `;
 
-const TrainerImgBox = styled.div`
+const TeacherImgBox = styled.div`
   margin-right: 3%;
+`;
+
+const TeacherImage = styled.img`
 `;
 
 export default TeacherRow;

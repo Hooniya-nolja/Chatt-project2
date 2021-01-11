@@ -10,16 +10,16 @@ function Course(courseData) {
   const isVisit = courseData.is_visit;
   const hashTagArray = [courseData.tag1, courseData.tag2, courseData.tag3];
   const time = courseData.times;
-  const location = courseData.teacher.related_locations.gu;
-  const information = courseData.information;
+  const location = [courseData.teacher.related_locations.gu, courseData.teacher.related_locations.dong];
+  const description = courseData.information;
   const teacher = courseData.teacher;
 
   return (
     <Container>
       <HashTagRow isVisit={isVisit} hashTagArray={hashTagArray}></HashTagRow>
-      <TimeAndSpaceRow></TimeAndSpaceRow>
-      <DescriptionRow></DescriptionRow>
-      <TeacherRow></TeacherRow>
+      <TimeAndSpaceRow time={time} location={location}></TimeAndSpaceRow>
+      <DescriptionRow description={description}></DescriptionRow>
+      <TeacherRow teacher={teacher}></TeacherRow>
     </Container>
   );
 }

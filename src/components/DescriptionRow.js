@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function DescriptionRow() {
+function DescriptionRow(description) {
   return (
-    <Container>바른자세 맑은정신을 위한 운동! 지금 시작해보세요</Container>
+    <Container>{description}</Container>
   );
 }
 

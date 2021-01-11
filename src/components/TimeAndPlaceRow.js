@@ -3,20 +3,33 @@ import styled from 'styled-components';
 import CLOCK_ICON from './icon/clock.png';
 import MAP_PIN_ICON from './icon/map-pin.png';
 
-function TimeAndPlaceRow() {
+function TimeAndPlaceRow(time, location) {
+  const timeArray = time.split(' ');
+
   return (
     <Container>
       <TimeAndPlace>
         <TimePlaceIconBox>
           <img src={CLOCK_ICON} alt=''/>
         </TimePlaceIconBox>
-        18시 / 20시 / 21시
+        {timeArray.map((time, index) => {
+          if ((index+1) !== timeArray.length) {
+            return (
+              <span>{time}시 / </span>
+            );
+          } else {
+            return (
+              <span>{time}시</span>
+            )
+          }
+        })}
+        {/* {timeArray[0]}시 / {timeArray[0]}시 */}
       </TimeAndPlace>
       <TimeAndPlace>
         <TimePlaceIconBox>
           <img src={MAP_PIN_ICON} alt=''/>
         </TimePlaceIconBox>
-        서울시 마포구
+        {location[0]}구 {location[1]}동
       </TimeAndPlace>
     </Container>
   );

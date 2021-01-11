@@ -9,40 +9,39 @@ import WEEK_CALENDAR from '../components/img/Calendar_Temp.png';
 import Course from '../components/Course';
 
 function CourseList() {
+  let pickedDayCourses = [];
+  
   const getCourseList = async () => {
     const response = await courseListAPI();
-    const pickedDayCourses = response[0];
-    let courseCount = pickedDayCourses.length;
-    // let hashTagArray = [pickedDayCourses[0].tag1];
+    pickedDayCourses = response[0];
+    // let courseCount = pickedDayCourses.length;
   };
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    getCourseList();
   }, []);
 
   return (
     <Container>
-      {/* <Link className='login' to='/signIn'>
-         로그인 테스트
-        </Link> */}
       <CalendarContainer>
         <Calendar src={WEEK_CALENDAR} alt="" />
       </CalendarContainer>
-      <CourseList>
+      <CourseListContainer>
         {/* <CourseLink to='/course/1/profile' courseData={pickedDayCourses[0]}><Course /></CourseLink> */}
-        <CourseLink to="/course/1/profile">
+        
+        {pickedDayCourses.map((course) => {
+          return (
+            <CourseLink to="/course/1/profile">
+              <Course courseData={course} />
+            </CourseLink>
+          );
+        })}
+        
+        {/* <CourseLink to="/course/1/profile">
           <Course courseData={pickedDayCourses[0]} />
-        </CourseLink>
-        <CourseLink to="/course/1/profile">
-          <Course />
-        </CourseLink>
-        <CourseLink to="/course/1/profile">
-          <Course />
-        </CourseLink>
-        <CourseLink to="/course/1/profile">
-          <Course />
-        </CourseLink>
-      </CourseList>
+        </CourseLink> */}
+      </CourseListContainer>
     </Container>
   );
 }
@@ -61,7 +60,7 @@ const CalendarContainer = styled.div`
 
 const Calendar = styled.img``;
 
-const CourseList = styled.div`
+const CourseListContainer = styled.div`
   padding: 55% 0 25% 0;
   ${'' /* padding: 0; */}
   ${'' /* margin: 0; */}
