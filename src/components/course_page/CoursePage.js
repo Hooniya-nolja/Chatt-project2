@@ -24,6 +24,7 @@ function CoursePage({ history }) {
 
   useEffect(() => {
     history.push('/course/1/profile');  // if refresh page then initialize Tabs.
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -31,10 +32,10 @@ function CoursePage({ history }) {
       <ImageSlider image={COURSE_DETAIL_IMG} />
       {/* <CourseDetailImg src={COURSE_DETAIL_IMG} alt="" /> */}
       <Header
-        beforeUrl={'/classList'}
+        beforeUrl={'/courseList'}
         goBackButton={true}
         closeButton={false}
-        forceLink={() => history.push('/classList')}
+        forceLink={() => history.push('/courseList')}
       />
       <HashTagRowContainer>
         <HashTagRow />

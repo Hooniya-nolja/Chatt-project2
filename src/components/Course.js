@@ -6,10 +6,17 @@ import TimeAndSpaceRow from './TimeAndPlaceRow';
 import DescriptionRow from './DescriptionRow';
 import TeacherRow from './TeacherRow';
 
-function Course() {
+function Course(courseData) {
+  const isVisit = courseData.is_visit;
+  const hashTagArray = [courseData.tag1, courseData.tag2, courseData.tag3];
+  const time = courseData.times;
+  const location = courseData.teacher.related_locations.gu;
+  const information = courseData.information;
+  const teacher = courseData.teacher;
+
   return (
     <Container>
-      <HashTagRow></HashTagRow>
+      <HashTagRow isVisit={isVisit} hashTagArray={hashTagArray}></HashTagRow>
       <TimeAndSpaceRow></TimeAndSpaceRow>
       <DescriptionRow></DescriptionRow>
       <TeacherRow></TeacherRow>

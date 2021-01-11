@@ -30,16 +30,16 @@ function Navigation() {
           </div>
         }
       </Link>
-      <Link className="button" to="/classList">
-        { currentPath == "/classList" ? 
+      <Link className="button" to="/courseList">
+        { currentPath == "/courseList" ? 
           <div>
-            <img onClick={handleCurrentPathChange.bind(this,"/classList")} className="button-icon" src={CLASSLIST_ICON_ACTIVE}/>
-            <div onClick={handleCurrentPathChange.bind(this,"/classList")} className="button-text" id="active">둘러보기</div>
+            <img onClick={handleCurrentPathChange.bind(this,"/courseList")} className="button-icon" src={CLASSLIST_ICON_ACTIVE}/>
+            <div onClick={handleCurrentPathChange.bind(this,"/courseList")} className="button-text" id="active">둘러보기</div>
           </div>
           : 
           <div>
-            <img onClick={handleCurrentPathChange.bind(this,"/classList")} className="button-icon" src={CLASSLIST_ICON}/>
-            <div onClick={handleCurrentPathChange.bind(this,"/classList")} className="button-text">둘러보기</div>
+            <img onClick={handleCurrentPathChange.bind(this,"/courseList")} className="button-icon" src={CLASSLIST_ICON}/>
+            <div onClick={handleCurrentPathChange.bind(this,"/courseList")} className="button-text">둘러보기</div>
           </div>
         }
       </Link>

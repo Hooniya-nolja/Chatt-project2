@@ -27,7 +27,7 @@ function Home() {
             <div class="topclass_container">
                 <div class="topclass_top">
                     <div class="topclass_title">찾트의 인기 강의 TOP3</div>
-                    <Link to="/classList">
+                    <Link to="/courseList">
                         <div class="topclass_more">더보기 {'>'}</div> 
                     </Link>
                 </div>
