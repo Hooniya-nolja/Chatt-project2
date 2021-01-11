@@ -7,6 +7,10 @@ import Introduction from './routes/Introduction';
 import MyClass from './routes/MyClass';
 import OneSchedule from './routes/OneSchedule';
 import MyPage from './routes/MyPage';
+import PaymentDetails from './pages/paymentDetails/PaymentDetails';
+import PaymentDetailsDetail from './pages/paymentDetails/PaymentDetailsDetail';
+import PaymentDetailsAll from './pages/paymentDetails/PaymentDetailsAll';
+import PaymentDetailsAllDetail from './pages/paymentDetails/PaymentDetailsAllDetail';
 import Navigation from './components/Navigation';
 import SignIn from './components/authentication/SignIn';
 import Pay_1 from './pages/pay/Pay_1';
@@ -72,7 +76,16 @@ function App() {
           <Route path="/pay/5" exact={true} component={Navigation} />
           <Route path="/pay/5" exact={true} component={Pay_5} />
 
-          <Route component={NotFound} />
+          <Route path="/paymentDetails" exact={true} component={Navigation} />
+          <Route path="/paymentDetails" exact={true} component={PaymentDetails} />          
+          <Route path="/paymentDetails/detail" exact={true} component={Navigation} />
+          <Route path="/paymentDetails/detail" exact={true} component={PaymentDetailsDetail} />
+          <Route path="/paymentDetails/all" exact={true} component={Navigation} />
+          <Route path="/paymentDetails/all" exact={true} component={PaymentDetailsAll} />      
+          <Route path="/paymentDetails/all/detail" exact={true} component={Navigation} />
+          <Route path="/paymentDetails/all/detail" exact={true} component={PaymentDetailsAllDetail} />          
+
+          {/* <Route component={NotFound} /> */}
         </div>
       }
     </div>
