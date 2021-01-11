@@ -67,10 +67,12 @@ function MyPage({ history }) {
             <SettingContent>내 계정/정보 관리</SettingContent>
             <NextIcon src={NEXTICON} />
           </SettingContentContainer>
-          <SettingContentContainer>
-            <SettingContent>결제 내역</SettingContent>
-            <NextIcon src={NEXTICON} />
-          </SettingContentContainer>
+          <Link to="/paymentDetails">
+            <SettingContentContainer>
+              <SettingContent>결제 내역</SettingContent>
+              <NextIcon src={NEXTICON} />
+            </SettingContentContainer>
+          </Link>
           <SettingContentContainer>
             <SettingContent>내 강의 내역</SettingContent>
             <NextIcon src={NEXTICON} />
