@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function HashTagRow() {
-  const visit = '방문';
+function HashTagRow({ isVisit, hashTagArray }) {
+  // const visit = '방문';
 
   return (
     <Container>
-      <IsVisit>방문</IsVisit>
-      <HashTag>#필라테스</HashTag>
-      <HashTag>#체형교정</HashTag>
-      <HashTag>#바른자세</HashTag>
+      {isVisit ? <IsVisit>방문</IsVisit> : <IsVisit>원격</IsVisit>}
+      {/* {hashTagArray[0] ? <HashTag>#{hashTagArray[0]}</HashTag> : null} */}
+      {hashTagArray[1] ? <HashTag>#{hashTagArray[1]}</HashTag> : null}
+      {hashTagArray[2] ? <HashTag>#{hashTagArray[2]}</HashTag> : null}
     </Container>
   );
 }

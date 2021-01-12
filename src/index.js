@@ -5,7 +5,7 @@ import App from './App';
 import './index.css';
 
 ReactDOM.render(
-  <BrowserRouter>
+  <BrowserRouter onUpdate={() => window.scrollTo(0, 0)}>
     <App />
   </BrowserRouter>,
   document.getElementById('root')

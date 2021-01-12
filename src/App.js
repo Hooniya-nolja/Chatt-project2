@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { Route } from 'react-router-dom';
-import ClassList from './routes/ClassList';
+import { Route, Switch } from 'react-router-dom';
+import CourseList from './routes/CourseList';
 import Home from './routes/Home';
 import Introduction from './routes/Introduction';
 import MyClass from './routes/MyClass';
@@ -21,13 +21,14 @@ import Pay_5 from './pages/pay/Pay_5';
 import CoursePage from './components/course_page/CoursePage';
 import NotFound from './routes/NotFound';
 
-function App() {
+function App({ location }) {
   const notSupported = useMediaQuery({
     query: "(min-width: 380px)"
   });
   const isMobile = useMediaQuery({
     query: "(max-width: 380px)"
   })
+
   return (
     <div style={{width: '100%', height: '100%'}}>
       { notSupported && <h1>모바일 환경만 지원됩니다.</h1>}
@@ -39,8 +40,8 @@ function App() {
           <Route path="/introduction" exact={true} component={Navigation} />
           <Route path="/introduction" exact={true} component={Introduction} />
 
-          <Route path="/classList" exact={true} component={Navigation} />
-          <Route path="/classList" exact={true} component={ClassList} />
+          <Route path="/courseList" exact={true} component={Navigation} />
+          <Route path="/courseList" exact={true} component={CourseList} />
 
           <Route path="/myClass" exact={true} component={Navigation} />
           <Route path="/myClass" exact={true} component={MyClass} />
