@@ -4,18 +4,8 @@ import { Link } from 'react-router-dom';
 import './Home.css'
 import CarouselOfHome from '../components/CarouselOfHome';
 import INTRODUCTION from '../components/img/introduction.png';
-const dataURL = 'http://chatt.ngrok.io/api/course/populars/';
 
 function Home() {
-    const [topClasses, setTopClasses] = useState(null);
-    async function getTopClasses() {
-        const { data } = await axios.get(dataURL);
-        setTopClasses(data);
-        console.log(data);
-    }
-    useEffect(() => {
-        getTopClasses();
-    },[]);
     return (
         <div class="container">
             <div class="introduction_container">
