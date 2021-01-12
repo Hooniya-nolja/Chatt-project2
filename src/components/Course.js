@@ -6,13 +6,16 @@ import TimeAndSpaceRow from './TimeAndPlaceRow';
 import DescriptionRow from './DescriptionRow';
 import TeacherRow from './TeacherRow';
 
-function Course(courseData) {
-  const isVisit = courseData.is_visit;
-  const hashTagArray = [courseData.tag1, courseData.tag2, courseData.tag3];
-  const time = courseData.times;
-  const location = [courseData.teacher.related_locations.gu, courseData.teacher.related_locations.dong];
-  const description = courseData.information;
-  const teacher = courseData.teacher;
+function Course({ courseData }) {
+  try {
+    const isVisit = courseData.is_visit;
+    const hashTagArray = [courseData.tag1, courseData.tag2, courseData.tag3];
+    const time = courseData.times;
+    const location = [courseData.teacher.related_locations[0].gu, courseData.teacher.related_locations[0].dong];
+    const description = courseData.information;
+    const teacher = courseData.teacher;
+
+
 
   return (
     <Container>
@@ -22,6 +25,9 @@ function Course(courseData) {
       <TeacherRow teacher={teacher}></TeacherRow>
     </Container>
   );
+  } catch(error) {
+  console.log('###ERROR : ', error);
+  }
 }
 
 const Container = styled.div`

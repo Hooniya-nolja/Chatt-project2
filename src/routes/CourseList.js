@@ -1,25 +1,46 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 // import Calendar from 'react-calendar';
 import { Link } from 'react-router-dom';
 import { differenceInCalendarDays } from 'date-fns';
-import courseListAPI from '../api';
+import { courseListAPI } from '../api';
 import WEEK_CALENDAR from '../components/img/Calendar_Temp.png';
 
 import Course from '../components/Course';
 
 function CourseList() {
-  let pickedDayCourses = [];
-  
-  const getCourseList = async () => {
+  const [pickedDayCourses, setPickedDayCourses] = useState(false);
+
+  const doAPI = async () => {
     const response = await courseListAPI();
-    pickedDayCourses = response[0];
-    // let courseCount = pickedDayCourses.length;
+    setPickedDayCourses(response.data[0]);
+  }
+
+  const getCourseList = async () => {
+    try {
+      await doAPI();
+      // setTimeout(() => {
+        // console.log('pickedDayCourses : ', pickedDayCourses);
+        // HTML = pickedDayCourses.map((course, index) => {
+        //   return (
+        //     <CourseLink key={index} to="/course/1/profile">
+        //       <Course courseData={course} />
+        //     </CourseLink>
+        //   );
+        // })
+      // }, 10000);
+
+    } catch (error) {
+      console.log('#####ERROR : ', error);
+    }
   };
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    getCourseList();
+    const setData = async() => {
+      await getCourseList();
+    }
+    setData();
   }, []);
 
   return (
@@ -27,17 +48,14 @@ function CourseList() {
       <CalendarContainer>
         <Calendar src={WEEK_CALENDAR} alt="" />
       </CalendarContainer>
-      <CourseListContainer>
-        {/* <CourseLink to='/course/1/profile' courseData={pickedDayCourses[0]}><Course /></CourseLink> */}
-        
-        {pickedDayCourses.map((course) => {
+      <CourseListContainer>        
+        {pickedDayCourses && pickedDayCourses.map((course, index) => {
           return (
-            <CourseLink to="/course/1/profile">
+            <CourseLink key={index} to="/course/1/profile">
               <Course courseData={course} />
             </CourseLink>
           );
         })}
-        
         {/* <CourseLink to="/course/1/profile">
           <Course courseData={pickedDayCourses[0]} />
         </CourseLink> */}
@@ -62,9 +80,6 @@ const Calendar = styled.img``;
 
 const CourseListContainer = styled.div`
   padding: 55% 0 25% 0;
-  ${'' /* padding: 0; */}
-  ${'' /* margin: 0; */}
-  ${'' /* overflow: scroll; */}
   width: 100vw;
 `;
 

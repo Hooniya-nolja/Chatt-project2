@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import TEACHER_SAMPLE from './img/trainer_img.png';
 
-function TeacherRow(teacher) {
+function TeacherRow({ teacher }) {
   return (
     <Container>
       <TeacherImgBox>
@@ -24,10 +24,15 @@ const Container = styled.div`
 `;
 
 const TeacherImgBox = styled.div`
+  width: 24px;
+  height: 24px;
   margin-right: 3%;
 `;
 
 const TeacherImage = styled.img`
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
 `;
 
 export default TeacherRow;

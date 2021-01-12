@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function DescriptionRow(description) {
+function DescriptionRow({ description }) {
   return (
-    <Container>{description}</Container>
+    <Container>{description.slice(0, 24)}...</Container>
   );
 }
 
