@@ -40,13 +40,25 @@ export const enrollmentAPI = async () => {
   }
 };
 
-export const logOutAPI = async () => {
-  const logOutUrl = 'https://www.chatt-training.com/api/user/logout/';
+export const courseListAPI = async () => {
+  const courseListUrl = 'https://www.chatt-training.com/api/course/weekly/';
+
   try {
-    const response = await axios.get(logOutUrl);
-    // axios.defaults.headers.common['Authorization'] = '';
+    const response = await axios.get(courseListUrl);
+    console.log('API complete !!!!! and response : ', response);
     return response;
   } catch (error) {
-    console.log('*##***##**logOutAPI Error : ', error);
+    console.log('*##***##**courseListAPI Error : ', error);
   }
-};
+}
+
+// export const logOutAPI = async () => {
+//   const logOutUrl = 'https://www.chatt-training.com/api/user/logout/';
+//   try {
+//     const response = await axios.get(logOutUrl);
+//     // axios.defaults.headers.common['Authorization'] = '';
+//     return response;
+//   } catch (error) {
+//     console.log('*##***##**logOutAPI Error : ', error);
+//   }
+// };
