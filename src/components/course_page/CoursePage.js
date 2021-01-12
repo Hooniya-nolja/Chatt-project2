@@ -14,6 +14,7 @@ function CoursePage({ history }) {
   const [profileTabActive, setProfileTabActive] = useState(true);
   const [introductionTabActive, setIntroductionTabActive] = useState(false);
   const [planTabActive, setPlanTabActive] = useState(false);
+  const hashTagArray = ['필라테스', '체형교정', '바른자세'];
 
   function changeSubPageTab(setTabActive) {
     setProfileTabActive(false);
@@ -24,6 +25,7 @@ function CoursePage({ history }) {
 
   useEffect(() => {
     history.push('/course/1/profile');  // if refresh page then initialize Tabs.
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -31,13 +33,13 @@ function CoursePage({ history }) {
       <ImageSlider image={COURSE_DETAIL_IMG} />
       {/* <CourseDetailImg src={COURSE_DETAIL_IMG} alt="" /> */}
       <Header
-        beforeUrl={'/classList'}
+        beforeUrl={'/courseList'}
         goBackButton={true}
         closeButton={false}
-        forceLink={() => history.push('/classList')}
+        forceLink={() => history.push('/courseList')}
       />
       <HashTagRowContainer>
-        <HashTagRow />
+        <HashTagRow isVisit={true} hashTagArray={hashTagArray}/>
       </HashTagRowContainer>
       <SimpleDescription>
         바른자세 맑은정신을 위한 운동! 지금 시작해보세요!

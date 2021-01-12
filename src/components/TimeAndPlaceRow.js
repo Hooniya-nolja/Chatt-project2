@@ -3,20 +3,36 @@ import styled from 'styled-components';
 import CLOCK_ICON from './icon/clock.png';
 import MAP_PIN_ICON from './icon/map-pin.png';
 
-function TimeAndPlaceRow() {
+function TimeAndPlaceRow({ time, location }) {
+  let timeArray = time.substring(0, time.length-1).split(' ');
+  console.log('timeArray : ', timeArray);
+  // timeArray = ["20", "21", "22"];
+
   return (
     <Container>
       <TimeAndPlace>
         <TimePlaceIconBox>
           <img src={CLOCK_ICON} alt=''/>
         </TimePlaceIconBox>
-        18시 / 20시 / 21시
+        {timeArray.map((time, index) => {
+          if ((index+1) !== timeArray.length) {
+            return (
+              <span style={{width: "42px"}} key={index}>{time}시 /</span>
+            );
+          } else {
+            return (
+              <span style={{width: "42px"}} key={index}>{time}시</span>
+            )
+          }
+        })}
       </TimeAndPlace>
       <TimeAndPlace>
         <TimePlaceIconBox>
           <img src={MAP_PIN_ICON} alt=''/>
         </TimePlaceIconBox>
-        서울시 마포구
+        <Location>
+          {location[0]}구 {location[1]}동
+        </Location>
       </TimeAndPlace>
     </Container>
   );
@@ -27,13 +43,10 @@ const Container = styled.div`
 `;
 
 const TimeAndPlace = styled.div`
-  ${'' /* justify-content: center; */}
   align-items: center;
   display: flex;
   margin-right: 3%;
-  ${'' /* white-space:nowrap; */}
 
-  width: 144px;
   height: 32px;
   border-radius: 4px;
   background-color: #f8f8f8;
@@ -52,6 +65,10 @@ const TimeAndPlace = styled.div`
 
 const TimePlaceIconBox = styled.div`
   margin: 2% 7% 0 7%;
+`;
+
+const Location = styled.div`
+  width: 100px;
 `;
 
 export default TimeAndPlaceRow;

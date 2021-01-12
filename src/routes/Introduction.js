@@ -17,7 +17,7 @@ class Introduction extends React.Component {
                     <img class="introduction_page" src={INTRODUCTIONPAGE}/>
                     <div className="button_container">
                         <div className="description">찾트와 함께 운동하세요!</div>
-                        <Link to="/classList">
+                        <Link to="/courseList">
                             <button className="goto_classList_button">강의 둘러보기</button>
                         </Link>
                     </div>
