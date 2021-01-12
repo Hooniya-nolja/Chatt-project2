@@ -51,7 +51,7 @@ function CourseList() {
       <CourseListContainer>        
         {pickedDayCourses && pickedDayCourses.map((course, index) => {
           return (
-            <CourseLink key={index} to="/course/1/profile">
+            <CourseLink to="/course/1/profile" key={index}>
               <Course courseData={course} />
             </CourseLink>
           );

@@ -10,6 +10,7 @@ import 'slick-carousel/slick/slick-theme.css';
 function ImageSlider(image) {
     const settings = {
         dots: true,
+        arrows: false,
         infinite: true,
         speed: 500,
         slidesToShow: 1,

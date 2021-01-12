@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 import MYPAGEPROFILE from '../components/icon/myPageProfile.png';
 import NEXTICON from '../components/icon/nextIcon.png';
 
-const dataURL = 'http://chatt.ngrok.io/api/user/check-authentication/';
+const dataURL = 'https://www.chatt-training.com/api/user/check-authentication/';
 
 function MyPage({ history }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

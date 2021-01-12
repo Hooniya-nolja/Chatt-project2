@@ -31,7 +31,6 @@ function CoursePage({ history }) {
   return (
     <Container>
       <ImageSlider image={COURSE_DETAIL_IMG} />
-      {/* <CourseDetailImg src={COURSE_DETAIL_IMG} alt="" /> */}
       <Header
         beforeUrl={'/courseList'}
         goBackButton={true}
@@ -84,13 +83,8 @@ const Container = styled(BrowserRouter)`
   width: 100%;
 `;
 
-const CourseDetailImg = styled.img`
-  width: 100vw;
-  height: 240px;
-`;
-
 const HashTagRowContainer = styled.div`
-  margin: 6% 0 0 4%;
+  margin: 9% 0 0 4%;
 `;
 
 const SimpleDescription = styled.div`
@@ -119,11 +113,9 @@ const TabButton = styled(Link)`
   align-items: center;
   justify-content: center;
   border-bottom: ${(props) => (props.tab ? 'solid #3c50a5' : '#bdbdbd')};
-  ${'' /* border-bottom: solid #3c50a5; */}
   width: 100%;
   height: 100%;
   flex-grow: 1;
-  ${'' /* text-align: center; */}
   text-decoration: none;
 
   font-family: NotoSansKR;
