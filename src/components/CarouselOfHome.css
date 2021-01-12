@@ -1,4 +1,5 @@
 .oneclass_container {
+    position: relative;
     width: 152px;
     height: 112px;
     margin: 16px 8px 32px 16px;
@@ -27,6 +28,8 @@
     color: #333333;
 }
 .oneclass_trainer{
+    position: absolute;
+    bottom: 16px;
     width: 152px;
     display: flex;
     margin-top: 16px;
@@ -38,4 +41,9 @@
     color: #333333;
     margin-left: 8px;
     margin-top: 3px;
+}
+.oneclass_trainer_img {
+    width: 24px; 
+    height: auto;
+    border-radius: 40px;
 }
