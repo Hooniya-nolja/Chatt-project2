@@ -42,3 +42,8 @@
     margin-left: 8px;
     margin-top: 3px;
 }
+.oneclass_trainer_img {
+    width: 24px; 
+    height: auto;
+    border-radius: 40px;
+}

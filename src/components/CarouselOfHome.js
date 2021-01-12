@@ -3,7 +3,7 @@ import ItemsCarousel from 'react-items-carousel';
 import TRAINERIMG from './img/trainer_img.png';
 import './CarouselOfHome.css';
 import axios from 'axios';
-const dataURL = 'http://chatt.ngrok.io/api/course/populars/';
+const dataURL = 'https://www.chatt-training.com/api/course/populars/';
 
 export default class Test extends React.Component {
     state = {
@@ -28,10 +28,10 @@ export default class Test extends React.Component {
                         <div class="oneclass_keyword" id="hashtag">#필라테스</div>
                     </div>
                     <div class="oneclass_description">
-                        {data.information}
+                        {data.name}
                     </div>
                     <div class="oneclass_trainer">
-                        <img class="oneclass_trainer_img" src={TRAINERIMG}/>
+                        <img class="oneclass_trainer_img" src={data.teacher.image}/>
                         <div class="oneclass_trainer_name">{data.teacher.name}</div>
                     </div>
                 </div>),
