@@ -6,13 +6,16 @@ import Cookies from 'js-cookie';
 import MYPAGEPROFILE from '../components/icon/myPageProfile.png';
 import NEXTICON from '../components/icon/nextIcon.png';
 
-const dataURL = 'http://chatt.ngrok.io/api/user/check-authentication/';
+const dataURL = 'https://www.chatt-training.com/api/user/check-authentication/';
 
 function MyPage({ history }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUserName, setCurrentUserName] = useState("");
+  const [currentUserEmail, setCurrentUserEmail] = useState("");
   async function getIsLoggedIn() {
     const { data } = await axios.get(dataURL);
     setIsLoggedIn(data.login);
+    console.log(data);
   }
   useEffect(() => {
     getIsLoggedIn();
@@ -50,10 +53,10 @@ function MyPage({ history }) {
             <ProfileContentContainer>
               <ProfileContent_Blue>안녕하세요</ProfileContent_Blue>
               <ProfileContentInnerContainer>
-                <ProfileContent_Blue>조혜빈</ProfileContent_Blue>
+                <ProfileContent_Blue>김찾트</ProfileContent_Blue>
                 <ProfileContent_Black>님</ProfileContent_Black>
               </ProfileContentInnerContainer>
-              <ProfileEmail>binibini0101@gmail.com</ProfileEmail>
+              <ProfileEmail>chatt@gmail.com</ProfileEmail>
             </ProfileContentContainer>
             <LogOutButton onClick={() => handleLogInOutButtonClick(true)}>
               로그아웃

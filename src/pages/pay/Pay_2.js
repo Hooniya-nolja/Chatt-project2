@@ -9,64 +9,85 @@ import SELECTED_STAR_1 from '../../components/icon/별1_R.png';
 import SELECTED_STAR_2 from '../../components/icon/별2_R.png';
 import SELECTED_STAR_3 from '../../components/icon/별3_R.png';
 
-function Pay_2 (){
-    const [starNum, setStarNum] = useState(0);
-    function handleStar1Click(){
-        setStarNum(1);
+class Pay_2 extends React.Component {
+    state = {
+        time: 0,
+        start_date: "2020-01-04",
+        starNum: 0,
     }
-    function handleStar2Click(){
-        setStarNum(2);
+    componentDidMount() {
+        const { location } = this.props;
+        this.setState({ 
+            start_date: location.state.start_date,
+            time: location.state.time,
+        });
     }
-    function handleStar3Click(){
-        setStarNum(3);
-    }
-    function handleSelectedStarClick(){
-        setStarNum(0);
-    }
-    return (
-        <Container>
-            <div>
-                <Link to="/pay/1">
-                    <GoBackIcon>{'<'}</GoBackIcon>
-                </Link>                   
-                <Title>예약하기</Title>
-                <Link to="/"> {/* 후에 수정 */}
-                        <CloseIcon>{'X'}</CloseIcon>
-                </Link>
-            </div>
-            <ContainerContent>
-                <SubTitle>2. 트레이너에게 알려주세요!</SubTitle>
-                <BoldLine/>
-                <StarContainer>
-                    <OneStar>
-                        { starNum === 1 
-                            ? <StarIcon onClick={handleSelectedStarClick} src={SELECTED_STAR_1}/> 
-                            : <StarIcon onClick={handleStar1Click} src={STAR_1}/> }
-                        <StarLevel>초보</StarLevel>
-                    </OneStar>
-                    <OneStar>
-                        { starNum === 2
-                            ? <StarIcon onClick={handleSelectedStarClick} src={SELECTED_STAR_2}/> 
-                            : <StarIcon onClick={handleStar2Click} src={STAR_2}/> }
-                        <StarLevel>중수</StarLevel>
-                    </OneStar>
-                    <OneStar>
-                        { starNum === 3 
-                            ? <StarIcon onClick={handleSelectedStarClick} src={SELECTED_STAR_3}/> 
-                            : <StarIcon onClick={handleStar3Click} src={STAR_3}/> }
-                        <StarLevel>고수</StarLevel>
-                    </OneStar>
-                </StarContainer>
-                <InputArea placeholder="예) 이제 운동을 막 시작한 헬린이입니다ㅜㅜ"/>
-                <ButtonContainer>
-                    <PageNumImg src={PAGENUMIMG_2}/>
-                    <Link to="/pay/3">
-                        <NextButton>다음</NextButton>
+    render() {
+        const { location } = this.props;
+        const handleStar1Click = () => {
+            this.setState({starNum:1});
+        }
+        const handleStar2Click = () => {
+            this.setState({starNum:2});
+        }
+        const handleStar3Click = () => {
+            this.setState({starNum:3});
+        }
+        const handleSelectedStarClick = () => {
+            this.setState({starNum:0});
+        }
+        return (
+            <Container>
+                <div>
+                    <Link to="/pay/1">
+                        <GoBackIcon>{'<'}</GoBackIcon>
+                    </Link>                   
+                    <Title>예약하기</Title>
+                    <Link to="/"> {/* 후에 수정 */}
+                            <CloseIcon>{'X'}</CloseIcon>
                     </Link>
-                 </ButtonContainer>
-            </ContainerContent>
-        </Container>
-    );
+                </div>
+                <ContainerContent>
+                    <SubTitle>2. 트레이너에게 알려주세요!</SubTitle>
+                    <BoldLine/>
+                    <StarContainer>
+                        <OneStar>
+                            { this.state.starNum === 1 
+                                ? <StarIcon onClick={handleSelectedStarClick} src={SELECTED_STAR_1}/> 
+                                : <StarIcon onClick={handleStar1Click} src={STAR_1}/> }
+                            <StarLevel>초보</StarLevel>
+                        </OneStar>
+                        <OneStar>
+                            { this.state.starNum === 2
+                                ? <StarIcon onClick={handleSelectedStarClick} src={SELECTED_STAR_2}/> 
+                                : <StarIcon onClick={handleStar2Click} src={STAR_2}/> }
+                            <StarLevel>중수</StarLevel>
+                        </OneStar>
+                        <OneStar>
+                            { this.state.starNum === 3 
+                                ? <StarIcon onClick={handleSelectedStarClick} src={SELECTED_STAR_3}/> 
+                                : <StarIcon onClick={handleStar3Click} src={STAR_3}/> }
+                            <StarLevel>고수</StarLevel>
+                        </OneStar>
+                    </StarContainer>
+                    <InputArea placeholder="예) 이제 운동을 막 시작한 헬린이입니다ㅜㅜ"/>
+                    <ButtonContainer>
+                        <PageNumImg src={PAGENUMIMG_2}/>
+                        <Link 
+                            to = {{
+                                pathname: "/pay/3",
+                                state: {
+                                    start_date: this.state.startDate,
+                                    time: this.state.time,
+                                },
+                            }}>
+                            <NextButton>다음</NextButton>
+                        </Link>
+                    </ButtonContainer>
+                </ContainerContent>
+            </Container>
+        );
+    }
 }
 export default Pay_2;
 const Container = styled.div`

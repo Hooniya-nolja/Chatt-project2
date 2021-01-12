@@ -5,7 +5,7 @@ import qs from 'qs';
 // document.cookie = "sessionid=foo; SameSite=None; Secure";
 
 export const signInAPI = async ({ email, password }) => {
-  const signInUrl = 'https://chatt.ngrok.io/api/user/login/';
+  const signInUrl = 'https://www.chatt-training.com/api/user/login/';
   const params = qs.stringify({
     username: email,
     password: password,
@@ -21,7 +21,7 @@ export const signInAPI = async ({ email, password }) => {
 };
 
 export const signInCheckAPI = async () => {
-  const signInCheckUrl = 'http://chatt.ngrok.io/api/user/check-authentication/';
+  const signInCheckUrl = 'https://www.chatt-training.com/api/user/check-authentication/';
   try {
     const response = await axios.get(signInCheckUrl);
     return response;
@@ -31,7 +31,7 @@ export const signInCheckAPI = async () => {
 };
 
 export const enrollmentAPI = async () => {
-  const enrollmentUrl = 'http://chatt.ngrok.io/api/enrollment/history/';
+  const enrollmentUrl = 'https://www.chatt-training.com/api/enrollment/history/';
   try {
     const response = await axios.get(enrollmentUrl);
     return response;
@@ -41,7 +41,7 @@ export const enrollmentAPI = async () => {
 };
 
 export const logOutAPI = async () => {
-  const logOutUrl = 'http://chatt.ngrok.io/api/user/logout/';
+  const logOutUrl = 'https://www.chatt-training.com/api/user/logout/';
   try {
     const response = await axios.get(logOutUrl);
     // axios.defaults.headers.common['Authorization'] = '';

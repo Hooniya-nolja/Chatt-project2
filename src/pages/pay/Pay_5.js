@@ -1,10 +1,48 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import qs from 'querystring';
+import { useCookies } from 'react-cookie';
 import COMPLETED_IMG from '../../components/img/예약완료.png';
 
 class Pay_5 extends React.Component {
+    state = {
+        time: null,
+        start_date: "2020-01-04",
+        package_count: null,
+        finalPrice: "50,700",
+        depositName: "",
+        day: 2,
+    }
+    componentDidMount() {
+        const { location } = this.props;
+        this.setState({
+            time: location.state.time,
+            package_count: location.state.package_count, 
+            finalPrice: location.state.finalPrice, 
+            depositName: location.state.depositName, 
+        });
+    }
     render() {
+        console.log(this.state);
+        const handlePayButtonClick = () => {
+            axios({
+                method: 'post', url: "https://www.chatt-training.com/api/course/1/reserve/",
+                data: qs.stringify({
+                    day: this.state.day,
+                    time: this.state.time,
+                    package_count: this.state.package_count,
+                    start_date: this.state.start_date,
+                }),
+            })
+            .then ((response) => {
+                console.log(response.data);
+            })
+            .catch (() => {
+                alert('결제 실패');
+            })
+        }
         return (
             <Container>
                 <div>
@@ -23,7 +61,7 @@ class Pay_5 extends React.Component {
                         <Line/>
                         <ContentOneLine>
                             <ContentTitle>결제금액</ContentTitle>
-                            <Content>202,800원</Content>
+                            <Content>{this.state.finalPrice}</Content>
                         </ContentOneLine>
                         <ContentOneLine>
                             <ContentTitle>계좌번호</ContentTitle>
@@ -35,13 +73,13 @@ class Pay_5 extends React.Component {
                         </ContentOneLine>
                         <ContentOneLine>
                             <ContentTitle>입금자명</ContentTitle>
-                            <Content>조혜빈</Content>
+                            <Content>{this.state.depositName}</Content>
                         </ContentOneLine>
                     
                     </ContentContainer>
                     <ButtonContainer>
                         <Link to="/"> {/* 후에 수정 */}
-                            <NextButton>결제하기</NextButton>
+                            <NextButton onClick={handlePayButtonClick}>결제하기</NextButton>
                         </Link>
                     </ButtonContainer>
                 </ContainerContent>
