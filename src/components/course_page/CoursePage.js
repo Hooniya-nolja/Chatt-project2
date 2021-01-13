@@ -16,7 +16,6 @@ function CoursePage({ location, history }) {
   const [planTabActive, setPlanTabActive] = useState(0);
   const courseData = location.state.courseData;
   const hashTagArray = [courseData.tag1, courseData.tag2, courseData.tag3];
-  console.log('courseData : ', location.state);
   const courseImageArray = [courseData.image1, courseData.image2, courseData.image3];
 
   function changeSubPageTab(setTabActive) {
@@ -89,7 +88,12 @@ function CoursePage({ location, history }) {
           강의계획
         </TabButton>
       </SubPageTab>
-      <ReservationButton onClick={() => history.push('/pay/1')}>예약하기</ReservationButton>
+      <ReservationButton onClick={() => history.push({
+        pathname: '/pay/1',
+        state: {
+          courseData: location.state.courseData
+        }
+      })}>예약하기</ReservationButton>
       <Route path="/course/1/profile" exact={true} component={TeacherProfile} />
       <Route
         path="/course/1/introduction"
