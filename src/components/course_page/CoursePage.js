@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import COURSE_DETAIL_IMG from '../img/course_detail_img.png';
-import { Route, Link, BrowserRouter } from 'react-router-dom';
+import { Route, Link, BrowserRouter, withRouter } from 'react-router-dom';
 
 import Header from '../Header';
 import HashTagRow from '../HashTagRow';
@@ -10,11 +10,14 @@ import CourseIntroduction from './CourseIntroduction';
 import CourserPlan from './CoursePlan';
 import ImageSlider from './ImageSlider';
 
-function CoursePage({ history }) {
+function CoursePage({ location, history }) {
   const [profileTabActive, setProfileTabActive] = useState(true);
   const [introductionTabActive, setIntroductionTabActive] = useState(false);
   const [planTabActive, setPlanTabActive] = useState(false);
   const hashTagArray = ['필라테스', '체형교정', '바른자세'];
+  console.log('courseData : ', location.state);
+  const courseImageArray = [location.state.courseData.image1, location.state.courseData.image2, location.state.courseData.image3];
+  // const courseImageArray = [coursedata.image1, coursedata.image2, coursedata.image3];
 
   function changeSubPageTab(setTabActive) {
     setProfileTabActive(false);
@@ -24,13 +27,13 @@ function CoursePage({ history }) {
   }
 
   useEffect(() => {
-    history.push('/course/1/profile');  // if refresh page then initialize Tabs.
+    // history.push('/course/1/profile');  // if refresh page then initialize Tabs.
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <Container>
-      <ImageSlider image={COURSE_DETAIL_IMG} />
+      <ImageSlider courseImageArray={courseImageArray} />
       <Header
         beforeUrl={'/courseList'}
         goBackButton={true}
@@ -144,4 +147,4 @@ const ReservationButton = styled.button`
   color: #ffffff;
 `;
 
-export default CoursePage;
+export default withRouter(CoursePage);

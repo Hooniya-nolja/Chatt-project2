@@ -51,7 +51,12 @@ function CourseList() {
       <CourseListContainer>        
         {pickedDayCourses && pickedDayCourses.map((course, index) => {
           return (
-            <CourseLink to="/course/1/profile" key={index}>
+            <CourseLink to={{
+              pathname: "/course/1/profile",
+              state: {
+                courseData: course,
+              }
+            }}>
               <Course courseData={course} />
             </CourseLink>
           );
