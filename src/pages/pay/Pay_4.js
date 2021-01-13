@@ -5,11 +5,40 @@ import PAGENUMIMG_4 from '../../components/icon/pageNumImg_4.png';
 import ALERTICON from '../../components/icon/alert.png';
 
 class Pay_4 extends React.Component {
+    state = {
+        time: null,
+        start_date: "2020-01-04",
+        package_count: null,
+        finalPrice: "50,700",
+        depositName: "",
+    }
+    componentDidMount() {
+        const { location } = this.props;
+        this.setState({
+            time: location.state.time,
+            package_count: location.state.package_count,
+            finalPrice: location.state.finalPrice,
+        });
+    }
     render() {
+        const { location } = this.props;
+        const handleNameInputChange = (e) => {
+            this.setState({ 
+                depositName: e.target.value, 
+            });
+        }
         return (
             <Container>
                 <div>
-                    <Link to="/pay/3">
+                    <Link 
+                        to={{
+                            pathname: "/pay/3",
+                            state: {
+                                time: this.state.time,
+                                package_count: this.state.package_count,
+                            },
+                        }}
+                        >
                         <GoBackIcon>{'<'}</GoBackIcon>
                     </Link>                   
                     <Title>예약하기</Title>
@@ -21,7 +50,7 @@ class Pay_4 extends React.Component {
                     <ContentContainer>
                         <TotalPriceTitle>총 결제금액</TotalPriceTitle>
                         <TotalPriceContent>
-                            <TotalPrice>202,800</TotalPrice>
+                            <TotalPrice>{this.state.finalPrice}</TotalPrice>
                             <TotalPriceUnit>원</TotalPriceUnit>
                         </TotalPriceContent>
                         <Line/>
@@ -36,14 +65,23 @@ class Pay_4 extends React.Component {
                         <Line/>
                         <ContentOneLine>
                             <ContentTitle>입금자명</ContentTitle>
-                            <NameInputBox type="text" placeholder="이름"/>
+                            <NameInputBox onChange={handleNameInputChange} type="text" placeholder="이름"/>
                         </ContentOneLine>
                     </ContentContainer>
                     <AlertIcon src={ALERTICON}/>
                     <AlertText>2020.01.05 까지 미입금시 자동 취소됩니다.</AlertText>
                     <ButtonContainer>
                         <PageNumImg src={PAGENUMIMG_4}/>
-                        <Link to="/pay/5">
+                        <Link 
+                        to = {{
+                            pathname: "/pay/5",
+                            state: {
+                                time: this.state.time,
+                                finalPrice: this.state.finalPrice,
+                                depositName: this.state.depositName,
+                                package_count: this.state.package_count,
+                            },
+                        }}>
                             <NextButton>다음</NextButton>
                         </Link>
                     </ButtonContainer>
