@@ -19,17 +19,6 @@ function CourseList() {
   const getCourseList = async () => {
     try {
       await doAPI();
-      // setTimeout(() => {
-        // console.log('pickedDayCourses : ', pickedDayCourses);
-        // HTML = pickedDayCourses.map((course, index) => {
-        //   return (
-        //     <CourseLink key={index} to="/course/1/profile">
-        //       <Course courseData={course} />
-        //     </CourseLink>
-        //   );
-        // })
-      // }, 10000);
-
     } catch (error) {
       console.log('#####ERROR : ', error);
     }

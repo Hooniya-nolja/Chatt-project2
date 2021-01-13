@@ -19,7 +19,6 @@ function ImageSlider({ courseImageArray }) {
       <ul style={{ color: '#3f4fa5', padding: 0, margin: 0 }}>{dots}</ul>
     ),
   };
-  console.log('imageArray : ', courseImageArray);
 
   return (
     <Container>

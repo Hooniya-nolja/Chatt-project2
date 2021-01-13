@@ -14,10 +14,10 @@ function CoursePage({ location, history }) {
   const [profileTabActive, setProfileTabActive] = useState(1);
   const [introductionTabActive, setIntroductionTabActive] = useState(0);
   const [planTabActive, setPlanTabActive] = useState(0);
-  const hashTagArray = ['필라테스', '체형교정', '바른자세'];
+  const courseData = location.state.courseData;
+  const hashTagArray = [courseData.tag1, courseData.tag2, courseData.tag3];
   console.log('courseData : ', location.state);
-  const courseImageArray = [location.state.courseData.image1, location.state.courseData.image2, location.state.courseData.image3];
-  // const courseImageArray = [coursedata.image1, coursedata.image2, coursedata.image3];
+  const courseImageArray = [courseData.image1, courseData.image2, courseData.image3];
 
   function changeSubPageTab(setTabActive) {
     setProfileTabActive(0);
