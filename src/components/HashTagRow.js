@@ -7,7 +7,7 @@ function HashTagRow({ isVisit, hashTagArray }) {
   return (
     <Container>
       {isVisit ? <IsVisit>방문</IsVisit> : <IsVisit>원격</IsVisit>}
-      {/* {hashTagArray[0] ? <HashTag>#{hashTagArray[0]}</HashTag> : null} */}
+      {hashTagArray[0] ? <HashTag>#{hashTagArray[0]}</HashTag> : null}
       {hashTagArray[1] ? <HashTag>#{hashTagArray[1]}</HashTag> : null}
       {hashTagArray[2] ? <HashTag>#{hashTagArray[2]}</HashTag> : null}
     </Container>

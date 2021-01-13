@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import COURSE_DETAIL_IMG from '../img/course_detail_img.png';
-import { Route, Link, BrowserRouter } from 'react-router-dom';
+import { Route, Link, BrowserRouter, withRouter } from 'react-router-dom';
 
 import Header from '../Header';
 import HashTagRow from '../HashTagRow';
@@ -10,28 +10,34 @@ import CourseIntroduction from './CourseIntroduction';
 import CourserPlan from './CoursePlan';
 import ImageSlider from './ImageSlider';
 
-function CoursePage({ history }) {
-  const [profileTabActive, setProfileTabActive] = useState(true);
-  const [introductionTabActive, setIntroductionTabActive] = useState(false);
-  const [planTabActive, setPlanTabActive] = useState(false);
-  const hashTagArray = ['필라테스', '체형교정', '바른자세'];
+function CoursePage({ location, history }) {
+  const [profileTabActive, setProfileTabActive] = useState(1);
+  const [introductionTabActive, setIntroductionTabActive] = useState(0);
+  const [planTabActive, setPlanTabActive] = useState(0);
+  const courseData = location.state.courseData;
+  const hashTagArray = [courseData.tag1, courseData.tag2, courseData.tag3];
+  const courseImageArray = [courseData.image1, courseData.image2, courseData.image3];
 
   function changeSubPageTab(setTabActive) {
-    setProfileTabActive(false);
-    setIntroductionTabActive(false);
-    setPlanTabActive(false);
-    setTabActive(true);
+    setProfileTabActive(0);
+    setIntroductionTabActive(0);
+    setPlanTabActive(0);
+    setTabActive(1);
   }
 
   useEffect(() => {
-    history.push('/course/1/profile');  // if refresh page then initialize Tabs.
+    history.push({    // if refresh page then initialize Tabs.
+      pathname: '/course/1/profile',
+      state: {
+        courseData: location.state.courseData
+      }
+    });  
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <Container>
-      <ImageSlider image={COURSE_DETAIL_IMG} />
-      {/* <CourseDetailImg src={COURSE_DETAIL_IMG} alt="" /> */}
+      <ImageSlider courseImageArray={courseImageArray} />
       <Header
         beforeUrl={'/courseList'}
         goBackButton={true}
@@ -46,28 +52,48 @@ function CoursePage({ history }) {
       </SimpleDescription>
       <SubPageTab>
         <TabButton
-          to="/course/1/profile"
+          to={{
+            pathname: "/course/1/profile",
+            state: {
+              courseData: location.state.courseData,
+            }
+          }}
           tab={profileTabActive}
           onClick={() => changeSubPageTab(setProfileTabActive)}
         >
           프로필
         </TabButton>
         <TabButton
-          to="/course/1/introduction"
+          to={{
+            pathname: "/course/1/introduction",
+            state: {
+              courseData: location.state.courseData,
+            }
+          }}
           tab={introductionTabActive}
           onClick={() => changeSubPageTab(setIntroductionTabActive)}
         >
           강의소개
         </TabButton>
         <TabButton
-          to="/course/1/plan"
+          to={{
+            pathname: "/course/1/plan",
+            state: {
+              courseData: location.state.courseData,
+            }
+          }}
           tab={planTabActive}
           onClick={() => changeSubPageTab(setPlanTabActive)}
         >
           강의계획
         </TabButton>
       </SubPageTab>
-      <ReservationButton onClick={() => history.push('/pay/1')}>예약하기</ReservationButton>
+      <ReservationButton onClick={() => history.push({
+        pathname: '/pay/1',
+        state: {
+          courseData: location.state.courseData
+        }
+      })}>예약하기</ReservationButton>
       <Route path="/course/1/profile" exact={true} component={TeacherProfile} />
       <Route
         path="/course/1/introduction"
@@ -84,13 +110,8 @@ const Container = styled(BrowserRouter)`
   width: 100%;
 `;
 
-const CourseDetailImg = styled.img`
-  width: 100vw;
-  height: 240px;
-`;
-
 const HashTagRowContainer = styled.div`
-  margin: 6% 0 0 4%;
+  margin: 9% 0 0 4%;
 `;
 
 const SimpleDescription = styled.div`
@@ -119,11 +140,9 @@ const TabButton = styled(Link)`
   align-items: center;
   justify-content: center;
   border-bottom: ${(props) => (props.tab ? 'solid #3c50a5' : '#bdbdbd')};
-  ${'' /* border-bottom: solid #3c50a5; */}
   width: 100%;
   height: 100%;
   flex-grow: 1;
-  ${'' /* text-align: center; */}
   text-decoration: none;
 
   font-family: NotoSansKR;
@@ -152,4 +171,4 @@ const ReservationButton = styled.button`
   color: #ffffff;
 `;
 
-export default CoursePage;
+export default withRouter(CoursePage);

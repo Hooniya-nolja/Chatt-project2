@@ -13,7 +13,7 @@ export default class Test extends React.Component {
         const { data } = await axios.get(dataURL);
         this.setState( {datas: data });
     }
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.getTopClasses();
         this.setState({
         children: [],
@@ -21,18 +21,18 @@ export default class Test extends React.Component {
         });
         setTimeout(() => {
             this.setState({
-                children: this.state.datas.map((data) => 
-                <div class="oneclass_container">
-                    <div class="oneclass_keyword_container">
-                        <div class="oneclass_keyword" id="type">방문</div>
-                        <div class="oneclass_keyword" id="hashtag">#필라테스</div>
+                children: this.state.datas.map((data, index) => 
+                <div key={index} className="oneclass_container">
+                    <div className="oneclass_keyword_container">
+                        <div className="oneclass_keyword" id="type">방문</div>
+                        <div className="oneclass_keyword" id="hashtag">#필라테스</div>
                     </div>
-                    <div class="oneclass_description">
+                    <div className="oneclass_description">
                         {data.name}
                     </div>
-                    <div class="oneclass_trainer">
-                        <img class="oneclass_trainer_img" src={data.teacher.image}/>
-                        <div class="oneclass_trainer_name">{data.teacher.name}</div>
+                    <div className="oneclass_trainer">
+                        <img className="oneclass_trainer_img" src={data.teacher.image}/>
+                        <div className="oneclass_trainer_name">{data.teacher.name}</div>
                     </div>
                 </div>),
             })

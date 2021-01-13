@@ -5,7 +5,6 @@ import MAP_PIN_ICON from './icon/map-pin.png';
 
 function TimeAndPlaceRow({ time, location }) {
   let timeArray = time.substring(0, time.length-1).split(' ');
-  console.log('timeArray : ', timeArray);
   // timeArray = ["20", "21", "22"];
 
   return (

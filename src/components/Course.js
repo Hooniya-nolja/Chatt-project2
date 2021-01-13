@@ -15,8 +15,6 @@ function Course({ courseData }) {
     const description = courseData.information;
     const teacher = courseData.teacher;
 
-
-
   return (
     <Container>
       <HashTagRow isVisit={isVisit} hashTagArray={hashTagArray}></HashTagRow>
@@ -27,7 +25,6 @@ function Course({ courseData }) {
   );
   } catch(error) {
   console.log('###ERROR : ', error);
-
   }
 }
 

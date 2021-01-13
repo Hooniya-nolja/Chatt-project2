@@ -1,9 +1,6 @@
 import axios from 'axios';
 import qs from 'qs';
 
-// document.cookie = "cross-site-cookie=bar; SameSite=None; Secure";
-// document.cookie = "sessionid=foo; SameSite=None; Secure";
-
 export const signInAPI = async ({ email, password }) => {
   const signInUrl = 'https://www.chatt-training.com/api/user/login/';
   const params = qs.stringify({
@@ -11,7 +8,7 @@ export const signInAPI = async ({ email, password }) => {
     password: password,
   });
   try {
-    const token = await axios.post(signInUrl, params);  // {withCredentials: true}
+    const token = await axios.post(signInUrl, params);
     const accessToken = 'Bearer ' + token.data.access;
     axios.defaults.headers.common['Authorization'] = accessToken;
     return accessToken;
@@ -50,14 +47,3 @@ export const courseListAPI = async () => {
     console.log('*##***##**courseListAPI Error : ', error);
   }
 }
-
-// export const logOutAPI = async () => {
-//   const logOutUrl = 'https://www.chatt-training.com/api/user/logout/';
-//   try {
-//     const response = await axios.get(logOutUrl);
-//     // axios.defaults.headers.common['Authorization'] = '';
-//     return response;
-//   } catch (error) {
-//     console.log('*##***##**logOutAPI Error : ', error);
-//   }
-// };

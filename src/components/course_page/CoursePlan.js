@@ -2,27 +2,19 @@ import React, { useState }  from 'react';
 import styled from 'styled-components';
 import DOWN_OPEN_BUTTON from '../icon/down_open_button.png';
 
-function CoursePlan() {
+function CoursePlan({ location }) {
   const text1 =
     '1주차에는 수강생의 건강 상태와 몸의 상태를 확인 하는 것에 초점을 둡니다.  짧은 상담 과정을 거친 후에는 앞으로 4주 동안의 수업 계획을 함꼐 수립합니다. 함께 수립한 수업 계획을 토대로 하여 1주차의 수업을 진행합니다. 본격적인 운동에 앞서 유연성을 기르기 한 동작 위주로 스트레칭을 진행합니다. 더불어 자세교정을 위한 기초 자세를 배웁니다.';
-
+  const text2 = 
+    '2주차에는 본격적으로 수업에 들어가게 됩니다. 처음에는 어려운 부분이 많을 수 있기에 흥미를 잃지 않도록 쉬운 자세들도 함께 구성되어 있습니다. 함께 수립한 수업 계획을 토대로 하여 1주차의 수업을 진행합니다. 본격적인 운동에 앞서 유연성을 기르기 한 동작 위주로 스트레칭을 진행합니다. 더불어 자세교정을 위한 기초 자세를 배웁니다.';
+  const text3 = 
+    '3주차에는 새로운 시도들을 해볼겁니다. 먼저 선생님의 자세를 보고 그것을 따라하며 함께 수립한 수업 계획을 토대로 하여 1주차의 수업을 진행합니다. 본격적인 운동에 앞서 유연성을 기르기 한 동작 위주로 스트레칭을 진행합니다. 더불어 자세교정을 위한 기초 자세를 배웁니다.';
+  const text4 = 
+    '4주차에는 지금까지 해온 것들을 복습하는 시간을 가질 것입니다. 함께 수립한 수업 계획을 토대로 하여 1주차의 수업을 진행합니다. 본격적인 운동에 앞서 유연성을 기르기 한 동작 위주로 스트레칭을 진행합니다. 더불어 자세교정을 위한 기초 자세를 배웁니다.';
   const [firstWeekClicked, setFirstWeekClicked] = useState(false);
   const [secondWeekClicked, setSecondWeekClicked] = useState(false);
   const [thirdWeekClicked, setThirdWeekClicked] = useState(false);
   const [fourthWeekClicked, setFourthWeekClicked] = useState(false);
-
-  //   const [isClicked, setIsClicked] = useState([false, false, false, false]);
-
-//   function showDescription(weekNum) {
-//     if (!isClicked[weekNum - 1]) {
-//       console.log('@@@@@@@@@@@@');
-//       setIsClicked([false, false, false, false]);
-//       let tempArray = isClicked;
-//       tempArray[weekNum - 1] = true;
-//       setIsClicked(tempArray);
-//       console.log(isClicked[0]);
-//     }
-//   }
 
   function showDescription(weekClicked, setWeekClicked) {
     if (weekClicked) {
@@ -52,7 +44,7 @@ function CoursePlan() {
           <WeekCountText>2주차</WeekCountText>
           <OpenButton src={DOWN_OPEN_BUTTON} alt="" />
         </WeekCount>
-        {secondWeekClicked && <WeekDescription>{text1}</WeekDescription>}
+        {secondWeekClicked && <WeekDescription>{text2}</WeekDescription>}
       </OneWeek>
       <OneWeek>
         <WeekCount onClick={() => showDescription(thirdWeekClicked, setThirdWeekClicked)}>
@@ -60,7 +52,7 @@ function CoursePlan() {
           <WeekCountText>3주차</WeekCountText>
           <OpenButton src={DOWN_OPEN_BUTTON} alt="" />
         </WeekCount>
-        {thirdWeekClicked && <WeekDescription>{text1}</WeekDescription>}
+        {thirdWeekClicked && <WeekDescription>{text3}</WeekDescription>}
       </OneWeek>
       <OneWeek>
         <WeekCount onClick={() => showDescription(fourthWeekClicked, setFourthWeekClicked)}>
@@ -68,7 +60,7 @@ function CoursePlan() {
           <WeekCountText>4주차</WeekCountText>
           <OpenButton src={DOWN_OPEN_BUTTON} alt="" />
         </WeekCount>
-        {fourthWeekClicked && <WeekDescription>{text1}</WeekDescription>}
+        {fourthWeekClicked && <WeekDescription>{text4}</WeekDescription>}
       </OneWeek>
     </Container>
   );

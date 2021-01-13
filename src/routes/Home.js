@@ -7,21 +7,21 @@ import INTRODUCTION from '../components/img/introduction.png';
 
 function Home() {
     return (
-        <div class="container">
-            <div class="introduction_container">
-                <img class="introduction_paper" src={INTRODUCTION}/>
+        <div className="container">
+            <div className="introduction_container">
+                <img className="introduction_paper" src={INTRODUCTION}/>
                 <Link to="/introduction">
-                    <button class="introduction_button">서비스 소개 {'>'}</button>
+                    <button className="introduction_button">서비스 소개 {'>'}</button>
                 </Link>
             </div>
-            <div class="topclass_container">
-                <div class="topclass_top">
-                    <div class="topclass_title">찾트의 인기 강의 TOP3</div>
+            <div className="topclass_container">
+                <div className="topclass_top">
+                    <div className="topclass_title">찾트의 인기 강의 TOP3</div>
                     <Link to="/courseList">
-                        <div class="topclass_more">더보기 {'>'}</div> 
+                        <div className="topclass_more">더보기 {'>'}</div> 
                     </Link>
                 </div>
-                <div class="topclass_content_container">
+                <div className="topclass_content_container">
                     <CarouselOfHome/>
                 </div>
                 <div className="blankspace"/>
