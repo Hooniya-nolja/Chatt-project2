@@ -25,6 +25,7 @@ function Course({ courseData }) {
   );
   } catch(error) {
   console.log('###ERROR : ', error);
+
   }
 }
 

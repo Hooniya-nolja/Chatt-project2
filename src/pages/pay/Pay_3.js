@@ -5,62 +5,115 @@ import PAGENUMIMG_3 from '../../components/icon/pageNumImg_3.png';
 import PLUSBUTTON from '../../components/icon/plus.png';
 import MINUSBUTTON from '../../components/icon/minus.png';
 import Course from '../../components/Course';
+import { render } from '@testing-library/react';
+import { courseListAPI } from '../../api';
 
-export default function Pay_3 (){
-    const [classCount, setClassCount] = useState(1);
-    function handlePlusButtonClick(){
-        setClassCount(10);
+class Pay_3 extends React.Component {
+    state = {
+        time: null,
+        start_date: null,
+        package_count: 1,
+        finalPrice: "50,700",
+        course: null,
     }
-    function handleMinusButtonClick(){
-        setClassCount(1);
+    componentDidMount() {
+        const { location } = this.props;
+        this.setState({
+            start_date: location.state.start_date,
+            time: location.state.time,
+        });
     }
-    return (
-        <Container>
-            <div>
-                <Link to="/pay/2">
-                    <GoBackIcon>{'<'}</GoBackIcon>
-                </Link>                   
-                <Title>예약하기</Title>
-                <Link to="/"> {/* 후에 수정 */}
-                        <CloseIcon>{'X'}</CloseIcon>
-                </Link>
-            </div>
-            <ContainerContent>
-                <SubTitle>3. 결제하실 수업료입니다!</SubTitle>
-                <BoldLine/>
-                <Course />
-                <DescriptionContainer>
-                    <EachDescriptionContainer>
-                        <DescriptionTitle>1회 가격</DescriptionTitle>
-                        <Price>84,500원</Price>
-                    </EachDescriptionContainer>
-                    <EachDescriptionContainer>
-                        <DescriptionTitle>수업 횟수</DescriptionTitle>
-                        <ClassCountContainer>
-                            <CountButton src={PLUSBUTTON} onClick={handlePlusButtonClick}/>
-                            <ClassCount>{classCount}</ClassCount>
-                            <CountButton src={MINUSBUTTON} onClick={handleMinusButtonClick}/>
-                        </ClassCountContainer>
-                    </EachDescriptionContainer>
-                    <EachDescriptionContainer>
-                        <DescriptionTitle>프로모션 할인 : 새해 40% 특가</DescriptionTitle>
-                        <Discount>-33,800원</Discount>
-                    </EachDescriptionContainer>
-                </DescriptionContainer>
-                <FinalPriceContainer>
-                    <FinalPriceTitle>결제 금액</FinalPriceTitle>
-                    <FinalPrice>202,800원</FinalPrice>
-                </FinalPriceContainer>
-                <ButtonContainer>
-                    <PageNumImg src={PAGENUMIMG_3}/>
-                    <Link to="/pay/4">
-                        <NextButton>다음</NextButton>
+    componentWillMount() {
+        const doAPI = async () => {
+            const response = await courseListAPI();
+            this.setState({course: response.data[0][0]})
+        }
+        doAPI();
+    }
+    render() {
+        const { location } = this.props;
+        const handlePlusButtonClick = () => {
+            this.setState({package_count: 10, finalPrice: "507,000"});
+        }
+        const handleMinusButtonClick = () => {
+            this.setState({package_count: 1, finalPrice: "50,700"});
+        }
+        return (
+            <Container>
+                <div>
+                    <Link 
+                        to={{
+                            pathname: "/pay/2",
+                            state: {
+                                start_date: this.state.start_date,
+                                time: this.state.time,
+                            },
+                        }}
+                        >
+                        <GoBackIcon>{'<'}</GoBackIcon>
+                    </Link>                   
+                    <Title>예약하기</Title>
+                    <Link to="/"> {/* 후에 수정 */}
+                            <CloseIcon>{'X'}</CloseIcon>
                     </Link>
-                </ButtonContainer>
-            </ContainerContent>
-        </Container>
-    );
+                </div>
+                <ContainerContent>
+                    <SubTitle>3. 결제하실 수업료입니다!</SubTitle>
+                    <BoldLine/>
+                    { this.state.course !== null 
+                        ? <Course courseData={this.state.course}/>
+                        : <EmptyCourse/>
+                    }
+                    <DescriptionContainer>
+                        <EachDescriptionContainer>
+                            <DescriptionTitle>1회 가격</DescriptionTitle>
+                            <Price>84,500원</Price>
+                        </EachDescriptionContainer>
+                        <EachDescriptionContainer>
+                            <DescriptionTitle>수업 횟수</DescriptionTitle>
+                            <ClassCountContainer>
+                                <CountButton src={PLUSBUTTON} onClick={handlePlusButtonClick}/>
+                                <ClassCount>{this.state.package_count}</ClassCount>
+                                <CountButton src={MINUSBUTTON} onClick={handleMinusButtonClick}/>
+                            </ClassCountContainer>
+                        </EachDescriptionContainer>
+                        <EachDescriptionContainer>
+                            <DescriptionTitle>프로모션 할인 : 새해 40% 특가</DescriptionTitle>
+                            { this.state.package_count==1 ? 
+                            <Discount>-33,800원</Discount>
+                            : <Discount>-338,000원</Discount>
+                            }
+                            <Discount>-33,800원</Discount>
+                        </EachDescriptionContainer>
+                    </DescriptionContainer>
+                    <FinalPriceContainer>
+                        <FinalPriceTitle>결제 금액</FinalPriceTitle>
+                        { this.state.package_count==1 ? 
+                        <FinalPrice>50,700원</FinalPrice>
+                        : <FinalPrice>507,000원</FinalPrice>
+                        }
+                    </FinalPriceContainer>
+                    <ButtonContainer>
+                        <PageNumImg src={PAGENUMIMG_3}/>
+                        <Link 
+                            to = {{
+                                pathname: "/pay/4",
+                                state: {
+                                    time: this.state.time,
+                                    start_date: this.state.start_date,
+                                    package_count: this.state.package_count,
+                                    finalPrice: this.state.finalPrice,
+                                },
+                            }}>
+                            <NextButton>다음</NextButton>
+                        </Link>
+                    </ButtonContainer>
+                </ContainerContent>
+            </Container>
+        );
+    }
 }
+export default Pay_3;
 const Container = styled.div`
     display: flex;
     width: 100%;
@@ -212,4 +265,10 @@ const CloseIcon = styled(TopContent)`
     top: 56px;
     right: 16px;
     width: 24px;
+`;
+const EmptyCourse = styled.div`
+    height: 160px;
+    background-color: white;
+    padding: 1% 0 0 4%;
+    margin: 16px;
 `;

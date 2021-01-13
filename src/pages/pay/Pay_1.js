@@ -3,63 +3,105 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import PAGENUMIMG_1 from '../../components/icon/pageNumImg_1.png';
 import TempCalendar from '../../components/img/Calendar_Temp.png';
+import { courseListAPI } from '../../api';
 
-function Pay_1 (){
-    const [selectedTime, setSelectedTime] = useState(0);
-    function handleTime1Click(){
-        setSelectedTime(1);
+class Pay_1 extends React.Component {
+    state = {
+        selectedTime: 0,
+        startDate: "2020-01-04",
+        times: null,
+        timeArray: null,
     }
-    function handleTime2Click(){
-        setSelectedTime(2);
+    componentWillMount() {
+        const doAPI = async () => {
+            const response = await courseListAPI();
+            this.setState({times: response.data[0][0].times});
+            this.setState({timeArray: this.state.times.split(" ")});
+            console.log(this.state.timeArray);
+        }
+        doAPI();
     }
-    function handleTime3Click(){
-        setSelectedTime(3);
-    }
-    function handleSelectedTimeClick(){
-        setSelectedTime(0);
-    }
-    return (
-        <Container>
-            <div>
-                <Link to="/introduction"> {/* 후에 url 수정 */}
-                    <GoBackIcon>{'<'}</GoBackIcon>
-                </Link>                   
-                <Title>예약하기</Title>
-                <Link to="/"> {/* 후에 수정 */}
-                        <CloseIcon>{'X'}</CloseIcon>
-                </Link>
-            </div>
-            <ContainerContent>
-                <SubTitle>1. 희망 수업 시간을 선택해주세요!</SubTitle>
-                <Calendar src={TempCalendar}/>
-                <TimeCandidateContainer>
-                    <TimeCandidatesOneRow>
-                        { selectedTime === 1
-                            ? <SelectedTimeCandidate onClick={handleSelectedTimeClick}>18:00</SelectedTimeCandidate>
-                            : <TimeCandidate onClick={handleTime1Click}>18:00</TimeCandidate>
-                        }
-                        <EmptySpace/>
-                        { selectedTime === 2
-                            ? <SelectedTimeCandidate onClick={handleSelectedTimeClick}>19:00</SelectedTimeCandidate>
-                            : <TimeCandidate onClick={handleTime2Click}>19:00</TimeCandidate>
-                        }
-                    </TimeCandidatesOneRow>
-                    <TimeCandidatesOneRow>
-                        { selectedTime === 3
-                            ? <SelectedTimeCandidate onClick={handleSelectedTimeClick}>20:00</SelectedTimeCandidate>
-                            : <TimeCandidate onClick={handleTime3Click}>20:00</TimeCandidate>
-                        }
-                    </TimeCandidatesOneRow>
-                </TimeCandidateContainer>
-                <ButtonContainer>
-                    <PageNumImg src={PAGENUMIMG_1}/>
-                    <Link to="/pay/2">
-                        <NextButton>다음</NextButton>
+    render() {
+        const handleTime1Click = () => {
+            this.setState({selectedTime: this.state.timeArray[0]});
+        }
+        const handleTime2Click = () => {
+            this.setState({selectedTime: this.state.timeArray[1]});
+        }
+        const handleTime3Click = () => {
+            this.setState({selectedTime: this.state.timeArray[2]});
+        }
+        const handleSelectedTimeClick = () => {
+            this.setState({selectedTime:0});
+        }
+        console.log(this.state.times);
+        return (
+            <Container>
+                <div>
+                    <Link to="/introduction"> {/* 후에 url 수정 */}
+                        <GoBackIcon>{'<'}</GoBackIcon>
+                    </Link>                   
+                    <Title>예약하기</Title>
+                    <Link to="/"> {/* 후에 수정 */}
+                            <CloseIcon>{'X'}</CloseIcon>
                     </Link>
-                </ButtonContainer>
-            </ContainerContent>
-        </Container>
+                </div>
+                <ContainerContent>
+                    <SubTitle>1. 희망 수업 시간을 선택해주세요!</SubTitle>
+                    <Calendar src={TempCalendar}/>
+                    { this.state.timeArray !== null &&
+                        <TimeCandidateContainer>
+                        <TimeCandidatesOneRow>
+                            { this.state.timeArray.length > 1 &&
+                                <div>
+                                    {   
+                                    this.state.timeArray[0] === this.state.selectedTime 
+                                    ? <SelectedTimeCandidate onClick={handleSelectedTimeClick}>{this.state.timeArray[0]}:00</SelectedTimeCandidate>
+                                    : <TimeCandidate onClick={handleTime1Click}>{this.state.timeArray[0]}:00</TimeCandidate>
+                                    }
+                                </div>
+                            }
+                            <EmptySpace/>
+                            { this.state.timeArray.length > 2 &&
+                                <div>
+                                    {   
+                                    this.state.timeArray[1] === this.state.selectedTime 
+                                    ? <SelectedTimeCandidate onClick={handleSelectedTimeClick}>{this.state.timeArray[1]}:00</SelectedTimeCandidate>
+                                    : <TimeCandidate onClick={handleTime2Click}>{this.state.timeArray[1]}:00</TimeCandidate>
+                                    }
+                                </div>
+                            }
+                        </TimeCandidatesOneRow>
+                        <TimeCandidatesOneRow>
+                            { this.state.timeArray.length > 3 &&
+                                <div>
+                                    {   
+                                    this.state.timeArray[2] === this.state.selectedTime 
+                                    ? <SelectedTimeCandidate onClick={handleSelectedTimeClick}>{this.state.timeArray[2]}:00</SelectedTimeCandidate>
+                                    : <TimeCandidate onClick={handleTime3Click}>{this.state.timeArray[2]}:00</TimeCandidate>
+                                    }
+                                </div>
+                            }
+                        </TimeCandidatesOneRow>
+                        </TimeCandidateContainer>
+                    }
+                    <ButtonContainer>
+                        <PageNumImg src={PAGENUMIMG_1}/>
+                        <Link 
+                            to = {{
+                                pathname: "/pay/2",
+                                state: {
+                                    time: this.state.selectedTime,
+                                    start_date: this.state.startDate,
+                                },
+                            }}>
+                            <NextButton>다음</NextButton>
+                        </Link>
+                    </ButtonContainer>
+                </ContainerContent>
+            </Container>
         );
+    }
 }
 export default Pay_1;
 const Container = styled.div`
