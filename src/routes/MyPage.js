@@ -6,17 +6,29 @@ import Cookies from 'js-cookie';
 import MYPAGEPROFILE from '../components/icon/myPageProfile.png';
 import NEXTICON from '../components/icon/nextIcon.png';
 
-const dataURL = 'http://chatt.ngrok.io/api/user/check-authentication/';
+const dataURL = 'https://www.chatt-training.com/api/user/check-authentication/';
+const userURL = 'https://www.chatt-training.com/api/user/information/';
 
 function MyPage({ history }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUserFirstName, setCurrentUserFirstName] = useState("");
+  const [currentUserLastName, setCurrentUserLastName] = useState("");
+  const [currentUserEmail, setCurrentUserEmail] = useState("");
   async function getIsLoggedIn() {
     const { data } = await axios.get(dataURL);
     setIsLoggedIn(data.login);
   }
+  async function getUserData() {
+    const { data } = await axios.get(userURL);
+    setCurrentUserFirstName(data.first_name);
+    setCurrentUserLastName(data.last_name);
+    setCurrentUserEmail(data.email);
+  }
   useEffect(() => {
     getIsLoggedIn();
-  }, []);
+    getUserData();
+    console.log(isLoggedIn);
+  });
 
   function handleLogInOutButtonClick(isLogin) {
     if (isLogin) {
@@ -50,10 +62,10 @@ function MyPage({ history }) {
             <ProfileContentContainer>
               <ProfileContent_Blue>안녕하세요</ProfileContent_Blue>
               <ProfileContentInnerContainer>
-                <ProfileContent_Blue>조혜빈</ProfileContent_Blue>
+                <ProfileContent_Blue>{currentUserLastName}{currentUserFirstName}</ProfileContent_Blue>
                 <ProfileContent_Black>님</ProfileContent_Black>
               </ProfileContentInnerContainer>
-              <ProfileEmail>binibini0101@gmail.com</ProfileEmail>
+              <ProfileEmail>{currentUserEmail}</ProfileEmail>
             </ProfileContentContainer>
             <LogOutButton onClick={() => handleLogInOutButtonClick(true)}>
               로그아웃
