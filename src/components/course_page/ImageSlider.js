@@ -26,7 +26,7 @@ function ImageSlider({ courseImageArray }) {
       <Slider {...settings}>
         {courseImageArray.map((image, index) => {
             return (
-                <ImageContainer>
+                <ImageContainer key={index}>
                     <SliderImage src={image} alt='' key={index}/>
                 </ImageContainer>
             );

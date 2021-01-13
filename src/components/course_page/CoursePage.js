@@ -11,23 +11,28 @@ import CourserPlan from './CoursePlan';
 import ImageSlider from './ImageSlider';
 
 function CoursePage({ location, history }) {
-  const [profileTabActive, setProfileTabActive] = useState(true);
-  const [introductionTabActive, setIntroductionTabActive] = useState(false);
-  const [planTabActive, setPlanTabActive] = useState(false);
+  const [profileTabActive, setProfileTabActive] = useState(1);
+  const [introductionTabActive, setIntroductionTabActive] = useState(0);
+  const [planTabActive, setPlanTabActive] = useState(0);
   const hashTagArray = ['필라테스', '체형교정', '바른자세'];
   console.log('courseData : ', location.state);
   const courseImageArray = [location.state.courseData.image1, location.state.courseData.image2, location.state.courseData.image3];
   // const courseImageArray = [coursedata.image1, coursedata.image2, coursedata.image3];
 
   function changeSubPageTab(setTabActive) {
-    setProfileTabActive(false);
-    setIntroductionTabActive(false);
-    setPlanTabActive(false);
-    setTabActive(true);
+    setProfileTabActive(0);
+    setIntroductionTabActive(0);
+    setPlanTabActive(0);
+    setTabActive(1);
   }
 
   useEffect(() => {
-    // history.push('/course/1/profile');  // if refresh page then initialize Tabs.
+    history.push({    // if refresh page then initialize Tabs.
+      pathname: '/course/1/profile',
+      state: {
+        courseData: location.state.courseData
+      }
+    });  
     window.scrollTo(0, 0);
   }, []);
 
@@ -48,21 +53,36 @@ function CoursePage({ location, history }) {
       </SimpleDescription>
       <SubPageTab>
         <TabButton
-          to="/course/1/profile"
+          to={{
+            pathname: "/course/1/profile",
+            state: {
+              courseData: location.state.courseData,
+            }
+          }}
           tab={profileTabActive}
           onClick={() => changeSubPageTab(setProfileTabActive)}
         >
           프로필
         </TabButton>
         <TabButton
-          to="/course/1/introduction"
+          to={{
+            pathname: "/course/1/introduction",
+            state: {
+              courseData: location.state.courseData,
+            }
+          }}
           tab={introductionTabActive}
           onClick={() => changeSubPageTab(setIntroductionTabActive)}
         >
           강의소개
         </TabButton>
         <TabButton
-          to="/course/1/plan"
+          to={{
+            pathname: "/course/1/plan",
+            state: {
+              courseData: location.state.courseData,
+            }
+          }}
           tab={planTabActive}
           onClick={() => changeSubPageTab(setPlanTabActive)}
         >

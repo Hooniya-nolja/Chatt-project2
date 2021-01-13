@@ -56,7 +56,7 @@ function CourseList() {
               state: {
                 courseData: course,
               }
-            }}>
+            }} key={index}>
               <Course courseData={course} />
             </CourseLink>
           );
