@@ -25,10 +25,9 @@ class Pay_5 extends React.Component {
         });
     }
     render() {
-        console.log(this.state);
         const handlePayButtonClick = () => {
             axios({
-                method: 'post', url: "https://www.chatt-training.com/api/course/1/reserve/",
+                method: 'post', url: "https://www.chatt-training.com/api/course/4/reserve/",
                 data: qs.stringify({
                     day: this.state.day,
                     time: this.state.time,
@@ -37,15 +36,32 @@ class Pay_5 extends React.Component {
                 }),
             })
             .then ((response) => {
-                console.log(response.data);
+                alert('예약되었습니다!');
             })
             .catch (() => {
-                alert('결제 실패');
+                alert('예약을 위해서는 로그인이 필요합니다!');
             })
         }
+        async function getIsLoggedIn() {
+            const { data } = await axios.get('https://www.chatt-training.com/api/user/check-authentication/');
+            console.log(data);
+          }
+        getIsLoggedIn();
         return (
             <Container>
                 <div>
+                    <Link 
+                        to={{
+                            pathname: "/pay/4",
+                            state: {
+                                time: this.state.time,
+                                package_count: this.state.package_count,
+                                finalPrice: this.state.finalPrice,
+                            },
+                        }}
+                        >
+                        <GoBackIcon>{'<'}</GoBackIcon>
+                    </Link> 
                     <Link to="/"> {/* 후에 수정 */}
                         <CloseIcon>{'X'}</CloseIcon>
                     </Link>                   
@@ -200,4 +216,10 @@ const CompletedImg = styled.img`
 `;
 const DescriptionContainer = styled.div`
     margin-top: 48px;
+`;
+const GoBackIcon = styled(TopContent)`
+    text-decoration: none;
+    position: absolute;
+    top: 56px;
+    left: 16px;
 `;

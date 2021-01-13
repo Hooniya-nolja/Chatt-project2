@@ -39,7 +39,15 @@ class Pay_2 extends React.Component {
         return (
             <Container>
                 <div>
-                    <Link to="/pay/1">
+                    <Link 
+                        to={{
+                            pathname: "/pay/1",
+                            state: {
+                                start_date: this.state.start_date,
+                                time: this.state.time,
+                            },
+                        }}
+                        >
                         <GoBackIcon>{'<'}</GoBackIcon>
                     </Link>                   
                     <Title>예약하기</Title>

@@ -27,11 +27,18 @@ class Pay_4 extends React.Component {
                 depositName: e.target.value, 
             });
         }
-        console.log(this.state);
         return (
             <Container>
                 <div>
-                    <Link to="/pay/3">
+                    <Link 
+                        to={{
+                            pathname: "/pay/3",
+                            state: {
+                                time: this.state.time,
+                                package_count: this.state.package_count,
+                            },
+                        }}
+                        >
                         <GoBackIcon>{'<'}</GoBackIcon>
                     </Link>                   
                     <Title>예약하기</Title>

@@ -3,26 +3,38 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import PAGENUMIMG_1 from '../../components/icon/pageNumImg_1.png';
 import TempCalendar from '../../components/img/Calendar_Temp.png';
+import { courseListAPI } from '../../api';
 
 class Pay_1 extends React.Component {
     state = {
         selectedTime: 0,
         startDate: "2020-01-04",
+        times: null,
+        timeArray: null,
+    }
+    componentWillMount() {
+        const doAPI = async () => {
+            const response = await courseListAPI();
+            this.setState({times: response.data[0][0].times});
+            this.setState({timeArray: this.state.times.split(" ")});
+            console.log(this.state.timeArray);
+        }
+        doAPI();
     }
     render() {
-        const { location } = this.props;
         const handleTime1Click = () => {
-            this.setState({selectedTime:18});
+            this.setState({selectedTime: this.state.timeArray[0]});
         }
         const handleTime2Click = () => {
-            this.setState({selectedTime:19});
+            this.setState({selectedTime: this.state.timeArray[1]});
         }
         const handleTime3Click = () => {
-            this.setState({selectedTime:20});
+            this.setState({selectedTime: this.state.timeArray[2]});
         }
         const handleSelectedTimeClick = () => {
             this.setState({selectedTime:0});
         }
+        console.log(this.state.times);
         return (
             <Container>
                 <div>
@@ -37,25 +49,42 @@ class Pay_1 extends React.Component {
                 <ContainerContent>
                     <SubTitle>1. 희망 수업 시간을 선택해주세요!</SubTitle>
                     <Calendar src={TempCalendar}/>
-                    <TimeCandidateContainer>
+                    { this.state.timeArray !== null &&
+                        <TimeCandidateContainer>
                         <TimeCandidatesOneRow>
-                            { this.state.selectedTime === 18
-                                ? <SelectedTimeCandidate onClick={handleSelectedTimeClick}>18:00</SelectedTimeCandidate>
-                                : <TimeCandidate onClick={handleTime1Click}>18:00</TimeCandidate>
+                            { this.state.timeArray.length > 1 &&
+                                <div>
+                                    {   
+                                    this.state.timeArray[0] === this.state.selectedTime 
+                                    ? <SelectedTimeCandidate onClick={handleSelectedTimeClick}>{this.state.timeArray[0]}:00</SelectedTimeCandidate>
+                                    : <TimeCandidate onClick={handleTime1Click}>{this.state.timeArray[0]}:00</TimeCandidate>
+                                    }
+                                </div>
                             }
                             <EmptySpace/>
-                            { this.state.selectedTime === 19
-                                ? <SelectedTimeCandidate onClick={handleSelectedTimeClick}>19:00</SelectedTimeCandidate>
-                                : <TimeCandidate onClick={handleTime2Click}>19:00</TimeCandidate>
+                            { this.state.timeArray.length > 2 &&
+                                <div>
+                                    {   
+                                    this.state.timeArray[1] === this.state.selectedTime 
+                                    ? <SelectedTimeCandidate onClick={handleSelectedTimeClick}>{this.state.timeArray[1]}:00</SelectedTimeCandidate>
+                                    : <TimeCandidate onClick={handleTime2Click}>{this.state.timeArray[1]}:00</TimeCandidate>
+                                    }
+                                </div>
                             }
                         </TimeCandidatesOneRow>
                         <TimeCandidatesOneRow>
-                            { this.state.selectedTime === 20
-                                ? <SelectedTimeCandidate onClick={handleSelectedTimeClick}>20:00</SelectedTimeCandidate>
-                                : <TimeCandidate onClick={handleTime3Click}>20:00</TimeCandidate>
+                            { this.state.timeArray.length > 3 &&
+                                <div>
+                                    {   
+                                    this.state.timeArray[2] === this.state.selectedTime 
+                                    ? <SelectedTimeCandidate onClick={handleSelectedTimeClick}>{this.state.timeArray[2]}:00</SelectedTimeCandidate>
+                                    : <TimeCandidate onClick={handleTime3Click}>{this.state.timeArray[2]}:00</TimeCandidate>
+                                    }
+                                </div>
                             }
                         </TimeCandidatesOneRow>
-                    </TimeCandidateContainer>
+                        </TimeCandidateContainer>
+                    }
                     <ButtonContainer>
                         <PageNumImg src={PAGENUMIMG_1}/>
                         <Link 

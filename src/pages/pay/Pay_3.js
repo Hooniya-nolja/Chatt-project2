@@ -6,6 +6,7 @@ import PLUSBUTTON from '../../components/icon/plus.png';
 import MINUSBUTTON from '../../components/icon/minus.png';
 import Course from '../../components/Course';
 import { render } from '@testing-library/react';
+import { courseListAPI } from '../../api';
 
 class Pay_3 extends React.Component {
     state = {
@@ -13,6 +14,7 @@ class Pay_3 extends React.Component {
         start_date: null,
         package_count: 1,
         finalPrice: "50,700",
+        course: null,
     }
     componentDidMount() {
         const { location } = this.props;
@@ -20,6 +22,13 @@ class Pay_3 extends React.Component {
             start_date: location.state.start_date,
             time: location.state.time,
         });
+    }
+    componentWillMount() {
+        const doAPI = async () => {
+            const response = await courseListAPI();
+            this.setState({course: response.data[0][0]})
+        }
+        doAPI();
     }
     render() {
         const { location } = this.props;
@@ -32,7 +41,15 @@ class Pay_3 extends React.Component {
         return (
             <Container>
                 <div>
-                    <Link to="/pay/2">
+                    <Link 
+                        to={{
+                            pathname: "/pay/2",
+                            state: {
+                                start_date: this.state.start_date,
+                                time: this.state.time,
+                            },
+                        }}
+                        >
                         <GoBackIcon>{'<'}</GoBackIcon>
                     </Link>                   
                     <Title>예약하기</Title>
@@ -43,7 +60,10 @@ class Pay_3 extends React.Component {
                 <ContainerContent>
                     <SubTitle>3. 결제하실 수업료입니다!</SubTitle>
                     <BoldLine/>
-                    <Course />
+                    { this.state.course !== null 
+                        ? <Course courseData={this.state.course}/>
+                        : <EmptyCourse/>
+                    }
                     <DescriptionContainer>
                         <EachDescriptionContainer>
                             <DescriptionTitle>1회 가격</DescriptionTitle>
@@ -245,4 +265,10 @@ const CloseIcon = styled(TopContent)`
     top: 56px;
     right: 16px;
     width: 24px;
+`;
+const EmptyCourse = styled.div`
+    height: 160px;
+    background-color: white;
+    padding: 1% 0 0 4%;
+    margin: 16px;
 `;
