@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { Route, Switch } from 'react-router-dom';
+import styled from 'styled-components';
 import CourseList from './routes/CourseList';
 import Home from './routes/Home';
 import Introduction from './routes/Introduction';
@@ -29,10 +30,15 @@ function App({ location }) {
     query: "(max-width: 380px)"
   })
 
+  // document.getElementsByTagName("META")[1].content="width=375, initial-scale=1";
+
   return (
+    // <Container>
+    // <InnerContainer>
+    // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     <div style={{width: '100%', height: '100%'}}>
       { notSupported && <h1>모바일 환경만 지원됩니다.</h1>}
-      { isMobile && 
+      { isMobile &&
         <div style={{width: '100%', height: '100%'}}>
           <Route path="/" exact={true} component={Navigation} />
           <Route path="/" exact={true} component={Home} />
@@ -90,7 +96,22 @@ function App({ location }) {
         </div>
       }
     </div>
+    // </InnerContainer>
+    // </Container>
   );
 }
+
+const Container = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const InnerContainer = styled.div`
+  width: 375px;
+  height: 812px;
+`;
 
 export default App;

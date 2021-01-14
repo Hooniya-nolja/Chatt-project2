@@ -18,22 +18,37 @@ function MyPage({ history }) {
     const { data } = await axios.get(dataURL);
     setIsLoggedIn(data.login);
   }
+  // async function getUserData() {
+  //   const { data } = await axios.get(userURL);
+  //   setCurrentUserFirstName(data.first_name);
+  //   setCurrentUserLastName(data.last_name);
+  //   setCurrentUserEmail(data.email);
+  // }
   async function getUserData() {
-    const { data } = await axios.get(userURL);
-    setCurrentUserFirstName(data.first_name);
-    setCurrentUserLastName(data.last_name);
-    setCurrentUserEmail(data.email);
+        // const { data } = await axios.get(userURL);
+    let userCookie = Cookies.get('user');
+    if (userCookie) {
+      const user = JSON.parse(userCookie);
+      console.log('user : ', user);
+      setCurrentUserFirstName(user.first_name);
+      setCurrentUserLastName(user.last_name);
+      setCurrentUserEmail(user.email);
+      console.log('user.first_name : ', user);
+    }
   }
   useEffect(() => {
-    getIsLoggedIn();
     getUserData();
+    // console.log('user : ', temp);
+    getIsLoggedIn();
+    // getUserData();
     console.log(isLoggedIn);
-  });
+  }, []);
 
   function handleLogInOutButtonClick(isLogin) {
     if (isLogin) {
       axios.defaults.headers.common['Authorization'] = '';
       Cookies.remove('access-token');
+      Cookies.remove('user');
       window.location.reload();
     } else {
       history.push('/signIn');
@@ -44,7 +59,7 @@ function MyPage({ history }) {
   return (
     <Container>
       <ContentContainer>
-        {isLoggedIn == false && (
+        {!Cookies.get('access-token') && (
           <ProfileContainer>
             <ProfileImg src={MYPAGEPROFILE} />
             <ProfileContentContainer>
@@ -56,7 +71,7 @@ function MyPage({ history }) {
             </LogInButton>
           </ProfileContainer>
         )}
-        {isLoggedIn == true && (
+        {Cookies.get('access-token') && (
           <ProfileContainer>
             <ProfileImg src={MYPAGEPROFILE} />
             <ProfileContentContainer>
