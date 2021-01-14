@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { signInAPI, signInCheckAPI, enrollmentAPI } from '../../api';
 import { useForm } from 'react-hook-form';
@@ -26,6 +26,10 @@ function SignIn({ history }) {
       history.push('/');
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <Container>

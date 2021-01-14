@@ -3,7 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import MYPAGEPROFILE from '../components/icon/myPageProfile.png';
+import MYPAGEPROFILE from '../components/img/내프로필이미지.svg';
 import NEXTICON from '../components/icon/nextIcon.png';
 
 const dataURL = 'https://www.chatt-training.com/api/user/check-authentication/';
@@ -37,6 +37,7 @@ function MyPage({ history }) {
     }
   }
   useEffect(() => {
+    window.scrollTo(0, 0);
     getUserData();
     // console.log('user : ', temp);
     getIsLoggedIn();

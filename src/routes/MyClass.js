@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import CalendarImg from '../components/img/달력.PNG';
-import OneScheduleImg from '../components/img/PT일정_1회차.png';
+import CalendarImg from '../components/img/큰달력.svg';
+import WEEK1_IMG from '../components/img/PT일정_1회차.svg';
+import WEEK2_IMG from '../components/img/PT일정_2회차.svg';
+import WEEK3_IMG from '../components/img/PT일정_3회차.svg';
+import WEEK4_IMG from '../components/img/PT일정_4회차.svg';
 import GO_BACK from '../components/icon/go_back.png';
 import GO_NEXT from '../components/icon/go_next.png';
 
@@ -21,7 +24,16 @@ class MyClass extends React.Component {
                     <Calendar src={CalendarImg}/>
                     <ScheduleContainer>
                         <Link to="/myClass/oneSchedule">
-                            <OneSchedule src={OneScheduleImg}/>
+                            <OneSchedule src={WEEK1_IMG}/>
+                        </Link>
+                        <Link to="/myClass/oneSchedule">
+                            <OneSchedule src={WEEK2_IMG}/>
+                        </Link>
+                        <Link to="/myClass/oneSchedule">
+                            <OneSchedule src={WEEK3_IMG}/>
+                        </Link>
+                        <Link to="/myClass/oneSchedule">
+                            <OneSchedule src={WEEK4_IMG}/>
                         </Link>
                     </ScheduleContainer>
                 </ContainerContent>
@@ -68,16 +80,18 @@ const ContainerContent = styled.div`
     height: calc(100vh - 104px);
 `;
 const Calendar = styled.img`
-    width: 80%;
+    width: 100%;
     height: auto;
-    padding: 22px 0 28px 0;  
+    ${'' /* padding: 22px 0 28px 0;   */}
 `;
 const ScheduleContainer = styled.div`
     border-top: 3px solid #eeeeee;
+    padding-top: 10px;
+    padding-bottom: 130px;
 `;
 const OneSchedule = styled.img`
-    padding: 16px 0 16px 0;
-    width: 342px;
+    padding: 4px 0 0 0;
+    width: 94%;
 `;
 const ArrowIcon = styled.img`
   width: 24px;

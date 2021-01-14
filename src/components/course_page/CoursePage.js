@@ -159,7 +159,7 @@ const TabButton = styled(Link)`
 const ReservationButton = styled.button`
   margin-left: calc((100% - 343px) / 2);
   position: fixed;
-  bottom: 12%;
+  bottom: 100px;
   width: 343px;
   height: 56px;
   object-fit: contain;

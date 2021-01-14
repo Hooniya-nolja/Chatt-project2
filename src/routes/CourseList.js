@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { differenceInCalendarDays } from 'date-fns';
 import { courseListAPI } from '../api';
-import WEEK_CALENDAR from '../components/img/Calendar_Temp.png';
+import WEEK_CALENDAR from '../components/img/calendar_week.svg';
 
 import Course from '../components/Course';
 

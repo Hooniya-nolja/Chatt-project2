@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import qs from 'querystring';
 import { useCookies } from 'react-cookie';
-import COMPLETED_IMG from '../../components/img/예약완료.png';
+import COMPLETED_IMG from '../../components/img/신청완료.svg';
 
 class Pay_5 extends React.Component {
     state = {

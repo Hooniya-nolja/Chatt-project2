@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import './Navigation.css'
-import HOME_ICON_ACTIVE from './icon/홈_A.png';
-import CLASSLIST_ICON_ACTIVE from './icon/둘러보기_A.png';
-import MYCLASS_ICON_ACTIVE from './icon/내강의실_A.png';
-import PROFILE_ICON_ACTIVE from './icon/프로필_A.png';
-import HOME_ICON from './icon/홈.png';
-import CLASSLIST_ICON from './icon/둘러보기.png';
-import MYCLASS_ICON from './icon/내강의실.png';
-import PROFILE_ICON from './icon/프로필.png';
+import HOME_ICON_ACTIVE from './icon/홈-1.svg';
+import CLASSLIST_ICON_ACTIVE from './icon/둘러보기-1.svg';
+import MYCLASS_ICON_ACTIVE from './icon/내일정-1.svg';
+import PROFILE_ICON_ACTIVE from './icon/프로필-1.svg';
+import HOME_ICON from './icon/홈.svg';
+import CLASSLIST_ICON from './icon/둘러보기.svg';
+import MYCLASS_ICON from './icon/내일정.svg';
+import PROFILE_ICON from './icon/프로필.svg';
 
 function Navigation() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);

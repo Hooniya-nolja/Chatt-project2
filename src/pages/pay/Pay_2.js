@@ -2,12 +2,12 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import PAGENUMIMG_2 from '../../components/icon/pageNumImg_2.png';
-import STAR_1 from '../../components/icon/별1.png';
-import STAR_2 from '../../components/icon/별2.png';
-import STAR_3 from '../../components/icon/별3.png';
-import SELECTED_STAR_1 from '../../components/icon/별1_R.png';
-import SELECTED_STAR_2 from '../../components/icon/별2_R.png';
-import SELECTED_STAR_3 from '../../components/icon/별3_R.png';
+import STAR_1 from '../../components/icon/별1.svg';
+import STAR_2 from '../../components/icon/별2.svg';
+import STAR_3 from '../../components/icon/별3.svg';
+import SELECTED_STAR_1 from '../../components/icon/별1-1.svg';
+import SELECTED_STAR_2 from '../../components/icon/별2-1.svg';
+import SELECTED_STAR_3 from '../../components/icon/별3-1.svg';
 
 class Pay_2 extends React.Component {
     state = {

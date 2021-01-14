@@ -5,6 +5,8 @@ import RECORD1 from '../components/img/record1.png';
 import TRAINERICON from '../components/img/trainer_img.png';
 import CLIPBOARD from '../components/icon/clipboardIcon.png';
 import CLOCK from '../components/icon/clockIcon.png';
+import GO_BACK from '../components/icon/go_back.png';
+import GO_NEXT from '../components/icon/go_next.png';
 
 import Header from '../components/Header';
 
@@ -27,7 +29,7 @@ class OneSchedule extends React.Component {
               </DescriptionTitle>
               <TrainerDescription>
                 <TrainerIcon src={TRAINERICON} />
-                <TrainerName>제니퍼 트레이너</TrainerName>
+                <TrainerName>황유나 트레이너</TrainerName>
               </TrainerDescription>
             </TopDescriptionContainer>
             <BottomDescriptionContainer>
@@ -46,12 +48,14 @@ class OneSchedule extends React.Component {
           </ClassDescriptionContainer>
           <RecordsContainer>
             <Schedule>
-              {'<'}
-              <BlankChar />
+              <ArrowIcon src={GO_BACK} alt='' />
+              {/* {'<'} */}
+              <BlankChar/>
               <BoldSchedule>1회차</BoldSchedule>
               (01월 04일)
               <BlankChar />
-              {'>'}
+              <ArrowIcon src={GO_NEXT} alt='' />
+              {/* {'>'} */}
             </Schedule>
             <Record src={RECORD1} />
           </RecordsContainer>
@@ -180,4 +184,9 @@ const Record = styled.img`
 `;
 const BlankSpace = styled.div`
   height: 84px;
+`;
+const ArrowIcon = styled.img`
+  width: 24px;
+  height: 24px;
+  ${'' /* margin: 32px 8px 16px 16px; */}
 `;

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import PAGENUMIMG_1 from '../../components/icon/pageNumImg_1.png';
-import TempCalendar from '../../components/img/Calendar_Temp.png';
+import WEEK_CALENDAR from '../../components/img/calendar_week.svg';
 
 import { courseListAPI } from '../../api';
 class Pay_1 extends React.Component {
@@ -48,7 +48,7 @@ class Pay_1 extends React.Component {
                 </div>
                 <ContainerContent>
                     <SubTitle>1. 희망 수업 시간을 선택해주세요!</SubTitle>
-                    <Calendar src={TempCalendar}/>
+                    <Calendar src={WEEK_CALENDAR}/>
                     { this.state.timeArray !== null &&
                         <TimeCandidateContainer>
                         <TimeCandidatesOneRow>
