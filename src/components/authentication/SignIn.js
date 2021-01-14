@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { signInAPI, signInCheckAPI, enrollmentAPI } from '../../api';
 import { useForm } from 'react-hook-form';
@@ -22,25 +22,14 @@ function SignIn({ history }) {
     Cookies.set('access-token', inResponse);
     const { data } = await axios.get(userURL);
     Cookies.set('user', data);
-    if(inResponse) {
+    if (inResponse) {
       history.push('/');
     }
   };
 
-  const doLogOut = async () => {
-    axios.defaults.headers.common['Authorization'] = '';
-    console.log('User Logout completed');
-  };
-
-  const doSignInCheck = async () => {
-    const checkResponse = await signInCheckAPI();
-    console.log('signInCheckAPI response : ', checkResponse);
-  };
-
-  const doEnrollment = async () => {
-    const enrollResponse = await enrollmentAPI();
-    console.log('enrollmentAPI response : ', enrollResponse);
-  };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <Container>
@@ -99,11 +88,6 @@ function SignIn({ history }) {
         <VerticalLine />
         회원가입
       </Footer>
-      {/* <div style={{display: 'flex'}}>
-        <button onClick={doLogOut}>로그아웃</button>
-        <button onClick={doSignInCheck}>로그인 확인하기</button>
-        <button onClick={doEnrollment}>Enrollment</button>
-      </div> */}
     </Container>
   );
 }
@@ -119,9 +103,9 @@ const Container = styled.div`
 
 const HeaderContainer = styled.div`
   width: 100%;
-  height: 80px;
-  padding: 0 0 14px;
-  opacity: 0.8;
+  ${'' /* height: 54px; */}
+  ${'' /* height: 40%; */}
+  padding: 0 0 65px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
   background-color: #ffffff;
 `;
@@ -134,8 +118,7 @@ const UsernameInput = styled.input`
   padding-left: 15px;
   width: calc(100% - 50px);
   height: 56px;
-  margin: 64px 0px 4px;
-  opacity: 0.8;
+  margin: 60px 0px 4px;
   border-radius: 8px;
   border: none;
   background-color: rgba(60, 80, 165, 0.1);
@@ -150,7 +133,6 @@ const PasswordInput = styled.input`
   padding-left: 15px;
   height: 56px;
   margin: 10px 16px 3px;
-  opacity: 0.8;
   border-radius: 8px;
   border: none;
   background-color: rgba(60, 80, 165, 0.1);
@@ -168,10 +150,9 @@ const LoginForm = styled.form`
 `;
 
 const LoginButton = styled.button`
-  width: 343px;
+  width: 91%;
   height: 56px;
   margin: 28px 16px 64px;
-  opacity: 0.8;
   border-radius: 100px;
   background-color: #3c50a5;
   font-family: NotoSansKR;
@@ -187,7 +168,6 @@ const SimpleLoginText = styled.div`
   justify-content: space-around;
   width: 100%;
   ${'' /* height: 24px; */}
-  opacity: 0.8;
   font-family: NotoSansKR;
   font-size: 16px;
   font-weight: normal;
@@ -197,7 +177,7 @@ const SimpleLoginText = styled.div`
 `;
 
 const TwoLine = styled.hr`
-  width: 120px;
+  width: 32%;
   height: 4px;
   border-top: 0;
   border-left: 0;
@@ -213,13 +193,12 @@ const SNSIconContainer = styled.div`
 const SNSIcon = styled.img`
   width: 56px;
   height: 56px;
-  margin: 32px 22px 68px 18px;
+  margin: 32px 22px 95px 18px;
   object-fit: contain;
-  opacity: 0.8;
 `;
 
 const OneLine = styled.hr`
-  width: 340px;
+  width: 92%;
   height: 4px;
   border-top: 0;
   border-left: 0;
@@ -230,13 +209,13 @@ const OneLine = styled.hr`
 
 const Footer = styled.div`
   display: flex;
-  opacity: 0.8;
   font-family: NotoSansKR;
   font-size: 16px;
   font-weight: normal;
   font-style: normal;
   text-align: center;
   color: #828282;
+  padding-bottom: 40%;
 `;
 
 const VerticalLine = styled.div`

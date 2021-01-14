@@ -8,7 +8,7 @@ function TeacherRow({ teacher }) {
       <TeacherImgBox>
         <TeacherImage src={teacher.image ? teacher.image : TEACHER_SAMPLE} alt=''/>
       </TeacherImgBox>
-      {teacher.name}
+      {teacher.name} 트레이너
     </Container>
   );
 }

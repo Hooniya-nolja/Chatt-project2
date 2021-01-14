@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { differenceInCalendarDays } from 'date-fns';
 import { courseListAPI } from '../api';
-import WEEK_CALENDAR from '../components/img/Calendar_Temp.png';
+import WEEK_CALENDAR from '../components/img/calendar_week.svg';
 
 import Course from '../components/Course';
 
@@ -14,7 +14,7 @@ function CourseList() {
   const doAPI = async () => {
     const response = await courseListAPI();
     setPickedDayCourses(response.data[0]);
-  }
+  };
 
   const getCourseList = async () => {
     try {
@@ -26,9 +26,9 @@ function CourseList() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const setData = async() => {
+    const setData = async () => {
       await getCourseList();
-    }
+    };
     setData();
   }, []);
 
@@ -37,22 +37,23 @@ function CourseList() {
       <CalendarContainer>
         <Calendar src={WEEK_CALENDAR} alt="" />
       </CalendarContainer>
-      <CourseListContainer>        
-        {pickedDayCourses && pickedDayCourses.map((course, index) => {
-          return (
-            <CourseLink to={{
-              pathname: "/course/1/profile",
-              state: {
-                courseData: course,
-              }
-            }} key={index}>
-              <Course courseData={course} />
-            </CourseLink>
-          );
-        })}
-        {/* <CourseLink to="/course/1/profile">
-          <Course courseData={pickedDayCourses[0]} />
-        </CourseLink> */}
+      <CourseListContainer>
+        {pickedDayCourses &&
+          pickedDayCourses.map((course, index) => {
+            return (
+              <CourseLink
+                to={{
+                  pathname: '/course/1/profile',
+                  state: {
+                    courseData: course,
+                  },
+                }}
+                key={index}
+              >
+                <Course courseData={course} />
+              </CourseLink>
+            );
+          })}
       </CourseListContainer>
     </Container>
   );

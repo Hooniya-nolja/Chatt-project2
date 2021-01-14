@@ -21,7 +21,7 @@
 }
 .button-icon {
     text-align: center;
-    width: 20px;
+    width: auto;
     height: 20px;
     display: block;
     margin: auto;
