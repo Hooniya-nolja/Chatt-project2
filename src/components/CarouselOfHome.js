@@ -32,7 +32,7 @@ export default class Test extends React.Component {
                     </div>
                     <div className="oneclass_trainer">
                         <img className="oneclass_trainer_img" src={data.teacher.image}/>
-                        <div className="oneclass_trainer_name">{data.teacher.name}</div>
+                        <div className="oneclass_trainer_name">{data.teacher.name} 트레이너</div>
                     </div>
                 </div>),
             })

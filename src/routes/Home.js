@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 import './Home.css'
 import CarouselOfHome from '../components/CarouselOfHome';
 import INTRODUCTION from '../components/img/introduction.png';
+import HOME_BACKGROUND from '../components/img/home_background.svg';
 
 function Home() {
     return (
         <div className="container">
             <div className="introduction_container">
-                <img className="introduction_paper" src={INTRODUCTION}/>
+                <img className="introduction_paper" src={HOME_BACKGROUND}/>
                 <Link to="/introduction">
                     <button className="introduction_button">서비스 소개 {'>'}</button>
                 </Link>

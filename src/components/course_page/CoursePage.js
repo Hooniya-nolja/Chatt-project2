@@ -47,8 +47,11 @@ function CoursePage({ location, history }) {
       <HashTagRowContainer>
         <HashTagRow isVisit={true} hashTagArray={hashTagArray}/>
       </HashTagRowContainer>
-      <SimpleDescription>
+      {/* <SimpleDescription>
         바른자세 맑은정신을 위한 운동! 지금 시작해보세요!
+      </SimpleDescription> */}
+      <SimpleDescription>
+        {courseData.name}
       </SimpleDescription>
       <SubPageTab>
         <TabButton
@@ -93,7 +96,7 @@ function CoursePage({ location, history }) {
         state: {
           courseData: location.state.courseData
         }
-      })}>예약하기</ReservationButton>
+      })}>신청하기</ReservationButton>
       <Route path="/course/1/profile" exact={true} component={TeacherProfile} />
       <Route
         path="/course/1/introduction"
@@ -156,7 +159,7 @@ const TabButton = styled(Link)`
 const ReservationButton = styled.button`
   margin-left: calc((100% - 343px) / 2);
   position: fixed;
-  bottom: 12%;
+  bottom: 100px;
   width: 343px;
   height: 56px;
   object-fit: contain;
