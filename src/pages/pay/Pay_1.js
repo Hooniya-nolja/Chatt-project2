@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import PAGENUMIMG_1 from '../../components/icon/pageNumImg_1.png';
 import TempCalendar from '../../components/img/Calendar_Temp.png';
-
 import { courseListAPI } from '../../api';
+
 class Pay_1 extends React.Component {
     state = {
         selectedTime: 0,
