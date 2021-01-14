@@ -6,52 +6,68 @@ import DescriptionRow from '../../components/DescriptionRow';
 import TeacherRow from '../../components/TeacherRow';
 import CLOCK_ICON from '../../components/icon/clock.png';
 import MAP_PIN_ICON from '../../components/icon/map-pin.png';
+import { courseListAPI } from '../../api';
 
-export default function PaymentDetails (){
-    return (
-        <Container>
-            <div>
-                <Link to="/"> {/* 후에 수정 */}
-                    <GoBackIcon>{'<'}</GoBackIcon>
-                </Link>                   
-                <Title>신청 내역</Title>
-            </div>
-            <ContainerContent>
-                <Link to="/paymentDetails/detail">
-                    <CourseContainer>
-                        <PaymentInfoContainer>
-                            <Price>202,800원</Price>
-                            <ClassCount>4회</ClassCount>
-                            <PaymentState>결제 확인 중</PaymentState>
-                        </PaymentInfoContainer>
-                        <HashTagRow></HashTagRow>
-                        <TimeAndPlaceContainer>
-                            <Time>
-                                <TimePlaceIconBox>
-                                <img src={CLOCK_ICON} alt=''/>
-                                </TimePlaceIconBox>
-                                18시
-                            </Time>
-                            <Place>
-                                <TimePlaceIconBox>
-                                <img src={MAP_PIN_ICON} alt=''/>
-                                </TimePlaceIconBox>
-                                서울시 마포구
-                            </Place>
-                        </TimeAndPlaceContainer>
-                        <DescriptionRow></DescriptionRow>
-                        <TeacherRow></TeacherRow>
-                    </CourseContainer>
-                </Link>
-                <ButtonContainer>
-                    <Link to="/paymentDetails/all">
-                        <ToAllButton>전체 구매 내역</ToAllButton>
-                    </Link>
-                </ButtonContainer>
-            </ContainerContent>
-        </Container>
-    );
+class PaymentDetails extends React.Component {
+    state = { courseData: null }
+    componentWillMount() {
+        const doAPI = async () => {
+            const response = await courseListAPI();
+            this.setState({courseData: response.data[0][0]});
+        }
+        doAPI();
+    }
+    render() {
+        return (
+            this.state.courseData !== null && 
+                <Container>
+                    <div>
+                        <Link to="/"> {/* 후에 수정 */}
+                            <GoBackIcon>{'<'}</GoBackIcon>
+                        </Link>                   
+                        <Title>신청 내역</Title>
+                    </div>
+                    <ContainerContent>
+                        <Link to="/paymentDetails/detail">
+                            <CourseContainer>
+                                <PaymentInfoContainer>
+                                    <Price>202,800원</Price>
+                                    <ClassCount>4회</ClassCount>
+                                    <PaymentState>결제 확인 중</PaymentState>
+                                </PaymentInfoContainer>
+                                <HashTagRow 
+                                    isVisit={this.state.courseData.isVisit}
+                                    hashTagArray={[this.state.courseData.tag1, this.state.courseData.tag2, this.state.courseData.tag3]}
+                                />
+                                <TimeAndPlaceContainer>
+                                    <Time>
+                                        <TimePlaceIconBox>
+                                        <img src={CLOCK_ICON} alt=''/>
+                                        </TimePlaceIconBox>
+                                        18시
+                                    </Time>
+                                    <Place>
+                                        <TimePlaceIconBox>
+                                        <img src={MAP_PIN_ICON} alt=''/>
+                                        </TimePlaceIconBox>
+                                        서울시 마포구
+                                    </Place>
+                                </TimeAndPlaceContainer>
+                                <DescriptionRow description={this.state.courseData.name}/>
+                                <TeacherRow teacher={this.state.courseData.teacher}/>
+                            </CourseContainer>
+                        </Link>
+                        <ButtonContainer>
+                            <Link to="/paymentDetails/all">
+                                <ToAllButton>전체 구매 내역</ToAllButton>
+                            </Link>
+                        </ButtonContainer>
+                    </ContainerContent>
+                </Container>
+        );
+    }
 }
+export default PaymentDetails;
 const Container = styled.div`
     display: flex;
     width: 100%;
