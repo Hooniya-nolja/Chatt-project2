@@ -11,6 +11,7 @@ class Pay_4 extends React.Component {
         package_count: null,
         finalPrice: "50,700",
         depositName: "",
+        courseData: null,
     }
     componentDidMount() {
         const { location } = this.props;
@@ -18,6 +19,7 @@ class Pay_4 extends React.Component {
             time: location.state.time,
             package_count: location.state.package_count,
             finalPrice: location.state.finalPrice,
+            courseData: location.state.courseData,
         });
     }
     render() {
@@ -36,13 +38,21 @@ class Pay_4 extends React.Component {
                             state: {
                                 time: this.state.time,
                                 package_count: this.state.package_count,
+                                courseData: this.state.courseData,
                             },
                         }}
                         >
                         <GoBackIcon>{'<'}</GoBackIcon>
                     </Link>                   
-                    <Title>예약하기</Title>
-                    <Link to="/"> {/* 후에 수정 */}
+                    <Title>신청하기</Title>
+                    <Link 
+                        to={{
+                            pathname: "/course/1/profile",
+                            state: {
+                                courseData: this.state.courseData,
+                            },
+                        }}
+                        >
                         <CloseIcon>{'X'}</CloseIcon>
                     </Link>
                 </div>
@@ -72,18 +82,24 @@ class Pay_4 extends React.Component {
                     <AlertText>2020.01.05 까지 미입금시 자동 취소됩니다.</AlertText>
                     <ButtonContainer>
                         <PageNumImg src={PAGENUMIMG_4}/>
-                        <Link 
-                        to = {{
-                            pathname: "/pay/5",
-                            state: {
-                                time: this.state.time,
-                                finalPrice: this.state.finalPrice,
-                                depositName: this.state.depositName,
-                                package_count: this.state.package_count,
-                            },
-                        }}>
-                            <NextButton>다음</NextButton>
-                        </Link>
+                        { this.state.depositName === ""
+                            ?   <Link to="/" onClick={(e) => e.preventDefault()}>
+                                    <NextButtonDisable>확인</NextButtonDisable>
+                                </Link>
+                            :    <Link 
+                                    to = {{
+                                        pathname: "/pay/5",
+                                        state: {
+                                            time: this.state.time,
+                                            finalPrice: this.state.finalPrice,
+                                            depositName: this.state.depositName,
+                                            package_count: this.state.package_count,
+                                            courseData: this.state.courseData,
+                                        },
+                                    }}>
+                                    <NextButtonAble>확인</NextButtonAble>
+                                </Link>
+                        }
                     </ButtonContainer>
                 </ContainerContent>
             </Container>
@@ -140,18 +156,20 @@ const NextButton = styled.button`
     width: calc(100% - (16px * 2));
     margin-left: 16px;
     border-radius: 100px;
-    background-color: #e0e0e0;
     font-size: 16px;
     font-weight: bold;
     text-align: center;
     color: #ffffff;
     border: 0;
     outline: 0;
-    &:hover{
-        background-color: #3c50a5;
-    }
     margin: 0;
     padding: 0;
+`;
+const NextButtonDisable = styled(NextButton)`
+    background-color: #e0e0e0;
+`;
+const NextButtonAble = styled(NextButton)`
+    background-color: #3c50a5;
 `;
 const PageNumImg = styled.img`
     text-align: center;
@@ -214,6 +232,7 @@ const ContentOneLine = styled.div`
     margin-bottom: 8px;
 `;
 const NameInputBox = styled.input`
+    text-align: right;
     position: absolute;
     right: 32px;
     width: 112px;

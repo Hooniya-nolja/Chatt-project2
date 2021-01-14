@@ -14,7 +14,7 @@ export default function PaymentDetailsAll (){
                 <Link to="/paymentDetails">
                     <GoBackIcon>{'<'}</GoBackIcon>
                 </Link>                   
-                <Title>전체 구매내역</Title>
+                <Title>전체 신청내역</Title>
                 <Link to="/paymentDetails"> {/* 후에 수정 */}
                         <CloseIcon>{'X'}</CloseIcon>
                 </Link>

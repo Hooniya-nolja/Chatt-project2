@@ -14,6 +14,7 @@ class Pay_5 extends React.Component {
         finalPrice: "50,700",
         depositName: "",
         day: 2,
+        courseData: null,
     }
     componentDidMount() {
         const { location } = this.props;
@@ -22,6 +23,7 @@ class Pay_5 extends React.Component {
             package_count: location.state.package_count, 
             finalPrice: location.state.finalPrice, 
             depositName: location.state.depositName, 
+            courseData: location.state.courseData,
         });
     }
     render() {
@@ -36,10 +38,10 @@ class Pay_5 extends React.Component {
                 }),
             })
             .then ((response) => {
-                alert('예약되었습니다!');
+                alert('신청되었습니다!');
             })
             .catch (() => {
-                alert('예약을 위해서는 로그인이 필요합니다!');
+                alert('신청을 위해서는 로그인이 필요합니다!');
             })
         }
         async function getIsLoggedIn() {
@@ -57,21 +59,29 @@ class Pay_5 extends React.Component {
                                 time: this.state.time,
                                 package_count: this.state.package_count,
                                 finalPrice: this.state.finalPrice,
+                                courseData: this.state.courseData,
                             },
                         }}
                         >
                         <GoBackIcon>{'<'}</GoBackIcon>
                     </Link> 
-                    <Link to="/"> {/* 후에 수정 */}
+                    <Link 
+                        to={{
+                            pathname: "/course/1/profile",
+                            state: {
+                                courseData: this.state.courseData,
+                            },
+                        }}
+                        >
                         <CloseIcon>{'X'}</CloseIcon>
                     </Link>                   
-                    <Title>예약완료</Title>
+                    <Title>신청완료</Title>
                 </div>
                 <ContainerContent>
                     <ContentContainer>
                         <CompletedImg src={COMPLETED_IMG}/>
                         <DescriptionContainer>
-                            <Description>주문해주셔서 감사합니다.</Description>
+                            <Description>신청해주셔서 감사합니다.</Description>
                             <Description>2021.01.05 까지 미입금시 자동 취소됩니다.</Description>
                         </DescriptionContainer>
                         <Line/>
@@ -95,7 +105,7 @@ class Pay_5 extends React.Component {
                     </ContentContainer>
                     <ButtonContainer>
                         <Link to="/"> {/* 후에 수정 */}
-                            <NextButton onClick={handlePayButtonClick}>결제하기</NextButton>
+                            <NextButton onClick={handlePayButtonClick}>완료</NextButton>
                         </Link>
                     </ButtonContainer>
                 </ContainerContent>
@@ -154,16 +164,13 @@ const NextButton = styled.button`
     width: calc(100% - (16px * 2));
     margin-left: 16px;
     border-radius: 100px;
-    background-color: #e0e0e0;
+    background-color: #3c50a5;
     font-size: 16px;
     font-weight: bold;
     text-align: center;
     color: #ffffff;
     border: 0;
     outline: 0;
-    &:hover{
-        background-color: #3c50a5;
-    }
     margin: 0;
     padding: 0;
 `;
