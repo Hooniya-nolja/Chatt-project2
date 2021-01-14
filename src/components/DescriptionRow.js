@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 function DescriptionRow({ description }) {
   return (
-    <Container>{description.slice(0, 24)}...</Container>
+    // <Container>{description.slice(0, 24)}...</Container>
+    <Container>{description}</Container>
   );
 }
 

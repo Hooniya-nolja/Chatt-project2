@@ -35,19 +35,21 @@ const Title = styled.div`
   width: 72px;
   height: 24px;
   position: absolute;
-  top: 56px;
+  top: 26px;
   left: calc(100vw / 2 - 36px);
 `;
 
 const GoBackIcon = styled.img`
   position: absolute;
-  top: 56px;
+  top: 26px;
   left: 16px;
+  width: 24px;
+  height: 24px;
 `;
 
 const CloseIcon = styled.img`
   position: absolute;
-  top: 56px;
+  top: 26px;
   right: 16px;
   width: 24px;
 `;

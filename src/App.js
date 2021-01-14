@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { Route, Switch } from 'react-router-dom';
+import styled from 'styled-components';
 import CourseList from './routes/CourseList';
 import Home from './routes/Home';
 import Introduction from './routes/Introduction';
@@ -23,16 +24,20 @@ import NotFound from './routes/NotFound';
 
 function App({ location }) {
   const notSupported = useMediaQuery({
-    query: "(min-width: 380px)"
+    query: "(min-width: 450px)",
   });
   const isMobile = useMediaQuery({
-    query: "(max-width: 380px)"
-  })
+    query: "(max-width: 450px)",
+  });
+
+  // document.getElementsByTagName("META")[1].content="width=375, initial-scale=1";
 
   return (
+    // <Container>
+    // <InnerContainer>
     <div style={{width: '100%', height: '100%'}}>
       { notSupported && <h1>모바일 환경만 지원됩니다.</h1>}
-      { isMobile && 
+      { isMobile &&
         <div style={{width: '100%', height: '100%'}}>
           <Route path="/" exact={true} component={Navigation} />
           <Route path="/" exact={true} component={Home} />
@@ -90,7 +95,29 @@ function App({ location }) {
         </div>
       }
     </div>
+    // {/* </InnerContainer> */}
+    // {/* </Container> */}
   );
 }
+
+// const mobile = `(min-width: 415px)`;
+
+const Container = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ${'' /* @media only screen and ${mobile}{
+    background-color: white;
+    position: center;
+    transform: scale(0.4);
+  } */}
+`;
+
+// const InnerContainer = styled.div`
+//   width: 375px;
+//   height: 812px;
+// `;
 
 export default App;

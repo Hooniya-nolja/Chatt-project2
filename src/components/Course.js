@@ -12,7 +12,7 @@ function Course({ courseData }) {
     const hashTagArray = [courseData.tag1, courseData.tag2, courseData.tag3];
     const time = courseData.times;
     const location = [courseData.teacher.related_locations[0].gu, courseData.teacher.related_locations[0].dong];
-    const description = courseData.information;
+    const description = courseData.name;
     const teacher = courseData.teacher;
 
   return (
@@ -25,6 +25,7 @@ function Course({ courseData }) {
   );
   } catch(error) {
   console.log('###ERROR : ', error);
+
   }
 }
 

@@ -65,7 +65,8 @@ const Container = styled.div`
 `;
 
 const CalendarContainer = styled.div`
-  margin: 45px 0 30px 0;
+  ${'' /* height: 110px; */}
+  padding: 0px 0 0px 0;
   position: fixed;
   background-color: white;
 `;
@@ -73,7 +74,7 @@ const CalendarContainer = styled.div`
 const Calendar = styled.img``;
 
 const CourseListContainer = styled.div`
-  padding: 55% 0 25% 0;
+  padding: 40% 0 25% 0;
   width: 100vw;
 `;
 

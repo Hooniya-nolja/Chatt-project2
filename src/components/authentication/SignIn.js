@@ -10,6 +10,8 @@ import KAKAO_ICON from '../icon/kakao_icon.png';
 
 import Header from '../Header';
 
+const userURL = 'https://www.chatt-training.com/api/user/information/';
+
 function SignIn({ history }) {
   const { handleSubmit, register, errors } = useForm();
 
@@ -18,6 +20,8 @@ function SignIn({ history }) {
     const inResponse = await signInAPI({ email, password });
     console.log('signInAPI Response : ', inResponse);
     Cookies.set('access-token', inResponse);
+    const { data } = await axios.get(userURL);
+    Cookies.set('user', data);
     if(inResponse) {
       history.push('/');
     }

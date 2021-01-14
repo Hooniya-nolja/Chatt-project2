@@ -28,19 +28,19 @@
     top: 56px;
     left: calc(100vw / 2 - 36px)
 }
-.container_content {
-    width: 100vw;
+/* .container_content {
+    width: 100%;
     position: absolute;
     top: 0;
     left: 0;
-}
+} */
 .introduction_page {
     width: 100%;
     height: auto;
 }
 .container_content {
     position: absolute;
-    top: 104px;
+    top: 54px;
     width: 100%;
 }
 .blankspace {
