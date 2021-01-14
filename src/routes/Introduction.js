@@ -1,18 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import './Introduction.css'
 import INTRODUCTIONPAGE from '../components/img/introduction_page.png';
+
+import Header from '../components/Header';
 
 class Introduction extends React.Component {
     render() {
         return (
             <div className="container">
-                <div className="container_top">
+                <Header 
+                    beforeUrl={'/'}
+                    pageTitle={'찾트 소개'}
+                    goBackButton={true}
+                />
+                {/* <div className="container_top">
                     <Link to="/">
                         <div className="top_content" id="goback_icon">{'<'}</div>
                     </Link>                   
                     <div className="top_content" id="title">찾트 소개</div>
-                </div>
+                </div> */}
                 <div className="container_content">
                     <img class="introduction_page" src={INTRODUCTIONPAGE}/>
                     <div className="button_container">
