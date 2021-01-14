@@ -5,8 +5,6 @@ import PAGENUMIMG_3 from '../../components/icon/pageNumImg_3.png';
 import PLUSBUTTON from '../../components/icon/plus.png';
 import MINUSBUTTON from '../../components/icon/minus.png';
 import Course from '../../components/Course';
-import { render } from '@testing-library/react';
-import { courseListAPI } from '../../api';
 
 class Pay_3 extends React.Component {
     state = {
@@ -14,21 +12,15 @@ class Pay_3 extends React.Component {
         start_date: null,
         package_count: 1,
         finalPrice: "50,700",
-        course: null,
+        courseData: null,
     }
     componentDidMount() {
         const { location } = this.props;
         this.setState({
             start_date: location.state.start_date,
             time: location.state.time,
+            courseData: location.state.courseData,
         });
-    }
-    componentWillMount() {
-        const doAPI = async () => {
-            const response = await courseListAPI();
-            this.setState({course: response.data[0][0]})
-        }
-        doAPI();
     }
     render() {
         const { location } = this.props;
@@ -47,21 +39,29 @@ class Pay_3 extends React.Component {
                             state: {
                                 start_date: this.state.start_date,
                                 time: this.state.time,
+                                courseData: this.state.courseData,
                             },
                         }}
                         >
                         <GoBackIcon>{'<'}</GoBackIcon>
                     </Link>                   
-                    <Title>예약하기</Title>
-                    <Link to="/"> {/* 후에 수정 */}
+                    <Title>신청하기</Title>
+                    <Link 
+                        to={{
+                            pathname: "/course/1/profile",
+                            state: {
+                                courseData: this.state.courseData,
+                            },
+                        }}
+                        >
                             <CloseIcon>{'X'}</CloseIcon>
                     </Link>
                 </div>
                 <ContainerContent>
                     <SubTitle>3. 결제하실 수업료입니다!</SubTitle>
                     <BoldLine/>
-                    { this.state.course !== null 
-                        ? <Course courseData={this.state.course}/>
+                    { this.state.courseData !== null 
+                        ? <Course courseData={this.state.courseData}/>
                         : <EmptyCourse/>
                     }
                     <DescriptionContainer>
@@ -103,6 +103,7 @@ class Pay_3 extends React.Component {
                                     start_date: this.state.start_date,
                                     package_count: this.state.package_count,
                                     finalPrice: this.state.finalPrice,
+                                    courseData: this.state.courseData,
                                 },
                             }}>
                             <NextButton>다음</NextButton>
@@ -163,16 +164,13 @@ const NextButton = styled.button`
     width: calc(100% - (16px * 2));
     margin-left: 16px;
     border-radius: 100px;
-    background-color: #e0e0e0;
+    background-color: #3c50a5;
     font-size: 16px;
     font-weight: bold;
     text-align: center;
     color: #ffffff;
     border: 0;
     outline: 0;
-    &:hover{
-        background-color: #3c50a5;
-    }
     margin: 0;
     padding: 0;
 `;

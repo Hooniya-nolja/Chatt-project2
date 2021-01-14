@@ -14,12 +14,15 @@ class Pay_2 extends React.Component {
         time: 0,
         start_date: "2020-01-04",
         starNum: 0,
+        userState: "",
+        courseData: null,
     }
     componentDidMount() {
         const { location } = this.props;
         this.setState({ 
             start_date: location.state.start_date,
             time: location.state.time,
+            courseData: location.state.courseData,
         });
     }
     render() {
@@ -36,6 +39,9 @@ class Pay_2 extends React.Component {
         const handleSelectedStarClick = () => {
             this.setState({starNum:0});
         }
+        const handleInputChange = (e) => {
+            this.setState({userState: e.target.value});
+        }
         return (
             <Container>
                 <div>
@@ -45,13 +51,21 @@ class Pay_2 extends React.Component {
                             state: {
                                 start_date: this.state.start_date,
                                 time: this.state.time,
+                                courseData: this.state.courseData,
                             },
                         }}
                         >
                         <GoBackIcon>{'<'}</GoBackIcon>
                     </Link>                   
-                    <Title>예약하기</Title>
-                    <Link to="/"> {/* 후에 수정 */}
+                    <Title>신청하기</Title>
+                    <Link 
+                        to={{
+                            pathname: "/course/1/profile",
+                            state: {
+                                courseData: this.state.courseData,
+                            },
+                        }}
+                        >
                             <CloseIcon>{'X'}</CloseIcon>
                     </Link>
                 </div>
@@ -78,19 +92,25 @@ class Pay_2 extends React.Component {
                             <StarLevel>고수</StarLevel>
                         </OneStar>
                     </StarContainer>
-                    <InputArea placeholder="예) 이제 운동을 막 시작한 헬린이입니다ㅜㅜ"/>
+                    <InputArea value={this.state.userState} onChange={handleInputChange} placeholder="예) 이제 운동을 막 시작한 헬린이입니다ㅜㅜ"/>
                     <ButtonContainer>
                         <PageNumImg src={PAGENUMIMG_2}/>
-                        <Link 
-                            to = {{
-                                pathname: "/pay/3",
-                                state: {
-                                    start_date: this.state.startDate,
-                                    time: this.state.time,
-                                },
-                            }}>
-                            <NextButton>다음</NextButton>
-                        </Link>
+                        { this.state.starNum === 0 || this.state.userState === ""
+                            ?   <Link to="/" onClick={(e) => e.preventDefault()}>
+                                    <NextButtonDisable>다음</NextButtonDisable>
+                                </Link>
+                            :    <Link 
+                                    to = {{
+                                        pathname: "/pay/3",
+                                        state: {
+                                            start_date: this.state.startDate,
+                                            time: this.state.time,
+                                            courseData: this.state.courseData,
+                                        },
+                                    }}>
+                                    <NextButtonAble>다음</NextButtonAble>
+                                </Link>
+                        }
                     </ButtonContainer>
                 </ContainerContent>
             </Container>
@@ -147,18 +167,20 @@ const NextButton = styled.button`
     width: calc(100% - (16px * 2));
     margin-left: 16px;
     border-radius: 100px;
-    background-color: #e0e0e0;
     font-size: 16px;
     font-weight: bold;
     text-align: center;
     color: #ffffff;
     border: 0;
     outline: 0;
-    &:hover{
-        background-color: #3c50a5;
-    }
     margin: 0;
     padding: 0;
+`;
+const NextButtonDisable = styled(NextButton)`
+    background-color: #e0e0e0;
+`;
+const NextButtonAble = styled(NextButton)`
+    background-color: #3c50a5;
 `;
 const PageNumImg = styled.img`
     text-align: center;
