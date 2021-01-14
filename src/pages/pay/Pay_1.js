@@ -3,23 +3,20 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import PAGENUMIMG_1 from '../../components/icon/pageNumImg_1.png';
 import TempCalendar from '../../components/img/Calendar_Temp.png';
-import { courseListAPI } from '../../api';
 
 class Pay_1 extends React.Component {
     state = {
-        selectedTime: 0,
+        selectedTime: null,
         startDate: "2020-01-04",
-        times: null,
         timeArray: null,
+        courseData: null,
     }
     componentWillMount() {
-        const doAPI = async () => {
-            const response = await courseListAPI();
-            this.setState({times: response.data[0][0].times});
-            this.setState({timeArray: this.state.times.split(" ")});
-            console.log(this.state.timeArray);
-        }
-        doAPI();
+        const { location } = this.props;
+        this.setState({
+            courseData: location.state.courseData,
+            timeArray: location.state.courseData.times.split(" "),
+        })
     }
     render() {
         const handleTime1Click = () => {
@@ -32,17 +29,30 @@ class Pay_1 extends React.Component {
             this.setState({selectedTime: this.state.timeArray[2]});
         }
         const handleSelectedTimeClick = () => {
-            this.setState({selectedTime:0});
+            this.setState({selectedTime:null});
         }
-        console.log(this.state.times);
         return (
             <Container>
                 <div>
-                    <Link to="/introduction"> {/* 후에 url 수정 */}
+                    <Link 
+                        to={{
+                            pathname: "/course/1/profile",
+                            state: {
+                                courseData: this.state.courseData,
+                            },
+                        }}
+                        >
                         <GoBackIcon>{'<'}</GoBackIcon>
                     </Link>                   
-                    <Title>예약하기</Title>
-                    <Link to="/"> {/* 후에 수정 */}
+                    <Title>신청하기</Title>
+                    <Link 
+                        to={{
+                            pathname: "/course/1/profile",
+                            state: {
+                                courseData: this.state.courseData,
+                            },
+                        }}
+                        >
                             <CloseIcon>{'X'}</CloseIcon>
                     </Link>
                 </div>
@@ -87,16 +97,22 @@ class Pay_1 extends React.Component {
                     }
                     <ButtonContainer>
                         <PageNumImg src={PAGENUMIMG_1}/>
-                        <Link 
-                            to = {{
-                                pathname: "/pay/2",
-                                state: {
-                                    time: this.state.selectedTime,
-                                    start_date: this.state.startDate,
-                                },
-                            }}>
-                            <NextButton>다음</NextButton>
-                        </Link>
+                        { this.state.selectedTime === null 
+                            ?   <Link to="/" onClick={(e) => e.preventDefault()}>
+                                    <NextButtonDisable>다음</NextButtonDisable>
+                                </Link>
+                            :   <Link 
+                                    to = {{
+                                        pathname: "/pay/2",
+                                        state: {
+                                            time: this.state.selectedTime,
+                                            start_date: this.state.startDate,
+                                            courseData: this.state.courseData,
+                                        },
+                                    }}>
+                                    <NextButtonAble>다음</NextButtonAble>
+                                </Link> 
+                        }
                     </ButtonContainer>
                 </ContainerContent>
             </Container>
@@ -153,18 +169,20 @@ const NextButton = styled.button`
     width: calc(100% - (16px * 2));
     margin-left: 16px;
     border-radius: 100px;
-    background-color: #e0e0e0;
     font-size: 16px;
     font-weight: bold;
     text-align: center;
     color: #ffffff;
     border: 0;
     outline: 0;
-    &:hover{
-        background-color: #3c50a5;
-    }
     margin: 0;
     padding: 0;
+`;
+const NextButtonDisable = styled(NextButton)`
+    background-color: #e0e0e0;
+`;
+const NextButtonAble = styled(NextButton)`
+    background-color: #3c50a5;
 `;
 const PageNumImg = styled.img`
     text-align: center;

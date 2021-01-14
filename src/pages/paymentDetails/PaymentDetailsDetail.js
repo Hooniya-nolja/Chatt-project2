@@ -14,7 +14,7 @@ export default function PaymentDetailsDetail (){
                 <Link to="/paymentDetails"> {/* 후에 수정 */}
                     <GoBackIcon>{'<'}</GoBackIcon>
                 </Link>                   
-                <Title>결제 내역</Title>
+                <Title>신청 내역</Title>
                 <Link to="/paymentDetails"> {/* 후에 수정 */}
                         <CloseIcon>{'X'}</CloseIcon>
                 </Link>
