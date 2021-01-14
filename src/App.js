@@ -24,12 +24,10 @@ import NotFound from './routes/NotFound';
 
 function App({ location }) {
   const notSupported = useMediaQuery({
-    query: "(min-width: 380px)",
-    transform: "scale(0.6)"
+    query: "(min-width: 450px)",
   });
   const isMobile = useMediaQuery({
-    query: "(max-width: 380px)",
-    transform: "scale(0.6)"
+    query: "(max-width: 450px)",
   });
 
   // document.getElementsByTagName("META")[1].content="width=375, initial-scale=1";
@@ -37,7 +35,6 @@ function App({ location }) {
   return (
     // <Container>
     // <InnerContainer>
-    // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     <div style={{width: '100%', height: '100%'}}>
       { notSupported && <h1>모바일 환경만 지원됩니다.</h1>}
       { isMobile &&
@@ -98,10 +95,12 @@ function App({ location }) {
         </div>
       }
     </div>
-    // </InnerContainer>
-    // </Container>
+    // {/* </InnerContainer> */}
+    // {/* </Container> */}
   );
 }
+
+// const mobile = `(min-width: 415px)`;
 
 const Container = styled.div`
   width: 100%;
@@ -109,11 +108,16 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  ${'' /* @media only screen and ${mobile}{
+    background-color: white;
+    position: center;
+    transform: scale(0.4);
+  } */}
 `;
 
-const InnerContainer = styled.div`
-  width: 375px;
-  height: 812px;
-`;
+// const InnerContainer = styled.div`
+//   width: 375px;
+//   height: 812px;
+// `;
 
 export default App;
