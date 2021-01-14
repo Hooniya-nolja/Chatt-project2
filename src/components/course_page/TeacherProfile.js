@@ -6,7 +6,9 @@ import INSTAGRAM_IMG from '../icon/instagram.png';
 
 function TeacherProfile({ location }) {
   const { teacher } = location.state.courseData;
-  const teacherIntroductionText = teacher.information;
+  const teacherIntroductionText = teacher.information.split('\r\n');
+  const enter = `\r\n`;
+  console.log('teacher instruction : ', teacherIntroductionText);
   const careerArray = [teacher.career1, teacher.career2, teacher.career3];
   // const teacherIntroductionText1 = '안녕하세요. 필라테스 강사 제니퍼입니다!';
   // const teacherIntroductionText2 =
@@ -30,7 +32,13 @@ function TeacherProfile({ location }) {
       <TeacherIntroduction>
         <IntroductionHead>강사 소개</IntroductionHead>
         <IntroductionContent>
-          {teacherIntroductionText}
+          {teacherIntroductionText.map((paragraph, index) => {
+            console.log('p : ', paragraph);
+            return (
+              <>{paragraph}<br /></>
+            );
+          })}
+          {/* {teacherIntroductionText} */}
         </IntroductionContent>
       </TeacherIntroduction>
       <BoldLine />

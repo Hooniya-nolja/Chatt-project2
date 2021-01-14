@@ -50,9 +50,6 @@ function CourseList() {
             </CourseLink>
           );
         })}
-        {/* <CourseLink to="/course/1/profile">
-          <Course courseData={pickedDayCourses[0]} />
-        </CourseLink> */}
       </CourseListContainer>
     </Container>
   );
