@@ -24,11 +24,13 @@ import NotFound from './routes/NotFound';
 
 function App({ location }) {
   const notSupported = useMediaQuery({
-    query: "(min-width: 380px)"
+    query: "(min-width: 380px)",
+    transform: "scale(0.6)"
   });
   const isMobile = useMediaQuery({
-    query: "(max-width: 380px)"
-  })
+    query: "(max-width: 380px)",
+    transform: "scale(0.6)"
+  });
 
   // document.getElementsByTagName("META")[1].content="width=375, initial-scale=1";
 

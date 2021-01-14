@@ -6,15 +6,20 @@ import TRAINERICON from '../components/img/trainer_img.png';
 import CLIPBOARD from '../components/icon/clipboardIcon.png';
 import CLOCK from '../components/icon/clockIcon.png';
 
+import Header from '../components/Header';
+
 class OneSchedule extends React.Component {
     render() {
         return (
             <Container>                
                 <div>
-                    <Link to="/myClass">
+                    <Header 
+                        
+                    />
+                    {/* <Link to="/myClass">
                         <GoBackIcon>{'<'}</GoBackIcon>
                     </Link>                   
-                    <Title>1회차</Title>
+                    <Title>1회차</Title> */}
                 </div>
                 <ContainerContent>
                     <ClassDescriptionContainer>

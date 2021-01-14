@@ -96,7 +96,7 @@ function MyPage({ history }) {
           </SettingContentContainer>
           <Link to="/paymentDetails">
             <SettingContentContainer>
-              <SettingContent>결제 내역</SettingContent>
+              <SettingContent>신청 내역</SettingContent>
               <NextIcon src={NEXTICON} />
             </SettingContentContainer>
           </Link>
