@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import qs from 'querystring';
-import { useCookies } from 'react-cookie';
 import COMPLETED_IMG from '../../components/img/예약완료.png';
 
 class Pay_5 extends React.Component {
@@ -41,7 +40,7 @@ class Pay_5 extends React.Component {
                 alert('신청되었습니다!');
             })
             .catch (() => {
-                alert('신청을 위해서는 로그인이 필요합니다!');
+                alert('신청에 실패했습니다. 관리자에게 문의해주세요.');
             })
         }
         async function getIsLoggedIn() {

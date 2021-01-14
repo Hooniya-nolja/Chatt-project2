@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import COURSE_DETAIL_IMG from '../img/course_detail_img.png';
 import { Route, Link, BrowserRouter, withRouter } from 'react-router-dom';
-
+import axios from 'axios';
 import Header from '../Header';
 import HashTagRow from '../HashTagRow';
 import TeacherProfile from './TeacherProfile';
@@ -10,22 +10,28 @@ import CourseIntroduction from './CourseIntroduction';
 import CourserPlan from './CoursePlan';
 import ImageSlider from './ImageSlider';
 
+const dataURL = 'https://www.chatt-training.com/api/user/check-authentication/';
+
 function CoursePage({ location, history }) {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [profileTabActive, setProfileTabActive] = useState(1);
   const [introductionTabActive, setIntroductionTabActive] = useState(0);
   const [planTabActive, setPlanTabActive] = useState(0);
   const courseData = location.state.courseData;
   const hashTagArray = [courseData.tag1, courseData.tag2, courseData.tag3];
   const courseImageArray = [courseData.image1, courseData.image2, courseData.image3];
-
+  async function getIsLoggedIn() {
+    const { data } = await axios.get(dataURL);
+    setIsLoggedIn(data.login);
+  }
   function changeSubPageTab(setTabActive) {
     setProfileTabActive(0);
     setIntroductionTabActive(0);
     setPlanTabActive(0);
     setTabActive(1);
   }
-
   useEffect(() => {
+    getIsLoggedIn();
     history.push({    // if refresh page then initialize Tabs.
       pathname: '/course/1/profile',
       state: {
@@ -34,7 +40,17 @@ function CoursePage({ location, history }) {
     });  
     window.scrollTo(0, 0);
   }, []);
-
+  function handleReservationButtonClick() {
+    { isLoggedIn
+      ? history.push({
+        pathname: '/pay/1',
+        state: {
+          courseData: location.state.courseData
+        },
+        })
+      : alert('예약을 위해서는 로그인이 필요합니다!');
+    }
+  }
   return (
     <Container>
       <ImageSlider courseImageArray={courseImageArray} />
@@ -88,12 +104,7 @@ function CoursePage({ location, history }) {
           강의계획
         </TabButton>
       </SubPageTab>
-      <ReservationButton onClick={() => history.push({
-        pathname: '/pay/1',
-        state: {
-          courseData: location.state.courseData
-        }
-      })}>예약하기</ReservationButton>
+      <ReservationButton onClick={handleReservationButtonClick}>예약하기</ReservationButton>
       <Route path="/course/1/profile" exact={true} component={TeacherProfile} />
       <Route
         path="/course/1/introduction"
