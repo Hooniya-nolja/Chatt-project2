@@ -14,7 +14,7 @@ function CourseList() {
   const doAPI = async () => {
     const response = await courseListAPI();
     setPickedDayCourses(response.data[0]);
-  }
+  };
 
   const getCourseList = async () => {
     try {
@@ -26,9 +26,9 @@ function CourseList() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const setData = async() => {
+    const setData = async () => {
       await getCourseList();
-    }
+    };
     setData();
   }, []);
 
@@ -37,19 +37,23 @@ function CourseList() {
       <CalendarContainer>
         <Calendar src={WEEK_CALENDAR} alt="" />
       </CalendarContainer>
-      <CourseListContainer>        
-        {pickedDayCourses && pickedDayCourses.map((course, index) => {
-          return (
-            <CourseLink to={{
-              pathname: "/course/1/profile",
-              state: {
-                courseData: course,
-              }
-            }} key={index}>
-              <Course courseData={course} />
-            </CourseLink>
-          );
-        })}
+      <CourseListContainer>
+        {pickedDayCourses &&
+          pickedDayCourses.map((course, index) => {
+            return (
+              <CourseLink
+                to={{
+                  pathname: '/course/1/profile',
+                  state: {
+                    courseData: course,
+                  },
+                }}
+                key={index}
+              >
+                <Course courseData={course} />
+              </CourseLink>
+            );
+          })}
       </CourseListContainer>
     </Container>
   );
