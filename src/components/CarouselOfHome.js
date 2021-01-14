@@ -28,7 +28,7 @@ export default class Test extends React.Component {
                         <div className="oneclass_keyword" id="hashtag">#필라테스</div>
                     </div>
                     <div className="oneclass_description">
-                        {data.information.slice(0,25)}...
+                        {data.name}
                     </div>
                     <div className="oneclass_trainer">
                         <img className="oneclass_trainer_img" src={data.teacher.image}/>
