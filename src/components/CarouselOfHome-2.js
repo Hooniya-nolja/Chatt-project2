@@ -1,6 +1,5 @@
 import React from 'react';
 import ItemsCarousel from 'react-items-carousel';
-import TRAINERIMG from './img/trainer_img.png';
 import './CarouselOfHome.css';
 import axios from 'axios';
 const dataURL = 'https://www.chatt-training.com/api/course/populars/';
@@ -48,7 +47,7 @@ export default class Test extends React.Component {
         return (
             <ItemsCarousel
                 numberOfCards={1}
-                gutter={180}
+                gutter={170}
                 showSlither={true}
                 firstAndLastGutter={false}
                 freeScrolling={true}

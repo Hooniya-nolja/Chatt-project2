@@ -1,12 +1,25 @@
 import React, {useState, useEffect} from 'react';
+import { useMediaQuery } from 'react-responsive';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Home.css'
-import CarouselOfHome from '../components/CarouselOfHome';
+import CarouselOfHome1 from '../components/CarouselOfHome-1';
+import CarouselOfHome2 from '../components/CarouselOfHome-2';
+import CarouselOfHome3 from '../components/CarouselOfHome-3';
 import INTRODUCTION from '../components/img/introduction.png';
 import HOME_BACKGROUND from '../components/img/home_background.svg';
 
 function Home() {
+    const ONE = useMediaQuery({
+        query: "(min-width: 373px)",
+      });
+      const TWO = useMediaQuery({
+        query: "(max-width: 373px)",
+        query: "(min-width: 365px)",
+      });
+      const THREE = useMediaQuery({
+        query: "(max-width: 365px)",
+      });
     return (
         <div className="container">
             <div className="introduction_container">
@@ -23,7 +36,9 @@ function Home() {
                     </Link>
                 </div>
                 <div className="topclass_content_container">
-                    <CarouselOfHome/>
+                    { ONE && <CarouselOfHome1/> }
+                    { TWO && <CarouselOfHome2/> }
+                    { THREE && <CarouselOfHome3/> }
                 </div>
                 <div className="blankspace"/>
             </div>
