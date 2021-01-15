@@ -166,8 +166,9 @@ const ContainerContent = styled.div`
 const ButtonContainer = styled.div`
   // height: 222px;
   width: 100%;
-  position: absolute;
+  ${'' /* position: absolute; */}
   bottom: 120px;
+  padding-bottom: 150px;
 `;
 const NextButton = styled.button`
   height: 56px;
@@ -251,6 +252,7 @@ const FinalPriceContainer = styled.div`
   height: 40px;
   background-color: rgba(60, 80, 165, 0.05);
   padding-top: 16px;
+  margin-bottom: 150px;
 `;
 const FinalPriceTitle = styled.div`
   font-family: NotoSansKR;
