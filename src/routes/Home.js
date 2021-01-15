@@ -14,8 +14,7 @@ function Home() {
         query: "(min-width: 373px)",
       });
       const TWO = useMediaQuery({
-        query: "(max-width: 373px)",
-        query: "(min-width: 365px)",
+        query: "(max-width: 373px && min-width: 365px)",
       });
       const THREE = useMediaQuery({
         query: "(max-width: 365px)",
