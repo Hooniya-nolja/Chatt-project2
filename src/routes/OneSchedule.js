@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import RECORD1 from '../components/img/record1.png';
+import RECORD1 from '../components/img/운동일지.svg';
 import TRAINERICON from '../components/img/trainer_img.png';
-import CLIPBOARD from '../components/icon/clipboardIcon.png';
-import CLOCK from '../components/icon/clockIcon.png';
+import CLIPBOARD from '../components/icon/clipboard.svg';
+import CLOCK from '../components/icon/clock.svg';
 import GO_BACK from '../components/icon/go_back.png';
 import GO_NEXT from '../components/icon/go_next.png';
 
