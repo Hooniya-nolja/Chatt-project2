@@ -7,13 +7,17 @@ import { courseListAPI } from '../api';
 import WEEK_CALENDAR from '../components/img/calendar_week.svg';
 
 import Course from '../components/Course';
+import CalendarWeek from '../components/CalendarWeek';
 
 function CourseList() {
   const [pickedDayCourses, setPickedDayCourses] = useState(false);
+  const [selectedDayNum, setSelectedDayNum] = useState(1);
 
   const doAPI = async () => {
     const response = await courseListAPI();
-    setPickedDayCourses(response.data[0]);
+    setPickedDayCourses(response.data[selectedDayNum]);
+    console.log('selectedDayNum : ', selectedDayNum);
+    console.log('pickedDayCourses : ', pickedDayCourses);
   };
 
   const getCourseList = async () => {
@@ -30,12 +34,13 @@ function CourseList() {
       await getCourseList();
     };
     setData();
-  }, []);
+  }, [selectedDayNum]);
 
   return (
     <Container>
       <CalendarContainer>
-        <Calendar src={WEEK_CALENDAR} alt="" />
+        <CalendarWeek setPickedDayCourses={setSelectedDayNum}/>
+        {/* <Calendar src={WEEK_CALENDAR} alt="" /> */}
       </CalendarContainer>
       <CourseListContainer>
         {pickedDayCourses &&
@@ -67,6 +72,7 @@ const Container = styled.div`
 
 const CalendarContainer = styled.div`
   ${'' /* height: 110px; */}
+  width: 100%;
   padding: 0px 0 0px 0;
   position: fixed;
   background-color: white;
