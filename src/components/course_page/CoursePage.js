@@ -35,7 +35,8 @@ function CoursePage({ location, history }) {
     history.push({    // if refresh page then initialize Tabs.
       pathname: '/course/1/profile',
       state: {
-        courseData: location.state.courseData
+        courseData: location.state.courseData,
+        isFromHome: location.state.isFromHome,
       }
     });  
     window.scrollTo(0, 0);
@@ -54,12 +55,21 @@ function CoursePage({ location, history }) {
   return (
     <Container>
       <ImageSlider courseImageArray={courseImageArray} />
-      <Header
-        beforeUrl={'/courseList'}
-        goBackButton={true}
-        closeButton={false}
-        forceLink={() => history.push('/courseList')}
-      />
+      {
+        location.state.isFromHome === true 
+        ? <Header
+          beforeUrl={'/'}
+          goBackButton={true}
+          closeButton={false}
+          forceLink={() => history.push('/')}
+          />
+        : <Header
+          beforeUrl={'/courseList'}
+          goBackButton={true}
+          closeButton={false}
+          forceLink={() => history.push('/courseList')}
+          />
+      }
       <HashTagRowContainer>
         <HashTagRow isVisit={true} hashTagArray={hashTagArray}/>
       </HashTagRowContainer>
