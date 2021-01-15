@@ -90,7 +90,7 @@ class Pay_5 extends React.Component {
                             },
                         }}
                         >
-                        <GoBackIcon>{'<'}</GoBackIcon>
+                        <GoBackIcon src={GO_BACK} />
                     </Link> 
                     <Link 
                         to={{
@@ -100,7 +100,7 @@ class Pay_5 extends React.Component {
                             },
                         }}
                         >
-                        <CloseIcon>{'X'}</CloseIcon>
+                        <CloseIcon src={CLOSE_ICON} />
                     </Link>                   
                     <Title>신청완료</Title>
                 </div>
