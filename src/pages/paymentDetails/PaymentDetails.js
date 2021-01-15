@@ -24,7 +24,7 @@ class PaymentDetails extends React.Component {
       this.state.courseData !== null && (
         <Container>
           <div>
-            <Link to="/">
+            <Link to="/myPage">
               {' '}
               {/* 후에 수정 */}
               <GoBackIcon src={GO_BACK} />
