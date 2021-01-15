@@ -19,7 +19,11 @@ function CoursePage({ location, history }) {
   const [planTabActive, setPlanTabActive] = useState(0);
   const courseData = location.state.courseData;
   const hashTagArray = [courseData.tag1, courseData.tag2, courseData.tag3];
-  const courseImageArray = [courseData.image1, courseData.image2, courseData.image3];
+  const courseImageArray = [
+    courseData.image1,
+    courseData.image2,
+    courseData.image3,
+  ];
   async function getIsLoggedIn() {
     const { data } = await axios.get(dataURL);
     setIsLoggedIn(data.login);
@@ -32,60 +36,60 @@ function CoursePage({ location, history }) {
   }
   useEffect(() => {
     getIsLoggedIn();
-    history.push({    // if refresh page then initialize Tabs.
+    history.push({
+      // if refresh page then initialize Tabs.
       pathname: '/course/1/profile',
       state: {
         courseData: location.state.courseData,
         isFromHome: location.state.isFromHome,
-      }
-    });  
+      },
+    });
     window.scrollTo(0, 0);
   }, []);
   function handleReservationButtonClick() {
-    { isLoggedIn
-      ? history.push({
-        pathname: '/pay/1',
-        state: {
-          courseData: location.state.courseData
-        },
-        })
-      : alert('예약을 위해서는 로그인이 필요합니다!');
+    {
+      isLoggedIn
+        ? history.push({
+            pathname: '/pay/1',
+            state: {
+              courseData: location.state.courseData,
+            },
+          })
+        : alert('예약을 위해서는 로그인이 필요합니다!');
     }
   }
   return (
     <Container>
       <ImageSlider courseImageArray={courseImageArray} />
-      {
-        location.state.isFromHome === true 
-        ? <Header
+      {location.state.isFromHome === true ? (
+        <Header
           beforeUrl={'/'}
           goBackButton={true}
           closeButton={false}
           forceLink={() => history.push('/')}
-          />
-        : <Header
+        />
+      ) : (
+        <Header
           beforeUrl={'/courseList'}
           goBackButton={true}
           closeButton={false}
           forceLink={() => history.push('/courseList')}
-          />
-      }
+        />
+      )}
       <HashTagRowContainer>
-        <HashTagRow isVisit={true} hashTagArray={hashTagArray}/>
+        <HashTagRow isVisit={true} hashTagArray={hashTagArray} />
       </HashTagRowContainer>
       {/* <SimpleDescription>
         바른자세 맑은정신을 위한 운동! 지금 시작해보세요!
       </SimpleDescription> */}
-      <SimpleDescription>
-        {courseData.name}
-      </SimpleDescription>
+      <SimpleDescription>{courseData.name}</SimpleDescription>
       <SubPageTab>
         <TabButton
           to={{
-            pathname: "/course/1/profile",
+            pathname: '/course/1/profile',
             state: {
               courseData: location.state.courseData,
-            }
+            },
           }}
           tab={profileTabActive}
           onClick={() => changeSubPageTab(setProfileTabActive)}
@@ -94,10 +98,10 @@ function CoursePage({ location, history }) {
         </TabButton>
         <TabButton
           to={{
-            pathname: "/course/1/introduction",
+            pathname: '/course/1/introduction',
             state: {
               courseData: location.state.courseData,
-            }
+            },
           }}
           tab={introductionTabActive}
           onClick={() => changeSubPageTab(setIntroductionTabActive)}
@@ -106,10 +110,10 @@ function CoursePage({ location, history }) {
         </TabButton>
         <TabButton
           to={{
-            pathname: "/course/1/plan",
+            pathname: '/course/1/plan',
             state: {
               courseData: location.state.courseData,
-            }
+            },
           }}
           tab={planTabActive}
           onClick={() => changeSubPageTab(setPlanTabActive)}
@@ -117,7 +121,9 @@ function CoursePage({ location, history }) {
           강의계획
         </TabButton>
       </SubPageTab>
-      <ReservationButton onClick={handleReservationButtonClick}>예약하기</ReservationButton>
+      <ReservationButton onClick={handleReservationButtonClick}>
+        예약하기
+      </ReservationButton>
       <Route path="/course/1/profile" exact={true} component={TeacherProfile} />
       <Route
         path="/course/1/introduction"
