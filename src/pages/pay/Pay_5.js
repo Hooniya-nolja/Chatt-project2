@@ -188,11 +188,18 @@ const ContainerContent = styled.div`
   text-align: center;
   height: calc(100vh - 104px);
 `;
+// const ButtonContainer = styled.div`
+//   // height: 222px;
+//   width: 100%;
+//   position: absolute;
+//   bottom: 120px;
+// `;
 const ButtonContainer = styled.div`
   // height: 222px;
   width: 100%;
-  position: absolute;
+  ${'' /* position: absolute; */}
   bottom: 120px;
+  padding-bottom: 150px;
 `;
 const NextButton = styled.button`
   height: 56px;
@@ -211,7 +218,7 @@ const NextButton = styled.button`
 `;
 const ContentContainer = styled.div`
   width: calc(100% - (16px * 2));
-  margin: 16px 0 0 16px;
+  margin: 16px 0 100px 16px;
   padding: 236px 0 16px 0;
   border-radius: 10px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);

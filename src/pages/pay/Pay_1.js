@@ -35,7 +35,7 @@ class Pay_1 extends React.Component {
     };
     return (
       <Container>
-        <div>
+        <div style={{width: '100%'}}>
           <Link
             to={{
               pathname: '/course/1/profile',
@@ -181,11 +181,18 @@ const ContainerContent = styled.div`
   text-align: center;
   height: calc(100vh - 104px);
 `;
+// const ButtonContainer = styled.div`
+//   // height: 222px;
+//   width: 100%;
+//   position: absolute;
+//   bottom: 120px;
+// `;
 const ButtonContainer = styled.div`
   // height: 222px;
   width: 100%;
-  position: absolute;
+  ${'' /* position: absolute; */}
   bottom: 120px;
+  padding-bottom: 150px;
 `;
 const NextButton = styled.button`
   height: 56px;
@@ -231,9 +238,10 @@ const CloseIcon = styled.img`
 `;
 const Calendar = styled.img`
   margin-top: 8px;
+  width: 100%;
 `;
 const TimeCandidateContainer = styled.div`
-  margin: 28px 16px 0 16px;
+  margin: 28px 16px 150px 16px;
 `;
 const TimeCandidatesOneRow = styled.div`
   display: flex;
