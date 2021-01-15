@@ -25,7 +25,7 @@ function CalendarWeek({ setPickedDayCourses }) {
           onClick={() => selectedWeek > 1 && setSelectedWeek(selectedWeek - 1)}
           alt=""
         />
-        <ShowWeek>1월 2주차</ShowWeek>
+        <ShowWeek>1월 4주차</ShowWeek>
         <ArrowIcon
           src={RIGHT_ARROW}
           onClick={() => selectedWeek < 5 && setSelectedWeek(selectedWeek + 1)}

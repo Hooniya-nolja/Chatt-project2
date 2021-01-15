@@ -154,11 +154,18 @@ const ContainerContent = styled.div`
   text-align: center;
   height: calc(100vh - 104px);
 `;
+// const ButtonContainer = styled.div`
+//   // height: 222px;
+//   width: 100%;
+//   position: absolute;
+//   bottom: 120px;
+// `;
 const ButtonContainer = styled.div`
   // height: 222px;
   width: 100%;
-  position: absolute;
+  ${'' /* position: absolute; */}
   bottom: 120px;
+  padding-bottom: 150px;
 `;
 const NextButton = styled.button`
   height: 56px;
@@ -273,10 +280,12 @@ const AlertText = styled.div`
   font-size: 14px;
   color: #ff5777;
   height: 22px;
-  position: absolute;
+  ${'' /* position: absolute; */}
   left: 48px;
   text-align: left;
   margin-top: 26px;
+  margin-bottom: 100px;
+  padding-left: 50px;
 `;
 const CloseIcon = styled.img`
   ${'' /* text-decoration: none; */}

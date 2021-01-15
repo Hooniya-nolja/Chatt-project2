@@ -180,11 +180,18 @@ const ContainerContent = styled.div`
   text-align: center;
   height: calc(100vh - 104px);
 `;
+// const ButtonContainer = styled.div`
+//   // height: 222px;
+//   width: 100%;
+//   position: absolute;
+//   bottom: 120px;
+// `;
 const ButtonContainer = styled.div`
   // height: 222px;
   width: 100%;
-  position: absolute;
+  ${'' /* position: absolute; */}
   bottom: 120px;
+  padding-bottom: 150px;
 `;
 const NextButton = styled.button`
   height: 56px;
@@ -250,6 +257,7 @@ const OneStar = styled.div`
 `;
 const InputArea = styled.textarea`
   margin-top: 32px;
+  margin-bottom: 100px;
   width: calc(100% - 64px);
   padding: 16px 16px 16px 16px;
   height: 120px;
