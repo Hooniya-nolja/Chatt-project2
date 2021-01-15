@@ -6,17 +6,31 @@ import RIGHT_ARROW from '../components/icon/go_next.png';
 function CalendarWeek({ setPickedDayCourses }) {
   const dayTextArray = ['일', '월', '화', '수', '목', '금', '토'];
   const dayNumArray = [17, 18, 19, 20, 21, 22, 23];
+  const firstWeekArray = [null, null, null, null, null, 1, 2];
+  const secondWeekArray = [3, 4, 5, 6, 7, 8, 9];
+  const thirdWeekArray = [10, 11, 12, 13, 14, 15, 16];
+  const fourthWeekArray = [17, 18, 19, 20, 21, 22, 23];
+  const fifthWeekArray = [24, 25, 26, 27, 28, 29, 30];
   const [clickedDayNum, setClickedDayNum] = useState(1);
   console.log('clickedDayNum : ', clickedDayNum);
   //   useEffect(() => {
   //   }, clickedDayNum);
+  const [selectedWeek, setSelectedWeek] = useState(1);
 
   return (
     <Container>
       <SelectWeek>
-        <ArrowIcon src={LEFT_ARROW} alt="" />
+        <ArrowIcon
+          src={LEFT_ARROW}
+          onClick={() => selectedWeek > 1 && setSelectedWeek(selectedWeek - 1)}
+          alt=""
+        />
         <ShowWeek>1월 2주차</ShowWeek>
-        <ArrowIcon src={RIGHT_ARROW} alt="" />
+        <ArrowIcon
+          src={RIGHT_ARROW}
+          onClick={() => selectedWeek < 5 && setSelectedWeek(selectedWeek + 1)}
+          alt=""
+        />
       </SelectWeek>
       <ShowDayText>
         {dayTextArray.map((day, index) => {
@@ -49,7 +63,7 @@ const Container = styled.div`
   height: 145px;
   margin: 0px 0 0px 0;
   object-fit: contain;
-  background-color: #F5F6FB;
+  background-color: #f5f6fb;
 `;
 
 const SelectWeek = styled.div`

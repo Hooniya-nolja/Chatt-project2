@@ -5,7 +5,7 @@ import HashTagRow from '../../components/HashTagRow';
 import DescriptionRow from '../../components/DescriptionRow';
 import TeacherRow from '../../components/TeacherRow';
 import CLOCK_ICON from '../../components/icon/clock.png';
-import MAP_PIN_ICON from '../../components/icon/map-pin.png';
+import MAP_PIN_ICON from '../../components/icon/map-pin.svg';
 import { courseListAPI } from '../../api';
 
 class PaymentDetails extends React.Component {
@@ -42,13 +42,13 @@ class PaymentDetails extends React.Component {
                                 <TimeAndPlaceContainer>
                                     <Time>
                                         <TimePlaceIconBox>
-                                        <img src={CLOCK_ICON} alt=''/>
+                                            <ClockIcon src={CLOCK_ICON} alt=''/>
                                         </TimePlaceIconBox>
                                         18시
                                     </Time>
                                     <Place>
                                         <TimePlaceIconBox>
-                                        <img src={MAP_PIN_ICON} alt=''/>
+                                            <MapIcon src={MAP_PIN_ICON} alt='' />
                                         </TimePlaceIconBox>
                                         서울시 마포구
                                     </Place>
@@ -188,4 +188,12 @@ const Place = styled(TimeAndPlace)`
 `;
 const TimePlaceIconBox = styled.div`
     margin: 2% 7% 0 7%;
+`;
+const ClockIcon = styled.img`
+  width: 16px;
+  height: 16px;
+  padding-top: 3px;
+`;
+const MapIcon = styled.img`
+  padding-top: 2px;
 `;
