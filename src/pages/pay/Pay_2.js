@@ -8,6 +8,8 @@ import STAR_3 from '../../components/icon/별3.svg';
 import SELECTED_STAR_1 from '../../components/icon/별1-1.svg';
 import SELECTED_STAR_2 from '../../components/icon/별2-1.svg';
 import SELECTED_STAR_3 from '../../components/icon/별3-1.svg';
+import GO_BACK from '../../components/icon/go_back.png';
+import CLOSE_ICON from '../../components/icon/close.png';
 
 class Pay_2 extends React.Component {
   state = {
@@ -55,7 +57,7 @@ class Pay_2 extends React.Component {
               },
             }}
           >
-            <GoBackIcon>{'<'}</GoBackIcon>
+            <GoBackIcon src={GO_BACK} />
           </Link>
           <Title>신청하기</Title>
           <Link
@@ -66,7 +68,7 @@ class Pay_2 extends React.Component {
               },
             }}
           >
-            <CloseIcon>{'X'}</CloseIcon>
+            <CloseIcon src={CLOSE_ICON} />
           </Link>
         </div>
         <ContainerContent>
@@ -158,8 +160,9 @@ const TopContent = styled.div`
   width: 72px;
   height: 24px;
 `;
-const GoBackIcon = styled(TopContent)`
-  text-decoration: none;
+const GoBackIcon = styled.img`
+  width: 24px;
+  height: 24px;
   position: absolute;
   top: 56px;
   left: 16px;
@@ -265,10 +268,11 @@ const InputArea = styled.textarea`
     color: #bdbdbd;
   }
 `;
-const CloseIcon = styled(TopContent)`
-  text-decoration: none;
+const CloseIcon = styled.img`
+  ${'' /* text-decoration: none; */}
   position: absolute;
   top: 56px;
   right: 16px;
   width: 24px;
+  height: 24px;
 `;

@@ -3,7 +3,8 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import MYPAGEPROFILE from '../components/img/내프로필이미지.svg';
+import LOGIN_PROFILE from '../components/img/로그인_프로필.svg';
+import LOGOUT_PROFILE from '../components/img/로그아웃_프로필.svg';
 import NEXTICON from '../components/icon/nextIcon.png';
 
 const dataURL = 'https://www.chatt-training.com/api/user/check-authentication/';
@@ -14,10 +15,10 @@ function MyPage({ history }) {
   const [currentUserFirstName, setCurrentUserFirstName] = useState("");
   const [currentUserLastName, setCurrentUserLastName] = useState("");
   const [currentUserEmail, setCurrentUserEmail] = useState("");
-  async function getIsLoggedIn() {
-    const { data } = await axios.get(dataURL);
-    setIsLoggedIn(data.login);
-  }
+  // async function getIsLoggedIn() {
+  //   const { data } = await axios.get(dataURL);
+  //   setIsLoggedIn(data.login);
+  // }
   // async function getUserData() {
   //   const { data } = await axios.get(userURL);
   //   setCurrentUserFirstName(data.first_name);
@@ -30,6 +31,7 @@ function MyPage({ history }) {
     if (userCookie) {
       const user = JSON.parse(userCookie);
       console.log('user : ', user);
+      setIsLoggedIn(true);
       setCurrentUserFirstName(user.first_name);
       setCurrentUserLastName(user.last_name);
       setCurrentUserEmail(user.email);
@@ -39,9 +41,7 @@ function MyPage({ history }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     getUserData();
-    // console.log('user : ', temp);
-    getIsLoggedIn();
-    // getUserData();
+    // getIsLoggedIn();
     console.log(isLoggedIn);
   }, []);
 
@@ -62,7 +62,7 @@ function MyPage({ history }) {
       <ContentContainer>
         {!Cookies.get('access-token') && (
           <ProfileContainer>
-            <ProfileImg src={MYPAGEPROFILE} />
+            <ProfileImg src={LOGOUT_PROFILE} />
             <ProfileContentContainer>
               <ProfileContent_Black>로그인하고</ProfileContent_Black>
               <ProfileContent_Black>시작해보세요!</ProfileContent_Black>
@@ -74,7 +74,7 @@ function MyPage({ history }) {
         )}
         {Cookies.get('access-token') && (
           <ProfileContainer>
-            <ProfileImg src={MYPAGEPROFILE} />
+            <ProfileImg src={LOGIN_PROFILE} />
             <ProfileContentContainer>
               <ProfileContent_Blue>안녕하세요</ProfileContent_Blue>
               <ProfileContentInnerContainer>

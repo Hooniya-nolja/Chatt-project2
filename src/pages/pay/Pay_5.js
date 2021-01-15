@@ -5,6 +5,8 @@ import axios from 'axios';
 import qs from 'querystring';
 import { useCookies } from 'react-cookie';
 import COMPLETED_IMG from '../../components/img/신청완료.svg';
+import GO_BACK from '../../components/icon/go_back.png';
+import CLOSE_ICON from '../../components/icon/close.png';
 
 class Pay_5 extends React.Component {
   state = {
@@ -51,92 +53,98 @@ class Pay_5 extends React.Component {
   //     );
   //     console.log(data);
   //   }
-    render() {
-        const handlePayButtonClick = () => {
-            axios({
-                method: 'post', url: "https://www.chatt-training.com/api/course/4/reserve/",
-                data: qs.stringify({
-                    day: this.state.day,
-                    time: this.state.time,
-                    package_count: this.state.package_count,
-                    start_date: this.state.start_date,
-                }),
-            })
-            .then ((response) => {
-                alert('신청되었습니다!');
-            })
-            .catch (() => {
-                alert('신청에 실패했습니다. 관리자에게 문의해주세요.');
-            })
-        }
-        async function getIsLoggedIn() {
-            const { data } = await axios.get('https://www.chatt-training.com/api/user/check-authentication/');
-            console.log(data);
-          }
-        getIsLoggedIn();
-        return (
-            <Container>
-                <div>
-                    <Link 
-                        to={{
-                            pathname: "/pay/4",
-                            state: {
-                                time: this.state.time,
-                                package_count: this.state.package_count,
-                                finalPrice: this.state.finalPrice,
-                                courseData: this.state.courseData,
-                            },
-                        }}
-                        >
-                        <GoBackIcon>{'<'}</GoBackIcon>
-                    </Link> 
-                    <Link 
-                        to={{
-                            pathname: "/course/1/profile",
-                            state: {
-                                courseData: this.state.courseData,
-                            },
-                        }}
-                        >
-                        <CloseIcon>{'X'}</CloseIcon>
-                    </Link>                   
-                    <Title>신청완료</Title>
-                </div>
-                <ContainerContent>
-                    <ContentContainer>
-                        <CompletedImg src={COMPLETED_IMG}/>
-                        <DescriptionContainer>
-                            <Description>신청해주셔서 감사합니다.</Description>
-                            <Description>2021.01.05 까지 미입금시 자동 취소됩니다.</Description>
-                        </DescriptionContainer>
-                        <Line/>
-                        <ContentOneLine>
-                            <ContentTitle>결제금액</ContentTitle>
-                            <Content>{this.state.finalPrice}</Content>
-                        </ContentOneLine>
-                        <ContentOneLine>
-                            <ContentTitle>계좌번호</ContentTitle>
-                            <Content>신한은행 110-123-456789</Content>
-                        </ContentOneLine>
-                        <ContentOneLine>
-                            <ContentTitle>계좌명</ContentTitle>
-                            <Content>주식회사 찾트</Content>
-                        </ContentOneLine>
-                        <ContentOneLine>
-                            <ContentTitle>입금자명</ContentTitle>
-                            <Content>{this.state.depositName}</Content>
-                        </ContentOneLine>
-                    
-                    </ContentContainer>
-                    <ButtonContainer>
-                        <Link to="/"> {/* 후에 수정 */}
-                            <NextButton onClick={handlePayButtonClick}>완료</NextButton>
-                        </Link>
-                    </ButtonContainer>
-                </ContainerContent>
-            </Container>
-        );
+  render() {
+    const handlePayButtonClick = () => {
+      axios({
+        method: 'post',
+        url: 'https://www.chatt-training.com/api/course/4/reserve/',
+        data: qs.stringify({
+          day: this.state.day,
+          time: this.state.time,
+          package_count: this.state.package_count,
+          start_date: this.state.start_date,
+        }),
+      })
+        .then((response) => {
+          alert('신청되었습니다!');
+        })
+        .catch(() => {
+          alert('신청에 실패했습니다. 관리자에게 문의해주세요.');
+        });
+    };
+    async function getIsLoggedIn() {
+      const { data } = await axios.get(
+        'https://www.chatt-training.com/api/user/check-authentication/'
+      );
+      console.log(data);
     }
+    getIsLoggedIn();
+    return (
+      <Container>
+        <div>
+          <Link
+            to={{
+              pathname: '/pay/4',
+              state: {
+                time: this.state.time,
+                package_count: this.state.package_count,
+                finalPrice: this.state.finalPrice,
+                courseData: this.state.courseData,
+              },
+            }}
+          >
+            <GoBackIcon src={GO_BACK} />
+          </Link>
+          <Link
+            to={{
+              pathname: '/course/1/profile',
+              state: {
+                courseData: this.state.courseData,
+              },
+            }}
+          >
+            <CloseIcon src={CLOSE_ICON} />
+          </Link>
+          <Title>신청완료</Title>
+        </div>
+        <ContainerContent>
+          <ContentContainer>
+            <CompletedImg src={COMPLETED_IMG} />
+            <DescriptionContainer>
+              <Description>신청해주셔서 감사합니다.</Description>
+              <Description>
+                2021.01.05 까지 미입금시 자동 취소됩니다.
+              </Description>
+            </DescriptionContainer>
+            <Line />
+            <ContentOneLine>
+              <ContentTitle>결제금액</ContentTitle>
+              <Content>{this.state.finalPrice}</Content>
+            </ContentOneLine>
+            <ContentOneLine>
+              <ContentTitle>계좌번호</ContentTitle>
+              <Content>신한은행 110-123-456789</Content>
+            </ContentOneLine>
+            <ContentOneLine>
+              <ContentTitle>계좌명</ContentTitle>
+              <Content>주식회사 찾트</Content>
+            </ContentOneLine>
+            <ContentOneLine>
+              <ContentTitle>입금자명</ContentTitle>
+              <Content>{this.state.depositName}</Content>
+            </ContentOneLine>
+          </ContentContainer>
+          <ButtonContainer>
+            <Link to="/">
+              {' '}
+              {/* 후에 수정 */}
+              <NextButton onClick={handlePayButtonClick}>완료</NextButton>
+            </Link>
+          </ButtonContainer>
+        </ContainerContent>
+      </Container>
+    );
+  }
 }
 export default Pay_5;
 const Container = styled.div`
@@ -158,13 +166,15 @@ const TopContent = styled.div`
   width: 72px;
   height: 24px;
 `;
-const CloseIcon = styled(TopContent)`
-  text-decoration: none;
+const CloseIcon = styled.img`
+  ${'' /* text-decoration: none; */}
   position: absolute;
   top: 56px;
   right: 16px;
   width: 24px;
+  height: 24px;
 `;
+
 const Title = styled(TopContent)`
   position: absolute;
   top: 56px;
@@ -249,8 +259,9 @@ const CompletedImg = styled.img`
 const DescriptionContainer = styled.div`
   margin-top: 48px;
 `;
-const GoBackIcon = styled(TopContent)`
-  text-decoration: none;
+const GoBackIcon = styled.img`
+  width: 24px;
+  height: 24px;
   position: absolute;
   top: 56px;
   left: 16px;

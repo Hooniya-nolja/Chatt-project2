@@ -5,6 +5,8 @@ import PAGENUMIMG_3 from '../../components/icon/pageNumImg_3.png';
 import PLUSBUTTON from '../../components/icon/plus.png';
 import MINUSBUTTON from '../../components/icon/minus.png';
 import Course from '../../components/Course';
+import GO_BACK from '../../components/icon/go_back.png';
+import CLOSE_ICON from '../../components/icon/close.png';
 
 class Pay_3 extends React.Component {
   state = {
@@ -43,7 +45,7 @@ class Pay_3 extends React.Component {
               },
             }}
           >
-            <GoBackIcon>{'<'}</GoBackIcon>
+            <GoBackIcon src={GO_BACK} />
           </Link>
           <Title>신청하기</Title>
           <Link
@@ -54,7 +56,7 @@ class Pay_3 extends React.Component {
               },
             }}
           >
-            <CloseIcon>{'X'}</CloseIcon>
+            <CloseIcon src={CLOSE_ICON} />
           </Link>
         </div>
         <ContainerContent>
@@ -141,8 +143,9 @@ const TopContent = styled.div`
   width: 72px;
   height: 24px;
 `;
-const GoBackIcon = styled(TopContent)`
-  text-decoration: none;
+const GoBackIcon = styled.img`
+  width: 24px;
+  height: 24px;
   position: absolute;
   top: 56px;
   left: 16px;
@@ -264,13 +267,15 @@ const FinalPrice = styled.div`
   position: absolute;
   right: 16px;
 `;
-const CloseIcon = styled(TopContent)`
-  text-decoration: none;
+const CloseIcon = styled.img`
+  ${'' /* text-decoration: none; */}
   position: absolute;
   top: 56px;
   right: 16px;
   width: 24px;
+  height: 24px;
 `;
+
 const EmptyCourse = styled.div`
   height: 160px;
   background-color: white;
