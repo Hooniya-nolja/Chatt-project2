@@ -2,6 +2,7 @@ import React from 'react';
 import ItemsCarousel from 'react-items-carousel';
 import './CarouselOfHome.css';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 const dataURL = 'https://www.chatt-training.com/api/course/populars/';
 
 export default class Test extends React.Component {
@@ -21,19 +22,27 @@ export default class Test extends React.Component {
         setTimeout(() => {
             this.setState({
                 children: this.state.datas.map((data, index) => 
-                <div key={index} className="oneclass_container">
-                    <div className="oneclass_keyword_container">
-                        <div className="oneclass_keyword" id="type">방문</div>
-                        <div className="oneclass_keyword" id="hashtag">#필라테스</div>
-                    </div>
-                    <div className="oneclass_description">
-                        {data.name}
-                    </div>
-                    <div className="oneclass_trainer">
-                        <img className="oneclass_trainer_img" src={data.teacher.image}/>
-                        <div className="oneclass_trainer_name">{data.teacher.name} 트레이너</div>
-                    </div>
-                </div>),
+                    <Link to={{
+                        pathname: '/course/1/profile',
+                        state: {
+                            courseData: data,
+                        }
+                    }}>
+                        <div key={index} className="oneclass_container">
+                            <div className="oneclass_keyword_container">
+                                <div className="oneclass_keyword" id="type">방문</div>
+                                <div className="oneclass_keyword" id="hashtag">#필라테스</div>
+                            </div>
+                            <div className="oneclass_description">
+                                {data.name}
+                            </div>
+                            <div className="oneclass_trainer">
+                                <img className="oneclass_trainer_img" src={data.teacher.image}/>
+                                <div className="oneclass_trainer_name">{data.teacher.name} 트레이너</div>
+                            </div>
+                        </div>
+                    </Link>
+                ),
             })
         }, 1000);
     }
