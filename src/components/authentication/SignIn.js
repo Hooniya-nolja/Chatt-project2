@@ -188,12 +188,14 @@ const TwoLine = styled.hr`
 const SNSIconContainer = styled.div`
   display: flex;
   justify-content: center;
+  height: 120px;
+  margin-bottom: 100px;
 `;
 
 const SNSIcon = styled.img`
   width: 56px;
   height: 56px;
-  margin: 32px 22px 95px 18px;
+  margin: 32px 22px 32px 18px;
   object-fit: contain;
 `;
 
@@ -205,6 +207,7 @@ const OneLine = styled.hr`
   border-right: 0;
   border-bottom: 1px solid gray;
   margin-bottom: 35px;
+  ${'' /* margin-top: 100px; */}
 `;
 
 const Footer = styled.div`

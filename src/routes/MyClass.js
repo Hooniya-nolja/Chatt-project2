@@ -48,7 +48,8 @@ const Container = styled.div`
     width: 100%;
     ${'' /* position: absolute; */}
     top: 0;
-    height: 80px;
+    ${'' /* height: 80px; */}
+    height: 100%;
     left: 0;
     padding-bottom: 16px;
 `;
@@ -72,7 +73,7 @@ const OneChar = styled.div`
     margin: 0 16px 0 16px;
 `;
 const ContainerContent = styled.div`
-    left: 0;
+    ${'' /* left: 0; */}
     ${'' /* position: absolute; */}
     ${'' /* top: 104px; */}
     width: 100%;
