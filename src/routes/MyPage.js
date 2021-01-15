@@ -15,33 +15,20 @@ function MyPage({ history }) {
   const [currentUserFirstName, setCurrentUserFirstName] = useState("");
   const [currentUserLastName, setCurrentUserLastName] = useState("");
   const [currentUserEmail, setCurrentUserEmail] = useState("");
-  // async function getIsLoggedIn() {
-  //   const { data } = await axios.get(dataURL);
-  //   setIsLoggedIn(data.login);
-  // }
-  // async function getUserData() {
-  //   const { data } = await axios.get(userURL);
-  //   setCurrentUserFirstName(data.first_name);
-  //   setCurrentUserLastName(data.last_name);
-  //   setCurrentUserEmail(data.email);
-  // }
+
   async function getUserData() {
-        // const { data } = await axios.get(userURL);
     let userCookie = Cookies.get('user');
     if (userCookie) {
       const user = JSON.parse(userCookie);
-      console.log('user : ', user);
       setIsLoggedIn(true);
       setCurrentUserFirstName(user.first_name);
       setCurrentUserLastName(user.last_name);
       setCurrentUserEmail(user.email);
-      console.log('user.first_name : ', user);
     }
   }
   useEffect(() => {
     window.scrollTo(0, 0);
     getUserData();
-    // getIsLoggedIn();
     console.log(isLoggedIn);
   }, []);
 
@@ -54,9 +41,17 @@ function MyPage({ history }) {
     } else {
       history.push('/signIn');
     }
-    // event.preventDefault();
-    // setIsLoggedIn(!isLoggedIn);
   }
+
+  function linkToPaymentsDetail() {
+    if (!Cookies.get('user')) {
+      alert('로그인이 필요합니다.');
+      history.push('/signIn');
+    } else {
+      history.push('/paymentDetails');
+    }
+  }
+
   return (
     <Container>
       <ContentContainer>
@@ -95,12 +90,12 @@ function MyPage({ history }) {
             <SettingContent>내 계정/정보 관리</SettingContent>
             <NextIcon src={NEXTICON} />
           </SettingContentContainer>
-          <Link to="/paymentDetails">
-            <SettingContentContainer>
+          {/* <Link to="/paymentDetails"> */}
+            <SettingContentContainer onClick={linkToPaymentsDetail}>
               <SettingContent>신청 내역</SettingContent>
               <NextIcon src={NEXTICON} />
             </SettingContentContainer>
-          </Link>
+          {/* </Link> */}
           <SettingContentContainer>
             <SettingContent>내 강의 내역</SettingContent>
             <NextIcon src={NEXTICON} />

@@ -9,11 +9,20 @@ import HOME_ICON from './icon/홈.svg';
 import CLASSLIST_ICON from './icon/둘러보기.svg';
 import MYCLASS_ICON from './icon/내일정.svg';
 import PROFILE_ICON from './icon/프로필.svg';
+import Cookies from 'js-cookie';
 
-function Navigation() {
+function Navigation({ history }) {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
   function handleCurrentPathChange(path) {
     setCurrentPath(path);
+    if (path === '/myClass') {
+      if (!Cookies.get('user')) {
+        alert('로그인이 필요합니다.');
+        history.push('/signIn');
+      } else {
+        history.push('/myClass');
+      }
+    }
   }
   return (
     <div className="nav">
@@ -81,7 +90,7 @@ function Navigation() {
           </div>
         )}
       </Link>
-      <Link className="button" to="/myClass">
+      <Link className="button">
         {currentPath == '/myClass' ? (
           <div>
             <img

@@ -132,7 +132,7 @@ const PasswordInput = styled.input`
   width: calc(100% - 50px);
   padding-left: 15px;
   height: 56px;
-  margin: 10px 16px 3px;
+  margin: 10px 0px 3px;
   border-radius: 8px;
   border: none;
   background-color: rgba(60, 80, 165, 0.1);
