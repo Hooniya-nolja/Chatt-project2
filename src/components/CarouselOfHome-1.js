@@ -27,6 +27,7 @@ export default class Test extends React.Component {
                         pathname: '/course/1/profile',
                         state: {
                             courseData: data,
+                            isFromHome: true,
                         }
                     }}>
                         <div key={index} className="oneclass_container">
