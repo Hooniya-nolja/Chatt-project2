@@ -3,6 +3,10 @@
 - MVP for visiting Personal Training service
 - Front-end Jang Changhun(me), Yuna
 
+# Tech Stack
+- React, Django
+- MySQL
+
 URL: https://chatt-project.vercel.app/
 
 * You should use service with mobile or PC Devtools
